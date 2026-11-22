@@ -151,7 +151,20 @@ if(APPLE)
     # produce bundles that require that newer host OS at runtime.
     if(NOT DEFINED CMAKE_OSX_DEPLOYMENT_TARGET OR CMAKE_OSX_DEPLOYMENT_TARGET STREQUAL "")
         set(CMAKE_OSX_DEPLOYMENT_TARGET "12.0" CACHE STRING
-            "Minimum macOS version supported by Fincept Terminal" FORCE)
+            "Minimum macOS version supported by FinTerminal" FORCE)
+    endif()
+    # When building with Homebrew LLVM (Clang, not AppleClang), FindCups / FindZLIB
+    # can add `-isystem <SDK>/usr/include`, which precedes LLVM's libc++ headers
+    # (`include/c++/v1`) and breaks `<cmath>` (`using ::abs`). Marking SDK usr/include
+    # directories as implicit prevents CMake from emitting `-isystem` for them.
+    if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+        file(GLOB _fincept_mac_sdk_inc "/Library/Developer/CommandLineTools/SDKs/MacOSX*.sdk/usr/include")
+        if(CMAKE_OSX_SYSROOT)
+            list(APPEND _fincept_mac_sdk_inc "${CMAKE_OSX_SYSROOT}/usr/include")
+        endif()
+        list(APPEND CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES ${_fincept_mac_sdk_inc})
+        list(APPEND CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES ${_fincept_mac_sdk_inc})
+        unset(_fincept_mac_sdk_inc)
     endif()
     set(CMAKE_MACOSX_RPATH ON)
     set(CMAKE_INSTALL_RPATH "@executable_path/../Frameworks;@executable_path/../lib")
