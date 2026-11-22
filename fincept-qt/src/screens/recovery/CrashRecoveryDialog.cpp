@@ -30,7 +30,7 @@ namespace fincept::screens {
 CrashRecoveryDialog::CrashRecoveryDialog(fincept::CrashRecovery* recovery, fincept::WorkspaceSnapshotRing* ring,
                                          QWidget* parent)
     : QDialog(parent), recovery_(recovery), ring_(ring) {
-    setWindowTitle(tr("Fincept Terminal — Recover Previous Session"));
+    setWindowTitle(tr("FinTerminal — Recover Previous Session"));
     setObjectName(QStringLiteral("CrashRecoveryDialog"));
     setModal(true);
     resize(640, 480);
@@ -160,7 +160,7 @@ void CrashRecoveryDialog::changeEvent(QEvent* event) {
 }
 
 void CrashRecoveryDialog::retranslateUi() {
-    setWindowTitle(tr("Fincept Terminal — Recover Previous Session"));
+    setWindowTitle(tr("FinTerminal — Recover Previous Session"));
     if (heading_)
         heading_->setText(tr("RECOVER PREVIOUS SESSION"));
     if (badge_)

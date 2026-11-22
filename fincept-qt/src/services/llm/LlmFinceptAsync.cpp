@@ -186,7 +186,7 @@ static QString build_tool_catalog_for_prompt(const mcp::ToolFilter& filter) {
                "Markets or a screening task in Equity Research. A request to open, show or pull up a stock, "
                "company or ticker is ui_open(screen=\"equity_research\", symbol=\"AAPL\"): one call, then say it "
                "is open. A question that only needs figures needs no screen: use the data shortcuts.\n"
-               "You operate Fincept Terminal like a person: ui_overview shows what is open, ui_open opens a "
+               "You operate FinTerminal like a person: ui_overview shows what is open, ui_open opens a "
                "screen (optionally on a symbol), ui_snapshot lists a panel's controls with refs, ui_act works "
                "them, ui_read reads tables and texts in full, ui_wait waits for data to load. The server "
                "prefix (fincept-terminal__) is optional.\n\n";

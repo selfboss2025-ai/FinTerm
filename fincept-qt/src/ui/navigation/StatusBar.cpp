@@ -33,20 +33,9 @@ StatusBar::StatusBar(QWidget* parent) : QWidget(parent) {
     hl->addWidget(mk("v" FINCEPT_VERSION_STRING, "sbVersion"));
     hl->addWidget(mk("  |  ", "sbSep"));
 
-    // Edition: this build is the open-source one; ENTERPRISE ↗ opens the
-    // private edition's page. Styled by refresh_theme() — no inline sheets.
+    // Edition: FinTerminal is completely free & open source.
     edition_label_ = mk({}, "sbEdition");
     hl->addWidget(edition_label_);
-    hl->addWidget(mk(QString::fromUtf8(" \xc2\xb7 "), "sbSep")); // U+00B7 middle dot
-    enterprise_btn_ = new QPushButton(this);
-    enterprise_btn_->setObjectName("sbEnterprise");
-    enterprise_btn_->setFlat(true);
-    enterprise_btn_->setCursor(Qt::PointingHandCursor);
-    enterprise_btn_->setFocusPolicy(Qt::NoFocus);
-    connect(enterprise_btn_, &QPushButton::clicked, this, []() {
-        enterprise::open_url(enterprise::url_with_ref(enterprise::site_url(), QStringLiteral("statusbar")));
-    });
-    hl->addWidget(enterprise_btn_);
     hl->addWidget(mk("  |  ", "sbSep"));
 
     const char* feeds[] = {"EQ", "FX", "CM", "FI", "CR"};
@@ -107,11 +96,7 @@ void StatusBar::retranslateUi() {
     if (ready_label_)
         ready_label_->setText(ready_state_ ? tr("READY") : tr("BUSY"));
     if (edition_label_)
-        edition_label_->setText(tr("OPEN SOURCE"));
-    if (enterprise_btn_) {
-        enterprise_btn_->setText(tr("ENTERPRISE ↗"));
-        enterprise_btn_->setToolTip(tr("Fincept Terminal Enterprise — the private edition for firms (opens fincept.in)"));
-    }
+        edition_label_->setText(tr("FREE & OPEN"));
 }
 
 void StatusBar::add_status_widget(QWidget* w) {

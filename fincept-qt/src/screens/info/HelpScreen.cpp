@@ -32,10 +32,10 @@ using namespace fincept::ui;
 namespace {
 
 // Addresses are shown verbatim, never translated.
-constexpr QLatin1String kSupportEmail("support@fincept.in");
-constexpr QLatin1String kDiscordUrl("https://discord.gg/ae87a8ygbN");
+constexpr QLatin1String kSupportEmail("");
+constexpr QLatin1String kDiscordUrl("");
 // The in-app Docs panel needs a signed-in terminal; before sign-in, the same guides online.
-constexpr QLatin1String kOnlineDocsUrl("https://github.com/Fincept-Corporation/FinceptTerminal/tree/main/docs");
+constexpr QLatin1String kOnlineDocsUrl("https://github.com/selfboss2025-ai/FinTerm/tree/main/docs");
 
 using Action = std::function<void()>;
 
@@ -355,7 +355,7 @@ QWidget* HelpScreen::build_page() {
         auto* foot = new QHBoxLayout;
         foot->setSpacing(16);
         foot->addWidget(
-            make_label("helpFoot", tr("Fincept Terminal %1").arg(QCoreApplication::applicationVersion()), false));
+            make_label("helpFoot", tr("FinTerminal %1").arg(QCoreApplication::applicationVersion()), false));
         if (!before_sign_in)
             foot->addWidget(make_button("helpLink", tr("About and diagnostics"), open_panel("about")));
         const Action contact = before_sign_in ? open_info_sibling<ContactScreen>(this) : open_panel("contact");

@@ -28,7 +28,7 @@ info() { echo -e "  ${YELLOW}$1${NC}"; }
 
 echo ""
 echo "================================================"
-echo "  Fincept Terminal v4.0.1 — Setup"
+echo "  FinTerminal — Setup"
 echo "  Pinned: Qt ${QT_VERSION} | CMake ${CMAKE_MIN}+ | Python ${PYTHON_MIN}+"
 [ "$CI_MODE" = true ] && echo "  (CI mode — skipping interactive steps)"
 echo "================================================"
@@ -260,8 +260,8 @@ cmake --build --preset "$PRESET" || fail "Build failed. See error above."
 ok
 
 # ── Done ────────────────────────────────────────────────────
-BIN="$APP_DIR/build/$PRESET/FinceptTerminal"
-[ "$PLATFORM" = "macos" ] && BIN="$APP_DIR/build/$PRESET/FinceptTerminal.app/Contents/MacOS/FinceptTerminal"
+BIN="$APP_DIR/build/$PRESET/FinTerminal"
+[ "$PLATFORM" = "macos" ] && BIN="$APP_DIR/build/$PRESET/FinTerminal.app/Contents/MacOS/FinTerminal"
 
 echo ""
 echo "================================================"

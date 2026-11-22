@@ -472,11 +472,11 @@ void UpdateDialog::watch_service() {
 void UpdateDialog::show_previous_update_result(const QString& to_version, bool succeeded) {
     const QString version = to_version.isEmpty() ? udlg_app_version() : to_version;
     if (succeeded) {
-        LOG_INFO(kUdlgTag, QString("The previous run updated Fincept Terminal to %1").arg(version));
+        LOG_INFO(kUdlgTag, QString("The previous run updated FinTerminal to %1").arg(version));
         // The toast tray only exists where the system has a tray (DesktopNotifier).
         if (QSystemTrayIcon::isSystemTrayAvailable()) {
             ToastService::instance().post(ToastService::Severity::Success,
-                                          tr("Fincept Terminal was updated to version %1.").arg(version),
+                                          tr("FinTerminal was updated to version %1.").arg(version),
                                           QStringLiteral("updater"));
             return;
         }
@@ -627,22 +627,22 @@ void UpdateDialog::render() {
         primary_text = tr("Close");
     } else if (notice_ == Notice::PreviousFailed) {
         title = tr("The update did not complete");
-        body = tr("The update to Fincept Terminal %1 did not complete.").arg(notice_arg_);
+        body = tr("The update to FinTerminal %1 did not complete.").arg(notice_arg_);
         note = tr("The version you had before (%1) is still installed and works as before.").arg(installed);
         secondary = Action::Close;
         secondary_text = tr("Close");
         primary = Action::RetryPrevious;
         primary_text = tr("Try again");
     } else if (notice_ == Notice::Updated) {
-        title = tr("Fincept Terminal updated");
-        body = tr("Fincept Terminal was updated to version %1.").arg(notice_arg_);
+        title = tr("FinTerminal updated");
+        body = tr("FinTerminal was updated to version %1.").arg(notice_arg_);
         primary = Action::Close;
         primary_text = tr("Close");
     } else {
         switch (stage) {
             case UpdateStage::Idle:
                 title = tr("Software update");
-                body = tr("You're running Fincept Terminal %1.").arg(installed);
+                body = tr("You're running FinTerminal %1.").arg(installed);
                 secondary = Action::Close;
                 secondary_text = tr("Close");
                 primary = Action::CheckNow;
@@ -650,7 +650,7 @@ void UpdateDialog::render() {
                 break;
             case UpdateStage::Checking:
                 title = tr("Checking for updates…");
-                body = tr("You're running Fincept Terminal %1.").arg(installed);
+                body = tr("You're running FinTerminal %1.").arg(installed);
                 show_progress = true;
                 show_status = true;
                 secondary = Action::Close;
@@ -664,7 +664,7 @@ void UpdateDialog::render() {
                 break;
             case UpdateStage::Available: {
                 title = tr("Update available");
-                body = tr("Fincept Terminal %1 is available — you have %2.").arg(latest, installed);
+                body = tr("FinTerminal %1 is available — you have %2.").arg(latest, installed);
                 notes = udlg_short_notes(svc.info().notes);
                 show_link = !svc.info().release_url.isEmpty();
                 secondary = Action::Close;
@@ -687,7 +687,7 @@ void UpdateDialog::render() {
             }
             case UpdateStage::Downloading:
                 title = tr("Downloading update");
-                body = tr("Downloading Fincept Terminal %1. The terminal restarts by itself once the update is "
+                body = tr("Downloading FinTerminal %1. The terminal restarts by itself once the update is "
                           "installed.")
                            .arg(latest);
                 show_progress = true;
@@ -704,15 +704,15 @@ void UpdateDialog::render() {
                 break;
             case UpdateStage::Installing:
                 title = tr("Installing update");
-                body = tr("Installing Fincept Terminal %1. Please wait — the terminal restarts by itself when it "
+                body = tr("Installing FinTerminal %1. Please wait — the terminal restarts by itself when it "
                           "is done.")
                            .arg(latest);
                 show_progress = true;
                 show_status = true;
                 break;
             case UpdateStage::Restarting:
-                title = tr("Restarting Fincept Terminal…");
-                body = tr("The update is ready. Fincept Terminal closes and opens again as version %1.").arg(latest);
+                title = tr("Restarting FinTerminal…");
+                body = tr("The update is ready. FinTerminal closes and opens again as version %1.").arg(latest);
                 show_progress = true;
                 show_status = true;
                 break;
@@ -726,8 +726,8 @@ void UpdateDialog::render() {
                 body_tone = "error";
                 body_selectable = true;
                 note = during_update
-                           ? tr("Fincept Terminal %1 is still installed and works as before.").arg(installed)
-                           : tr("Fincept Terminal %1 keeps working as before.").arg(installed);
+                           ? tr("FinTerminal %1 is still installed and works as before.").arg(installed)
+                           : tr("FinTerminal %1 keeps working as before.").arg(installed);
                 tertiary = Action::OpenDownloadPage;
                 tertiary_text = tr("Open download page");
                 secondary = Action::Close;
@@ -739,7 +739,7 @@ void UpdateDialog::render() {
         }
     }
 
-    setWindowTitle(tr("Fincept Terminal Update"));
+    setWindowTitle(tr("FinTerminal Update"));
     title_->setText(title);
     body_->setText(body);
     body_->setVisible(!body.isEmpty());

@@ -499,7 +499,7 @@ QString blocked_reason() {
         case Access::PermissionMissing:
             return QStringLiteral("Coding agents run on your system, outside the Flatpak sandbox, and the permission for "
                                   "that (talking to %1) has been removed from this app — for example in Flatseal. "
-                                  "Allow it again with: %2 — then restart Fincept Terminal.")
+                                  "Allow it again with: %2 — then restart FinTerminal.")
                 .arg(QString::fromLatin1(kFlatpakBusName), reenable_command());
         case Access::ToolMissing:
             return QStringLiteral("Coding agents run on your system, outside the Flatpak sandbox, but this Flatpak runtime "
@@ -728,7 +728,7 @@ bool wrap(QProcess* proc, const QStringList& mirror_env) {
     if (h->env_file.isEmpty()) {
         // No private place for the environment: refuse, rather than put the
         // run's token on a command line.
-        a << QStringLiteral("echo 'Fincept Terminal could not prepare the environment for this program in its "
+        a << QStringLiteral("echo 'FinTerminal could not prepare the environment for this program in its "
                             "runtime folder (XDG_RUNTIME_DIR/app).' >&2; exit 125");
     } else {
         a << QString::fromLatin1(kWrapperScript) << QStringLiteral("fincept-host") << h->env_file << h->pid_file

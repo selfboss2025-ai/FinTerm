@@ -61,7 +61,7 @@ class ToolBar : public QWidget {
     /// Plan badge ("FREE" / "PRO" / legacy tier) → Plans & Pricing. Carries a
     /// "tier" property (free / paid) that the stylesheet outlines for free accounts.
     QPushButton* plan_btn_ = nullptr;
-    /// Always-visible ENTERPRISE CTA for Fincept Terminal Enterprise (the private edition).
+    /// Always-visible ENTERPRISE CTA for FinTerminal Enterprise (the private edition).
     QPushButton* upgrade_btn_ = nullptr;
     QPushButton* chat_mode_btn_ = nullptr;
     /// Next to CHAT: agent runs in progress (INFO) and runs waiting for the user's

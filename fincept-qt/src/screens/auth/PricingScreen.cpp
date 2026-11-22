@@ -361,7 +361,7 @@ void PricingScreen::retranslateUi() {
     subtitle_label_->setText(tr("Credits power cloud analytics, AI and data in this terminal. Start free — "
                                 "move to Pro when you need more."));
     footnote_label_->setText(tr("Checkout runs securely on fincept.in and your plan updates here automatically. "
-                                "Fincept Terminal Enterprise is a separate product with its own accounts and "
+                                "FinTerminal Enterprise is a separate product with its own accounts and "
                                 "billing."));
     back_btn_->setText(tr("← BACK TO TERMINAL"));
     retry_btn_->setText(tr("RETRY"));
@@ -775,7 +775,7 @@ QWidget* PricingScreen::build_enterprise_card() {
     vl->addWidget(name);
     vl->addSpacing(6);
 
-    auto* desc = new QLabel(tr("Fincept Terminal Enterprise — the private edition for funds, family offices and "
+    auto* desc = new QLabel(tr("FinTerminal Enterprise — the private edition for funds, family offices and "
                                "research desks."),
                             card);
     desc->setObjectName("planDesc");

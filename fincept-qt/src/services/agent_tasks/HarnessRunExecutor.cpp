@@ -40,7 +40,7 @@ QString hre_tr(const char* text) {
 /// What the harness is told about a Chat Mode task.
 QString hre_system_prompt() {
     return QStringLiteral(
-        "You are running a long task inside Fincept Terminal, a professional financial terminal, for its user. "
+        "You are running a long task inside FinTerminal, a professional financial terminal, for its user. "
         "Work through the terminal's MCP tools: ui_overview first (what is open), ui_open to open a screen "
         "(optionally on a symbol), ui_snapshot / ui_read to read panels and tables, ui_act to work controls, "
         "ui_wait until something loads, python to find and run the bundled analytics scripts.\n"

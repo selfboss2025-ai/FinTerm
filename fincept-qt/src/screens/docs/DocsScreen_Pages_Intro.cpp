@@ -53,12 +53,12 @@ QWidget* DocsScreen::page_welcome() {
 
     vl->addWidget(
         make_section_panel("■", tr("WHAT IS FINCEPT TERMINAL?"),
-                           tr("Fincept Terminal is a professional-grade desktop financial intelligence platform "
+                           tr("FinTerminal is a professional-grade desktop financial intelligence platform "
                               "built in native C++ with Qt6. It provides institutional-quality market data, "
                               "trading capabilities, quantitative research tools, and AI-powered analytics — "
                               "all in a single unified terminal interface.\n\n"
                               "With 50+ integrated screens, real-time WebSocket feeds, embedded Python analytics, "
-                              "and 20+ broker integrations, Fincept Terminal bridges the gap between "
+                              "and 20+ broker integrations, FinTerminal bridges the gap between "
                               "retail and institutional tooling."),
                            ui::colors::AMBER));
 
@@ -117,7 +117,7 @@ QWidget* DocsScreen::page_getting_started() {
     vl->setSpacing(12);
 
     vl->addWidget(make_heading(tr("GETTING STARTED")));
-    vl->addWidget(make_muted_label(tr("Your first steps with Fincept Terminal")));
+    vl->addWidget(make_muted_label(tr("Your first steps with FinTerminal")));
 
     auto* sep = new QFrame;
     sep->setFrameShape(QFrame::HLine);
@@ -125,7 +125,7 @@ QWidget* DocsScreen::page_getting_started() {
     vl->addWidget(sep);
 
     vl->addWidget(make_section_panel("1", tr("LAUNCH & LOGIN"),
-                                     tr("When you first launch Fincept Terminal, you'll see the login screen. "
+                                     tr("When you first launch FinTerminal, you'll see the login screen. "
                                         "You can:\n\n"
                                         "■  Register a new account with your email (confirm it with the verification "
                                         "code we email you)\n"
@@ -169,7 +169,7 @@ QWidget* DocsScreen::page_getting_started() {
                                         "Open Plans & Pricing from the plan badge in the toolbar, Profile → Billing "
                                         "or the command palette (Ctrl+Shift+P → \"plans\"). Your balance and "
                                         "payment history are under Profile → Billing.\n\n"
-                                        "Firms and teams: Fincept Terminal Enterprise is the private edition — a "
+                                        "Firms and teams: FinTerminal Enterprise is the private edition — a "
                                         "separate product with its own accounts (fincept.in/enterprise)."),
                                      ui::colors::AMBER));
 

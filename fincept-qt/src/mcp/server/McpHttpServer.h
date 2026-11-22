@@ -1,5 +1,5 @@
 #pragma once
-// McpHttpServer.h — Fincept Terminal as an MCP server for EXTERNAL agents.
+// McpHttpServer.h — FinTerminal as an MCP server for EXTERNAL agents.
 //
 // Exposes the terminal's ten core tools (src/mcp/core/CoreTools.h) over the
 // Model Context Protocol (Streamable HTTP transport, JSON-RPC 2.0) so agents on

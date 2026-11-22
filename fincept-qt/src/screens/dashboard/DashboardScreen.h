@@ -87,7 +87,7 @@ class DashboardScreen : public QWidget, public ISectionLinked {
     void hub_resubscribe_ticker(bool force_fetch);
     void hub_unsubscribe_ticker();
     void rebuild_ticker_from_cache();
-    /// Slim, dismissible Fincept Terminal Enterprise strip under the ticker.
+    /// Slim, dismissible FinTerminal Enterprise strip under the ticker.
     /// One line high; dismissal lasts until the next release.
     QWidget* build_enterprise_strip();
 

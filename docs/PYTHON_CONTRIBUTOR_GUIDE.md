@@ -148,4 +148,4 @@ JSON and that every failure path prints `{"error": ...}`.
 
 ---
 
-**Questions?** Open an issue on [GitHub](https://github.com/Fincept-Corporation/FinceptTerminal).
+**Questions?** Open an issue on [GitHub](https://github.com/selfboss2025-ai/FinTerm).

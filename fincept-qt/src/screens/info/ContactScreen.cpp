@@ -186,22 +186,12 @@ QWidget* ContactScreen::build_page() {
         // none of which are documented anywhere in this project. Publishing
         // unreachable contact details on a contact page is worse than
         // publishing none.
-        grid->addWidget(
-            make_contact_card(tr("EMAIL SUPPORT"), "support@fincept.in", tr("Primary support channel")), 0, 0);
-        grid->addWidget(make_contact_card(tr("COMMUNITY"), "discord.gg/ae87a8ygbN", tr("Discussion and peer help")), 0,
-                        1);
-        grid->addWidget(make_contact_card(tr("ISSUE TRACKER"), "github.com/Fincept-Corporation/FinceptTerminal",
+        grid->addWidget(make_contact_card(tr("ISSUE TRACKER"), "github.com/selfboss2025-ai/FinTerm",
                                           tr("Bug reports and feature requests")),
-                        1, 0);
-        grid->addWidget(make_contact_card(tr("IN-APP TICKETS"), tr("Support tab"),
-                                          tr("Open a tracked ticket from inside the terminal")),
-                        1, 1);
-        grid->addWidget(make_contact_card(tr("ENTERPRISE — CUSTOM REQUIREMENTS"), tr("Discuss custom requirements ↗"),
-                                          tr("Fincept Terminal Enterprise — the private edition for funds, family "
-                                             "offices and research desks. Separate product, separate account. "
-                                             "For partnerships write to support@fincept.in."),
-                                          enterprise::meeting_url()),
-                        2, 0, 1, 2);
+                        0, 0);
+        grid->addWidget(make_contact_card(tr("DOCUMENTATION"), "github.com/selfboss2025-ai/FinTerm/tree/main/docs",
+                                          tr("Guides and technical documentation")),
+                        0, 1);
 
         pvl->addWidget(body);
         vl->addWidget(panel);
@@ -236,27 +226,13 @@ QWidget* ContactScreen::build_page() {
             return btn;
         };
 
-        auto* email_btn = make_action(tr("Send Email"));
-        email_btn->setAccessibleName(tr("Send an email to support"));
-        connect(email_btn, &QPushButton::clicked, this,
-                []() { QDesktopServices::openUrl(QUrl("mailto:support@fincept.in")); });
-        hl->addWidget(email_btn);
-
-        auto* discord_btn = make_action(tr("Join Discord"));
-        discord_btn->setAccessibleName(tr("Open the Fincept Discord server"));
-        connect(discord_btn, &QPushButton::clicked, this,
-                []() { QDesktopServices::openUrl(QUrl("https://discord.gg/ae87a8ygbN")); });
-        hl->addWidget(discord_btn);
-
         auto* github_btn = make_action(tr("GitHub Issues"));
         github_btn->setAccessibleName(tr("Open the GitHub issue tracker"));
         connect(github_btn, &QPushButton::clicked, this, []() {
-            QDesktopServices::openUrl(QUrl("https://github.com/Fincept-Corporation/FinceptTerminal/issues"));
+            QDesktopServices::openUrl(QUrl("https://github.com/selfboss2025-ai/FinTerm/issues"));
         });
         hl->addWidget(github_btn);
 
-        // Signed in (docked copy): the "IN-APP TICKETS" channel above is one click
-        // away, so offer it instead of leaving it as a description.
         if (!in_auth_stack) {
             auto* tickets_btn = make_action(tr("Open Support Tab"));
             tickets_btn->setAccessibleName(tr("Open the in-app support tickets tab"));
@@ -268,8 +244,6 @@ QWidget* ContactScreen::build_page() {
         }
 
         hl->addStretch();
-        setTabOrder(email_btn, discord_btn);
-        setTabOrder(discord_btn, github_btn);
         pvl->addWidget(body);
         vl->addWidget(panel);
     }
@@ -295,8 +269,6 @@ QWidget* ContactScreen::build_page() {
             QString a;
         };
         const Issue issues[] = {
-            {tr("Cannot log in or forgot password"),
-             tr("Use the Forgot Password option on the login screen, or contact support@fincept.in")},
             {tr("Python setup fails or times out"),
              tr("Ensure you have a stable internet connection. Retry setup or check firewall settings.")},
             {tr("Data not loading or showing stale"),

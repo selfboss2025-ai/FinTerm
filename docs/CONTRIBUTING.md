@@ -1,6 +1,6 @@
-# Contributing to Fincept Terminal
+# Contributing to FinTerminal
 
-Fincept Terminal is an open-source native C++20/Qt6 financial intelligence platform with 50+ screens, embedded Python analytics, and 100+ data connectors. This guide is the canonical **how-to** for contributors — build, architecture, conventions.
+FinTerminal is an open-source native C++20/Qt6 financial intelligence platform with 50+ screens, embedded Python analytics, and 100+ data connectors. This guide is the canonical **how-to** for contributors — build, architecture, conventions.
 
 > **Before you open a PR**, also read the contribution **policy**: [`.github/CONTRIBUTING.md`](../.github/CONTRIBUTING.md). Policy defines which PRs are accepted (linked approved issue, minimum scope, no auto-formatter churn, etc.); this file covers how to build and where code lives.
 
@@ -71,7 +71,7 @@ Optional (speeds up rebuilds): **ccache 4.13.4** on Windows is auto-detected.
 ### Fastest — automated setup script
 
 ```bash
-git clone https://github.com/Fincept-Corporation/FinceptTerminal.git
+git clone https://github.com/selfboss2025-ai/FinTerm.git
 cd FinceptTerminal
 ./setup.sh      # Linux / macOS — installs toolchain + Qt via aqtinstall, then builds
 ```
@@ -261,8 +261,8 @@ Review process, scope gate, and close-on-sight list are in [`.github/CONTRIBUTIN
 
 | Channel      | Link                                                                          |
 |--------------|-------------------------------------------------------------------------------|
-| Issues       | [GitHub Issues](https://github.com/Fincept-Corporation/FinceptTerminal/issues) |
-| Discussions  | [GitHub Discussions](https://github.com/Fincept-Corporation/FinceptTerminal/discussions) |
+| Issues       | [GitHub Issues](https://github.com/selfboss2025-ai/FinTerm/issues) |
+| Discussions  | [GitHub Discussions](https://github.com/selfboss2025-ai/FinTerm/discussions) |
 | Discord      | [discord.gg/ae87a8ygbN](https://discord.gg/ae87a8ygbN)                         |
 | Email        | support@fincept.in                                                             |
 
@@ -270,5 +270,5 @@ Good first issues carry the `good-first-issue` label — those are the right sta
 
 ---
 
-**Repository:** https://github.com/Fincept-Corporation/FinceptTerminal
+**Repository:** https://github.com/selfboss2025-ai/FinTerm
 **License:** AGPL-3.0-or-later — full text in [LICENSE](../LICENSE). By contributing you agree to the [contributor terms](../.github/CONTRIBUTING.md#contributor-terms).

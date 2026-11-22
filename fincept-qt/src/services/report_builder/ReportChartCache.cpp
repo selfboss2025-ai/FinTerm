@@ -187,7 +187,7 @@ QByteArray ReportChartCache::sparkline_png(const QVector<double>& values, const 
 void ReportChartCache::trim(qint64 max_bytes) {
     // Earlier builds wrote charts into the OS temp folder as fincept_chart_*.png /
     // fincept_spark_*.png. Those are NOT swept here any more: the separate private
-    // build of Fincept Terminal writes the same names there, so a file of that
+    // build of FinTerminal writes the same names there, so a file of that
     // pattern cannot be told to be ours, and one in use by the other build would
     // vanish from its open report. The OS temp cleanup removes old ones.
     struct Entry {

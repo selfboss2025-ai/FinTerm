@@ -598,7 +598,7 @@ int main(int argc, char* argv[]) {
 #endif
     // Edition identity (EditionIdentity.h): keys the QSettings store, the
     // QStandardPaths App*/Cache folders and WM_CLASS. Not Fincept/FinceptTerminal,
-    // which the private build owns. The visible product name stays "Fincept Terminal".
+    // which the private build owns. The visible product name stays "FinTerminal".
     app.setApplicationName(QString::fromLatin1(fincept::edition::kSettingsApplication));
     app.setOrganizationName(QString::fromLatin1(fincept::edition::kSettingsOrganization));
 
@@ -733,7 +733,7 @@ int main(int argc, char* argv[]) {
         // destroyed during ~QApplication after the app style was gone, so any screen with
         // a QGraphicsScene (Equity Research Financials charts, the Node Editor canvas)
         // crashed in QGraphicsWidget / QStyleSheetStyle teardown and macOS reported
-        // "Fincept Terminal quit unexpectedly" on every Cmd+Q. frames() returns a copy, and
+        // "FinTerminal quit unexpectedly" on every Cmd+Q. frames() returns a copy, and
         // each frame unregisters itself in its destructor.
         for (fincept::WindowFrame* frame : fincept::WindowRegistry::instance().frames())
             delete frame;
@@ -1277,7 +1277,7 @@ int main(int argc, char* argv[]) {
                         QStringLiteral("profile=") + fincept::ProfileManager::instance().active(),
                         QStringLiteral("log_level=") + QLatin1String(kLevelNames[level])}
                 .join(QLatin1Char(' '));
-        LOG_INFO("App", "Fincept Terminal starting " + start_fields);
+        LOG_INFO("App", "FinTerminal starting " + start_fields);
     }
     // The active backend is a field of the start line; the list of the others is detail.
     LOG_DEBUG("App", QString("TLS backend: %1 (available: %2)")
@@ -1400,7 +1400,7 @@ int main(int argc, char* argv[]) {
 
         const auto fail_headless = [&db_exit_code](int code, const QString& what) {
             LOG_ERROR("App", what);
-            std::fprintf(stderr, "Fincept Terminal: %s\n", qPrintable(what));
+            std::fprintf(stderr, "FinTerminal: %s\n", qPrintable(what));
             std::fflush(stderr);
             db_exit_code = code;
             return false;
@@ -1410,7 +1410,7 @@ int main(int argc, char* argv[]) {
         // one (Quit).
         const auto ask = [](QMessageBox::Icon icon, const QString& text, const QString& info,
                             const QStringList& buttons) -> int {
-            QMessageBox box(icon, QObject::tr("Fincept Terminal"), text);
+            QMessageBox box(icon, QObject::tr("FinTerminal"), text);
             box.setInformativeText(info);
             QList<QAbstractButton*> added;
             for (int i = 0; i < buttons.size(); ++i) {
@@ -1443,9 +1443,9 @@ int main(int argc, char* argv[]) {
             const bool newer = fincept::MigrationRunner::is_schema_newer_error(err);
             if (newer || fincept::MigrationRunner::is_schema_incompatible_error(err)) {
                 const QString text = newer ? QObject::tr("This profile's database was created by a newer or "
-                                                         "different version of Fincept Terminal.")
+                                                         "different version of FinTerminal.")
                                            : QObject::tr("This profile's database was created by a different "
-                                                         "version of Fincept Terminal and is missing data tables "
+                                                         "version of FinTerminal and is missing data tables "
                                                          "this version needs.");
                 QString info = QObject::tr("Database: %1\nIts schema version: v%2. This version supports up to v%3."
                                            "\n\nThe file has not been modified.")
@@ -1467,7 +1467,7 @@ int main(int argc, char* argv[]) {
                     }
                 } else {
                     info += QObject::tr("\n\nThis is already this version's own database, so there is no other "
-                                        "database to switch to. Open it with the version of Fincept Terminal that "
+                                        "database to switch to. Open it with the version of FinTerminal that "
                                         "created it.");
                     ask(QMessageBox::Critical, text, info, {QObject::tr("Quit")});
                 }
@@ -1478,9 +1478,9 @@ int main(int argc, char* argv[]) {
             // ── SQLite library too old ──
             if (err.rfind(fincept::Database::kErrSqliteTooOld, 0) == 0) {
                 const QString found = database.sqlite_version();
-                const QString text = QObject::tr("Fincept Terminal cannot start: its database library is too old.");
+                const QString text = QObject::tr("FinTerminal cannot start: its database library is too old.");
                 const QString info = QObject::tr("This copy uses SQLite %1, but version %2.%3 or newer is required. "
-                                                 "Install an official Fincept Terminal package, or update the "
+                                                 "Install an official FinTerminal package, or update the "
                                                  "system's Qt and SQLite packages.\n\nNothing was changed.")
                                          .arg(found.isEmpty() ? QObject::tr("(unknown)") : found)
                                          .arg(fincept::Database::kMinSqliteMajor)
@@ -1513,7 +1513,7 @@ int main(int argc, char* argv[]) {
                     db_exit_code = kExitMigrationFailed;
                     return false;
                 }
-                const QString text = QObject::tr("Fincept Terminal could not update its database to this version.");
+                const QString text = QObject::tr("FinTerminal could not update its database to this version.");
                 QString info = QObject::tr("Database: %1\n\n").arg(shown_path);
                 const QString backup = database.migration_backup_path();
                 if (!backup.isEmpty()) {
@@ -1611,14 +1611,14 @@ int main(int argc, char* argv[]) {
             switch (kind) {
                 case K::Busy:
                 case K::Locked:
-                    text = QObject::tr("Another Fincept Terminal is using this profile.");
-                    info = QObject::tr("Close the other Fincept Terminal window, or any program that has this "
+                    text = QObject::tr("Another FinTerminal is using this profile.");
+                    info = QObject::tr("Close the other FinTerminal window, or any program that has this "
                                        "database open, then choose Retry.\n\nDatabase: %1")
                                .arg(shown_path);
                     break;
                 case K::CantOpen:
                 case K::ReadOnly:
-                    text = QObject::tr("Fincept Terminal cannot open its database.");
+                    text = QObject::tr("FinTerminal cannot open its database.");
                     info = fincept::db::user_message(kind, QObject::tr("The terminal database")) +
                            QObject::tr("\n\nDatabase: %1\n\nFix the folder or its permissions, then choose Retry.")
                                .arg(shown_path);
@@ -1628,7 +1628,7 @@ int main(int argc, char* argv[]) {
                     info = QObject::tr("Free some space on the drive that holds:\n%1\nthen choose Retry.").arg(shown_path);
                     break;
                 default:
-                    text = QObject::tr("Fincept Terminal cannot open its database.");
+                    text = QObject::tr("FinTerminal cannot open its database.");
                     info = fincept::db::user_message(kind, QObject::tr("The terminal database")) +
                            QObject::tr("\n\nDatabase: %1\n\nTechnical details are in the log file:\n%2")
                                .arg(shown_path, log_file);

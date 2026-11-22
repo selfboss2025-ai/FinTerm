@@ -394,7 +394,7 @@ int run_mcp_server_selftest() {
         const QJsonObject ov =
             call_tool(port, token, QStringLiteral("ui_overview"), {}, 5).value(QStringLiteral("result")).toObject();
         rep.check(!ov.value(QStringLiteral("isError")).toBool(true) &&
-                      first_text(ov).contains(QStringLiteral("Fincept Terminal")),
+                      first_text(ov).contains(QStringLiteral("FinTerminal")),
                   QStringLiteral("ui_overview answers with no window open"), clip(first_text(ov)));
         QElapsedTimer t;
         t.start();

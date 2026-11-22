@@ -372,7 +372,7 @@ void ReportBuilderScreen::show_schedule_dialog() {
     }
 
     auto* intro = new QLabel(tr("Refresh this report's data and export it to a folder on a schedule. Runs only while "
-                                "Fincept Terminal is open; a time missed while it was closed runs once when it next "
+                                "FinTerminal is open; a time missed while it was closed runs once when it next "
                                 "opens. Runs never overlap. AI drafting is never run automatically."),
                              dlg);
     intro->setWordWrap(true);

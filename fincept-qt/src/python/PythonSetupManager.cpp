@@ -184,7 +184,7 @@ QString psm_unsupported_platform_reason() {
     const QStringList musl = loader_dir.entryList({QStringLiteral("ld-musl-*.so.1")}, QDir::Files | QDir::System);
     if (!musl.isEmpty()) {
         LOG_ERROR(kPsmTag, "musl libc detected (" + musl.join(", ") + ") — setup cannot proceed");
-        return PythonSetupManager::tr("musl libc detected — Fincept Terminal needs a glibc-based Linux. The Python "
+        return PythonSetupManager::tr("musl libc detected — FinTerminal needs a glibc-based Linux. The Python "
                                       "3.11 runtime is published for glibc only, and several analytics libraries "
                                       "(PyTorch among them) ship no musl wheels.");
     }
@@ -371,14 +371,14 @@ QString psm_hint(const QString& text, bool failed_to_start) {
                                       "computer is online, then retry.");
     if (has("407") || has("proxy authentication") || (has("proxy") && (has("tunnel") || has("connect"))))
         return PythonSetupManager::tr("Hint: a proxy refused the connection. Set HTTPS_PROXY and HTTP_PROXY for "
-                                      "Fincept Terminal (with credentials in the URL if required), then retry.");
+                                      "FinTerminal (with credentials in the URL if required), then retry.");
     if (has("no space left on device") || has("not enough space on the disk") || has("(os error 28)") ||
         has("(os error 112)") || has("disk full"))
         return PythonSetupManager::tr("Hint: the disk is full. Setup needs about 6 GB free on the drive that "
                                       "holds %1.")
             .arg(psm_root_native());
     if (has("(os error 32)") || has("being used by another process"))
-        return PythonSetupManager::tr("Hint: a file is in use. Close other Fincept Terminal windows and Python "
+        return PythonSetupManager::tr("Hint: a file is in use. Close other FinTerminal windows and Python "
                                       "processes, then retry (antivirus scans can also hold files briefly).");
     if (has("(os error 225)") || has("contains a virus"))
         return PythonSetupManager::tr("Hint: antivirus blocked a downloaded package. Allow %1 in your antivirus, "
@@ -1968,7 +1968,7 @@ void PythonSetupManager::runtime_extract_uv(const QString& archive_path, bool us
     for (const QString& b : binaries)
         QFile::remove(dir + "/" + b);
     if (QFileInfo::exists(uv_path())) {
-        runtime_failed(tr("The old uv binary at %1 is locked — another Fincept Terminal or uv process is still "
+        runtime_failed(tr("The old uv binary at %1 is locked — another FinTerminal or uv process is still "
                           "running, or antivirus is holding it. Close it (or restart the computer), then retry.")
                            .arg(QDir::toNativeSeparators(uv_path())));
         return;
@@ -2139,7 +2139,7 @@ void PythonSetupManager::lane_start(int lane) {
     // Essentials installs the core file (the full file only adds constraints).
     const QString needed = run_->scope == SetupScope::Essentials && lane == 1 ? L.core_file : L.req_file;
     if (find_requirements_file(needed).isEmpty()) {
-        lane_failed(lane, tr("Setup file missing: %1 — reinstall Fincept Terminal.").arg(needed));
+        lane_failed(lane, tr("Setup file missing: %1 — reinstall FinTerminal.").arg(needed));
         return;
     }
     if (venv_valid(L.venv)) {

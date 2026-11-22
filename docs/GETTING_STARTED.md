@@ -1,13 +1,13 @@
-# Getting Started with Fincept Terminal Development
+# Getting Started with FinTerminal Development
 ## Your Complete Onboarding Guide
 
-Welcome to Fincept Terminal! This guide will get you from zero to your first contribution.
+Welcome to FinTerminal! This guide will get you from zero to your first contribution.
 
 ---
 
-## What is Fincept Terminal?
+## What is FinTerminal?
 
-Fincept Terminal is a native C++20 desktop terminal for financial research — Qt6 UI, embedded Python 3.11 analytics, one binary.
+FinTerminal is a native C++20 desktop terminal for financial research — Qt6 UI, embedded Python 3.11 analytics, one binary.
 
 It ships in **two editions on one data core**:
 
@@ -103,7 +103,7 @@ sudo apt install -y \
 ### Step 5 — Clone and Configure
 
 ```bash
-git clone https://github.com/Fincept-Corporation/FinceptTerminal.git
+git clone https://github.com/selfboss2025-ai/FinTerm.git
 cd FinceptTerminal/fincept-qt
 ```
 
@@ -360,14 +360,14 @@ Almost always **RAM exhaustion**, not a broken toolchain:
 
 | Channel | Link |
 |---------|------|
-| GitHub Issues | https://github.com/Fincept-Corporation/FinceptTerminal/issues |
-| GitHub Discussions | https://github.com/Fincept-Corporation/FinceptTerminal/discussions |
+| GitHub Issues | https://github.com/selfboss2025-ai/FinTerm/issues |
+| GitHub Discussions | https://github.com/selfboss2025-ai/FinTerm/discussions |
 | Discord | https://discord.gg/ae87a8ygbN |
 | Email | support@fincept.in |
 
 ---
 
 **Ready to contribute?**
-- Pick an issue: https://github.com/Fincept-Corporation/FinceptTerminal/issues
+- Pick an issue: https://github.com/selfboss2025-ai/FinTerm/issues
 - Read the C++ guide: [CPP_CONTRIBUTOR_GUIDE.md](./CPP_CONTRIBUTOR_GUIDE.md)
 - Read the Python guide: [PYTHON_CONTRIBUTOR_GUIDE.md](./PYTHON_CONTRIBUTOR_GUIDE.md)

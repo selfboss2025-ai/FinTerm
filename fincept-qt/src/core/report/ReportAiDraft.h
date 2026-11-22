@@ -651,7 +651,7 @@ inline QString report_excerpt(const ReportDocument& doc, int max_chars = 6000, i
 
 inline QString system_instruction() {
     return QStringLiteral(
-        "You write and edit sections of a financial research report in Fincept Terminal's Report Builder.\n"
+        "You write and edit sections of a financial research report in FinTerminal's Report Builder.\n"
         "Follow every rule:\n"
         "1. Use ONLY numbers that appear in FACTS or in TEXT. Never invent, estimate or calculate new figures, dates, "
         "percentages, prices, growth rates or rankings.\n"

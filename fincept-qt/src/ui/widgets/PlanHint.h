@@ -12,7 +12,7 @@
 //
 // Both read services/billing/PlanAccess, i.e. the server's own plan table, and
 // stay hidden until the server has sent one — the terminal never states a
-// benefit the server does not grant. Fincept Terminal Enterprise (the private
+// benefit the server does not grant. FinTerminal Enterprise (the private
 // edition) is a separate product with its own surfaces in EnterprisePromo.
 
 #include <QLabel>

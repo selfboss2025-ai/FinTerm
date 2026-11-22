@@ -389,7 +389,7 @@ QByteArray WalletTxBridge::render_swap_page() const {
         return QByteArrayLiteral("<!doctype html><meta charset='utf-8'><title>Sign</title>"
                                  "<body style='background:#0a0a0a;color:#d97706;font-family:monospace;"
                                  "padding:20px'>The wallet signing page (resources/wallet/swap.html) was not "
-                                 "found next to the application. Reinstall Fincept Terminal, then retry the "
+                                 "found next to the application. Reinstall FinTerminal, then retry the "
                                  "transaction. Nothing was signed or sent.</body>");
     }
     return html;

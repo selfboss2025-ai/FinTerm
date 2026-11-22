@@ -249,7 +249,7 @@ HostSearchResult search_on_host(const IHarnessAdapter& adapter, const QString& o
     }
     const host::HostProfile profile = host::host_profile_blocking();
     if (!profile.ok) {
-        res.error = QStringLiteral("Fincept Terminal could not ask your system where %1 is installed: %2")
+        res.error = QStringLiteral("FinTerminal could not ask your system where %1 is installed: %2")
                         .arg(adapter.descriptor().display_name, profile.error);
         return res;
     }
@@ -266,7 +266,7 @@ HostSearchResult search_on_host(const IHarnessAdapter& adapter, const QString& o
         &error);
     if (!ok) {
         res.candidates.clear();
-        res.error = QStringLiteral("Fincept Terminal could not search your system for %1: %2")
+        res.error = QStringLiteral("FinTerminal could not search your system for %1: %2")
                         .arg(adapter.descriptor().display_name, error);
         return res;
     }

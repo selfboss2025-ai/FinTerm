@@ -45,7 +45,7 @@ void install_mark_unknown(InstallContext& ctx) {
     ctx.target_path.clear();
     ctx.can_self_update = false;
     ctx.blocked_reason = QCoreApplication::translate("InstallContext",
-                                                     "This copy of Fincept Terminal was not installed from a release "
+                                                     "This copy of FinTerminal was not installed from a release "
                                                      "package, so it cannot update itself.");
 }
 
@@ -60,7 +60,7 @@ void install_set_kind(InstallContext& ctx, InstallKind kind, const QString& asse
 #if defined(Q_OS_LINUX)
 /// Where the Linux packages are published (the same page as
 /// UpdateService::releases_page_url()).
-constexpr const char* kInstallReleasesPageUrl = "https://github.com/Fincept-Corporation/FinceptTerminal/releases/latest";
+constexpr const char* kInstallReleasesPageUrl = "https://github.com/selfboss2025-ai/FinTerm/releases/latest";
 
 /// A kind that is no longer published (the AppImage and the .rpm, up to 4.5.3):
 /// recognised so the user is told plainly where to go, never offered an update.
@@ -103,7 +103,7 @@ InstallContext install_detect() {
     if (ctx.platform_key.isEmpty()) {
         ctx.blocked_reason = QCoreApplication::translate("InstallContext",
                                                          "Updates are not published for this kind of computer, "
-                                                         "so Fincept Terminal cannot update itself.");
+                                                         "so FinTerminal cannot update itself.");
         LOG_INFO("UpdateService", QStringLiteral("Install kind: unknown — unsupported platform (%1 / %2)")
                                       .arg(QSysInfo::kernelType(), QSysInfo::buildCpuArchitecture()));
         return ctx;
@@ -125,8 +125,8 @@ InstallContext install_detect() {
         if (bundle.contains(QLatin1String("/AppTranslocation/")) || bundle.startsWith(QLatin1String("/Volumes/"))) {
             ctx.can_self_update = false;
             ctx.blocked_reason = QCoreApplication::translate(
-                "InstallContext", "Fincept Terminal is running from a temporary or read-only location, so it "
-                                  "cannot update itself. Move Fincept Terminal to your Applications folder, then "
+                "InstallContext", "FinTerminal is running from a temporary or read-only location, so it "
+                                  "cannot update itself. Move FinTerminal to your Applications folder, then "
                                   "open it again.");
         }
     }
@@ -148,7 +148,7 @@ InstallContext install_detect() {
         install_set_discontinued(
             ctx, InstallKind::LinuxAppImage, appimage_info.absoluteFilePath(),
             QCoreApplication::translate("InstallContext",
-                                        "Fincept Terminal is no longer published as an AppImage, so this copy cannot "
+                                        "FinTerminal is no longer published as an AppImage, so this copy cannot "
                                         "update itself. Install the Flatpak (recommended) or, on Ubuntu and Debian, "
                                         "the .deb package from %1, then delete this AppImage.")
                 .arg(QString::fromLatin1(kInstallReleasesPageUrl)));
@@ -165,7 +165,7 @@ InstallContext install_detect() {
             install_set_discontinued(
                 ctx, InstallKind::LinuxRpm, prefix,
                 QCoreApplication::translate("InstallContext",
-                                            "Fincept Terminal is no longer published as an .rpm package, so this copy "
+                                            "FinTerminal is no longer published as an .rpm package, so this copy "
                                             "cannot update itself. Install the Flatpak from %1, then remove the %2 "
                                             "package with your package manager.")
                     .arg(QString::fromLatin1(kInstallReleasesPageUrl), QString::fromLatin1(edition::kLinuxPackageName)));

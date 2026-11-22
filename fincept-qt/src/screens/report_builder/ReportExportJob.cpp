@@ -327,7 +327,7 @@ bool ReportExportJob::write_one_page() {
         writer_ = std::make_unique<QPdfWriter>(path_ + QStringLiteral(".part"));
         writer_->setResolution(1200);
         writer_->setTitle(report::vars::display_title(doc_.metadata));
-        writer_->setCreator(QStringLiteral("Fincept Terminal"));
+        writer_->setCreator(QStringLiteral("FinTerminal"));
         writer_->setPageLayout(QPageLayout(QPageSize(rx_page_id(doc_.metadata.page_size)),
                                            doc_.metadata.landscape ? QPageLayout::Landscape : QPageLayout::Portrait,
                                            QMarginsF(0, 0, 0, 0)));

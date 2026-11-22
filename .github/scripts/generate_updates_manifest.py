@@ -14,8 +14,8 @@ Environment:
     VERSION  Version the installers were built as: the CMake project version,
              strictly "X.Y.Z", no "v" (the client rejects anything else).
     TAG      Release tag: "v<VERSION>", or "v<VERSION>-<suffix>" (prerelease).
-    REPO     "owner/name", e.g. "Fincept-Corporation/FinceptTerminal".
-    NOTES    Optional short plain text. Default: "Fincept Terminal v<VERSION>".
+    REPO     "owner/name", e.g. "selfboss2025-ai/FinTerm".
+    NOTES    Optional short plain text. Default: "FinTerminal v<VERSION>".
 
 Usage:
     generate_updates_manifest.py --output <path> [--allow-missing]
@@ -165,7 +165,7 @@ def build_manifest(
     if not assets:
         raise ManifestError(f"no update asset found under {work} for version {version}")
 
-    notes = (notes or "").strip() or f"Fincept Terminal v{version}"
+    notes = (notes or "").strip() or f"FinTerminal v{version}"
     return {
         "schema-version": SCHEMA_VERSION,
         "version": version,
@@ -282,7 +282,7 @@ def self_test() -> int:
                   "top-level key order")
             check(m["schema-version"] == 3 and m["version"] == v, "schema-version 3 + version")
             check(m["release-url"] == f"https://github.com/{repo}/releases/tag/{tag}", "release-url")
-            check(m["notes"] == "Fincept Terminal v4.5.3", "default notes")
+            check(m["notes"] == "FinTerminal v4.5.3", "default notes")
             check(list(m["assets"]) == expected_keys,
                   "asset keys/order (AppImage, rpm, zsync, wizard, other version, updates.json ignored)")
             for rel, data in files.items():

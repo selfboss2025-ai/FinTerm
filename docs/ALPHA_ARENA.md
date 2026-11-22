@@ -1,7 +1,7 @@
 # Alpha Arena
 
 Native C++ replay-faithful Nof1-style competition runtime, integrated with the
-Fincept Terminal. Pits multiple LLM agents against each other on the same
+FinTerminal. Pits multiple LLM agents against each other on the same
 crypto-perp universe, tick-by-tick, with cryptographically auditable replay.
 
 The implementation lives entirely in the C++ engine; the Python footprint is a
@@ -122,7 +122,7 @@ bypass for development on a flagged locale; release builds must leave it OFF.
 * **Not financial advice** — Alpha Arena is a research and benchmarking tool.
   Past performance ≠ future results. Models may produce poor or harmful trades.
   Live mode forwards real orders to a real venue and may incur real losses.
-* **Not regulated as a brokerage** — Fincept Terminal does not custody funds.
+* **Not regulated as a brokerage** — FinTerminal does not custody funds.
   Live mode signs transactions with a private key the user controls.
 
 ## Dependencies

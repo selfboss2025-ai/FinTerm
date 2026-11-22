@@ -324,7 +324,7 @@ void LaunchpadScreen::retranslateUi() {
     if (template_picker_label_)
         template_picker_label_->setText(tr("Pick a starting template:"));
     if (auto* ent_link = findChild<QPushButton*>(QStringLiteral("launchpadEnterpriseLink")))
-        ent_link->setText(tr("Fincept Terminal Enterprise — the private edition for firms ↗"));
+        ent_link->setText(tr("FinTerminal Enterprise — the private edition for firms ↗"));
 }
 
 void LaunchpadScreen::surface() {
@@ -470,7 +470,7 @@ void LaunchpadScreen::on_switch_profile() {
     // instant the picker was dismissed with OK.
     const auto reply = QMessageBox::question(
         this, tr("Switch Profile"),
-        tr("Switch to profile \"%1\"?\n\nFincept Terminal will restart.").arg(target),
+        tr("Switch to profile \"%1\"?\n\nFinTerminal will restart.").arg(target),
         QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
     if (reply != QMessageBox::Yes)
         return;
@@ -482,7 +482,7 @@ void LaunchpadScreen::on_switch_profile() {
         // Quitting anyway would leave the user with no app at all.
         LOG_WARN(kLaunchpadTag, QString("Switch Profile: could not start '%1'").arg(exe));
         QMessageBox::warning(this, tr("Switch Profile"),
-                             tr("Could not restart Fincept Terminal with profile \"%1\".").arg(target));
+                             tr("Could not restart FinTerminal with profile \"%1\".").arg(target));
         return;
     }
     QCoreApplication::quit();

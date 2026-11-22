@@ -54,7 +54,7 @@ void OnboardingTour::show_for(QWidget* parent) {
 }
 
 OnboardingTour::OnboardingTour(QWidget* parent) : QDialog(parent) {
-    setWindowTitle(tr("Welcome to Fincept Terminal"));
+    setWindowTitle(tr("Welcome to FinTerminal"));
     setModal(true);
     setSizeGripEnabled(false);
     resize(560, 360);
@@ -138,7 +138,7 @@ void OnboardingTour::changeEvent(QEvent* event) {
 }
 
 void OnboardingTour::retranslateUi() {
-    setWindowTitle(tr("Welcome to Fincept Terminal"));
+    setWindowTitle(tr("Welcome to FinTerminal"));
     if (heading_)
         heading_->setText(tr("A 30-second tour"));
 
@@ -181,7 +181,7 @@ void OnboardingTour::retranslateUi() {
         step_labels_[4].title->setText(tr("Two editions"));
         step_labels_[4].body->setText(tr("You're on the free, open-source edition (AGPL-3.0). Your Fincept "
                                          "account is Free, or Pro at $10/month for monthly credits and higher "
-                                         "limits. Fincept Terminal Enterprise is the private edition for funds "
+                                         "limits. FinTerminal Enterprise is the private edition for funds "
                                          "and research desks — a separate product with its own accounts."));
         step_labels_[4].tip->setText(
             tr("Tip: Ctrl+Shift+P → \"plans\" or \"enterprise\" — or use the Help menu."));

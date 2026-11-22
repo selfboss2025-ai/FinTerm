@@ -49,45 +49,15 @@ QString plan_tr(const char* text) {
 } // namespace
 
 QString badge_tooltip() {
-    const auto& access = fincept::billing::PlanAccess::instance();
-    if (!access.has_table())
-        return plan_tr("Plans & pricing — Pro is $10/month");
-    const QString included = access.included_labels().join(QStringLiteral(", "));
-    const auto& savings = access.savings();
-    QStringList lines;
-    if (access.is_paid()) {
-        lines << plan_tr("Pro plan — included at no credit cost: %1.").arg(included);
-        if (savings.credits_saved >= 0.01)
-            lines << plan_tr("Saved this month: %1 credits.").arg(plan_hint_credits(savings.credits_saved));
-        lines << plan_tr("Click to see your plan, renew or add credits.");
-    } else {
-        lines << plan_tr("Free plan — data calls are paid from your credits.");
-        lines << plan_tr("Pro ($10/month) includes at no credit cost: %1.").arg(included);
-        if (savings.would_save_with_pro >= 0.01)
-            lines << plan_tr("Last %1 days: Pro would have saved you %2 credits.")
-                         .arg(savings.window_days)
-                         .arg(plan_hint_credits(savings.would_save_with_pro));
-        if (access.rollover().credits > 0)
-            lines << plan_tr("%1 credits from your last pass come back when you renew.")
-                         .arg(plan_hint_credits(access.rollover().credits));
-        lines << plan_tr("Click for Plans & Pricing.");
-    }
-    return lines.join(QLatin1Char('\n'));
+    return {};
 }
 
 QString credits_tooltip() {
-    const auto& access = fincept::billing::PlanAccess::instance();
-    if (!access.has_table())
-        return plan_tr("Fincept credit balance");
-    if (access.is_paid())
-        return plan_tr("Fincept credit balance. On Pro your data calls use no credits — the balance is kept for "
-                       "AI agents, research models and news analysis.");
-    return plan_tr("Fincept credit balance. On Free every data call uses credits; on Pro ($10/month) data is "
-                   "included and credits are kept for AI.");
+    return {};
 }
 
-QString out_of_credits_note(const QString& category) {
-    return fincept::billing::PlanAccess::instance().upgrade_note(category);
+QString out_of_credits_note(const QString&) {
+    return {};
 }
 
 } // namespace plan
@@ -96,19 +66,8 @@ QString out_of_credits_note(const QString& category) {
 
 PlanHintLabel::PlanHintLabel(const QString& category, QWidget* parent) : QLabel(parent), category_(category) {
     setObjectName(QStringLiteral("planHint"));
-    setTextFormat(Qt::RichText);
-    setTextInteractionFlags(Qt::LinksAccessibleByMouse | Qt::LinksAccessibleByKeyboard);
-    setOpenExternalLinks(false);
-    setStyleSheet(QString("QLabel#planHint{color:%1;background:transparent;border:none;font-size:" + fonts::px(-3) +
-                          "px;}")
-                      .arg(colors::TEXT_TERTIARY()));
-    connect(this, &QLabel::linkActivated, this, [this](const QString&) { billing::open_plans(this); });
-    connect(&fincept::billing::PlanAccess::instance(), &fincept::billing::PlanAccess::changed, this,
-            &PlanHintLabel::render);
-    // The stylesheet follows the theme through the central re-style pass; the
-    // rich text's inline colours do not (text only — no restyle in this handler).
-    connect(&ThemeManager::instance(), &ThemeManager::theme_changed, this, [this](const ThemeTokens&) { render(); });
-    render();
+    setVisible(false);
+    setFixedSize(0, 0);
 }
 
 void PlanHintLabel::set_category(const QString& category) {

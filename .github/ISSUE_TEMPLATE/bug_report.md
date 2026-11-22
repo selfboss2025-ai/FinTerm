@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Report a bug or unexpected behavior in Fincept Terminal
+about: Report a bug or unexpected behavior in FinTerminal
 title: "[BUG] "
 labels: "type:bug, status:triage"
 assignees: ""
@@ -23,7 +23,7 @@ to this issue before PRs against it will be accepted.
 
 ## Environment
 - **OS:** (Windows / macOS / Linux)
-- **Fincept Terminal Version:**
+- **FinTerminal Version:**
 - **Qt Version:**
 
 ## Error Logs

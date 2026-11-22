@@ -42,7 +42,7 @@ void PagerDutyProvider::send(const NotificationRequest& req, std::function<void(
     QJsonObject payload;
     payload["summary"] = req.title + ": " + req.message;
     payload["severity"] = severity;
-    payload["source"] = "Fincept Terminal";
+    payload["source"] = "FinTerminal";
     payload["timestamp"] = req.timestamp.toUTC().toString(Qt::ISODate);
     payload["custom_details"] = custom_details;
 

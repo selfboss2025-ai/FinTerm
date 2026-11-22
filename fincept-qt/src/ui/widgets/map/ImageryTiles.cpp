@@ -53,7 +53,7 @@ QString imt_user_agent() {
     // A stable, identifying User-Agent (name + version + contact), as public
     // tile services ask — never a browser impersonation.
     const QString ver = QCoreApplication::applicationVersion();
-    return QStringLiteral("FinceptTerminal/%1 (+https://fincept.in)").arg(ver.isEmpty() ? QStringLiteral("4") : ver);
+    return QStringLiteral("FinTerminal/%1 (+https://github.com/selfboss2025-ai/FinTerm)").arg(ver.isEmpty() ? QStringLiteral("4") : ver);
 }
 
 QImage imt_decode(const QByteArray& bytes) {

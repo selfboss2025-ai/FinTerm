@@ -234,8 +234,8 @@ void show_next() {
         dlg->raise();
         QApplication::alert(host.parent ? host.parent : static_cast<QWidget*>(dlg));
         ui::DesktopNotifier::instance().notify(
-            ToolApprovalDialog::tr("Approval needed — Fincept Terminal"),
-            ToolApprovalDialog::tr("%1 asks: %2 (\"%3\"). Approve or deny it in Fincept Terminal.")
+            ToolApprovalDialog::tr("Approval needed — FinTerminal"),
+            ToolApprovalDialog::tr("%1 asks: %2 (\"%3\"). Approve or deny it in FinTerminal.")
                 .arg(p->request.client, approval::present(p->request).heading, p->request.tool),
             static_cast<int>(ui::ToastService::Severity::Warning));
         LOG_INFO(kTag, audit_line(QStringLiteral("Tool approval requested"), p->request));
@@ -286,7 +286,7 @@ ToolApprovalVerdict ToolApprovalDialog::request_approval(const ToolApprovalReque
                 app,
                 [client, tool]() {
                     ui::DesktopNotifier::instance().notify(
-                        ToolApprovalDialog::tr("Auto mode — Fincept Terminal"),
+                        ToolApprovalDialog::tr("Auto mode — FinTerminal"),
                         ToolApprovalDialog::tr("%1 ran \"%2\" without asking (auto mode is on).").arg(client, tool),
                         static_cast<int>(ui::ToastService::Severity::Warning));
                 },
@@ -612,7 +612,7 @@ void ToolApprovalDialog::retranslate_ui() {
     setWindowTitle(tr("Approve agent request: %1").arg(presentation_.heading));
     title_label_->setText(presentation_.heading.toUpper());
     status_label_->setText(status_text());
-    lede_label_->setText(tr("An AI agent wants to do this in Fincept Terminal. %1 Nothing runs unless you approve it.")
+    lede_label_->setText(tr("An AI agent wants to do this in FinTerminal. %1 Nothing runs unless you approve it.")
                              .arg(presentation_.sentence));
     client_value_->setText(presentation_.client);
     client_caption_->setText(tr("CLIENT"));

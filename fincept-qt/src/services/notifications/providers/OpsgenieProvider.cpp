@@ -41,7 +41,7 @@ void OpsgenieProvider::send(const NotificationRequest& req, std::function<void(b
     body["message"] = req.title;
     body["description"] = req.message;
     body["priority"] = priority;
-    body["source"] = "Fincept Terminal";
+    body["source"] = "FinTerminal";
 
     // 202 {"result":"Request will be processed","requestId":…} = accepted. Its
     // errors are 4xx and carry a requestId as well, so the old "has requestId"

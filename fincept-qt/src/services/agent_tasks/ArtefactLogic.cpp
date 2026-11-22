@@ -740,7 +740,7 @@ QVector<ArtefactDraft> plan_run_artefacts(const TaskRun& run, const QVector<RunS
                                                                                    : QDateTime::currentMSecsSinceEpoch())
                                  .toString(QStringLiteral("yyyy-MM-dd HH:mm"));
         body += QStringLiteral("\n\n---\n*") +
-                al_tr("Fincept Terminal agent run · %1 · %2").arg(run_status_label(run.status), when) + QLatin1Char('*');
+                al_tr("FinTerminal agent run · %1 · %2").arg(run_status_label(run.status), when) + QLatin1Char('*');
         d.text = body;
         d.source[QStringLiteral("origin")] = QStringLiteral("final");
         d.source[QStringLiteral("key")] = d.key;

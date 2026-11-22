@@ -97,8 +97,8 @@ ToolBar::ToolBar(QWidget* parent) : QWidget(parent) {
     };
 
     sep();
-    // FINCEPT / TERMINAL are brand marks — set raw, never translated.
-    fincept_label_ = mk(QStringLiteral("FINCEPT "));
+    // FIN / TERMINAL are brand marks — set raw, never translated.
+    fincept_label_ = mk(QStringLiteral("FIN"));
     hl->addWidget(fincept_label_);
     branding_label_ = mk(QStringLiteral("TERMINAL"));
     hl->addWidget(branding_label_);
@@ -179,30 +179,22 @@ ToolBar::ToolBar(QWidget* parent) : QWidget(parent) {
     credits_label_ = mk("---");
     credits_label_->setMaximumWidth(100);
     hl->addWidget(credits_label_);
+    credits_label_->setVisible(false);
     sep();
     plan_btn_ = new QPushButton(QStringLiteral("---"));
     metrics::follow_fixed_height(plan_btn_, 20);
     plan_btn_->setCursor(Qt::PointingHandCursor);
     plan_btn_->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    plan_btn_->setVisible(false);
     connect(plan_btn_, &QPushButton::clicked, this, &ToolBar::plan_clicked);
     hl->addWidget(plan_btn_);
-    // The plan badge and the balance explain the plan on hover: what is
-    // included, what it saved — from the server's plan table (PlanAccess).
-    connect(&fincept::billing::PlanAccess::instance(), &fincept::billing::PlanAccess::changed, this, [this]() {
-        if (plan_btn_)
-            plan_btn_->setToolTip(plan::badge_tooltip());
-        if (credits_label_)
-            credits_label_->setToolTip(plan::credits_tooltip());
-    });
     hl->addSpacing(4);
 
-    // Enterprise CTA. Deliberately added without its own separator: the
-    // credits/chat visibility toggles in apply_responsive_layout() index into
-    // separators_ by position, so inserting one here would shift them.
     upgrade_btn_ = new QPushButton;
     metrics::follow_fixed_height(upgrade_btn_, 20);
     upgrade_btn_->setCursor(Qt::PointingHandCursor);
     upgrade_btn_->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    upgrade_btn_->setVisible(false);
     connect(upgrade_btn_, &QPushButton::clicked, this, &ToolBar::upgrade_clicked);
     hl->addWidget(upgrade_btn_);
     sep();
@@ -314,7 +306,7 @@ void ToolBar::retranslateUi() {
         credits_label_->setToolTip(plan::credits_tooltip());
     if (upgrade_btn_) {
         upgrade_btn_->setText(tr("ENTERPRISE"));
-        upgrade_btn_->setToolTip(tr("Fincept Terminal Enterprise — the private edition for firms"));
+        upgrade_btn_->setToolTip(tr("FinTerminal Enterprise — the private edition for firms"));
     }
     if (chat_mode_btn_) {
         // Keep the ⬡ glyph (U+2B21) as a visual icon; only the label after it
@@ -560,7 +552,9 @@ void ToolBar::apply_responsive_layout(int w) {
         {{logout_btn_, sep_at(6)}, true},
     };
 
-    auto wanted = [this](QWidget* wd) {
+    auto wanted = [this, &sep_at](QWidget* wd) {
+        if (wd == upgrade_btn_ || wd == plan_btn_ || wd == credits_label_ || wd == sep_at(4))
+            return false;
         if (wd == chat_runs_badge_)
             return chat_active_runs_ > 0;
         if (wd == chat_attention_badge_)
@@ -650,11 +644,6 @@ void ToolBar::fill_overflow_menu(QMenu* menu) {
             menu->addSeparator();
     };
     add_separator();
-    if (plan_btn_ && plan_btn_->isHidden())
-        menu->addAction(tr("Plan: %1 — Plans && Pricing…").arg(literal_ampersands(plan_btn_->text())), this,
-                        [this]() { emit plan_clicked(); });
-    if (upgrade_btn_ && upgrade_btn_->isHidden())
-        menu->addAction(tr("Fincept Terminal Enterprise…"), this, [this]() { emit upgrade_clicked(); });
     if (chat_mode_btn_ && chat_mode_btn_->isHidden()) {
         QString label = tr("Chat Mode\tF9");
         if (chat_attention_runs_ > 0)
@@ -921,17 +910,7 @@ QMenu* ToolBar::build_help_menu() {
     m->addAction(tr("Documentation"), this, [this]() { emit navigate_to("docs"); });
     m->addAction(tr("Report a Problem"), this, [this]() { emit navigate_to("support"); });
     m->addAction(tr("Check for Updates"), this, [this]() { emit action_triggered("check_updates"); });
-    m->addAction(tr("About Fincept"), this, [this]() { emit navigate_to("about"); });
-    m->addSeparator();
-    m->addAction(tr("Terms of Service"), this, [this]() { emit navigate_to("terms"); });
-    m->addAction(tr("Privacy Policy"), this, [this]() { emit navigate_to("privacy"); });
-    m->addAction(tr("Trademarks"), this, [this]() { emit navigate_to("trademarks"); });
-    m->addSeparator();
-    // Plans & Pricing carries the Enterprise card (site + demo). The Enterprise
-    // dialog stays on the toolbar ENTERPRISE button and the command palette;
-    // Compare Editions in that dialog and on About; Contact in the Help Center.
-    m->addAction(tr("Plans && Pricing…"), this, [this]() { emit plan_clicked(); });
-    // No other menu offers Logout (the toolbar LOGOUT button is not a menu).
+    m->addAction(tr("About FinTerminal"), this, [this]() { emit navigate_to("about"); });
     m->addSeparator();
     m->addAction(tr("Logout"), this, [this]() { emit action_triggered("logout"); });
     m->actions().constLast()->setProperty("fincept_agent_risk", "account"); // agents: signs out

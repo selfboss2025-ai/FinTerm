@@ -151,7 +151,7 @@ bool PortfolioService::is_schema_failure(const QString& raw_error) {
 QString PortfolioService::storage_failure_text(const QString& action, const QString& raw_error) {
     QString why;
     if (is_schema_failure(raw_error))
-        why = tr("This profile's database cannot be read by this build of Fincept Terminal: its portfolio tables "
+        why = tr("This profile's database cannot be read by this build of FinTerminal: its portfolio tables "
                  "are missing or were created by a different (newer) version. Your data has not been changed. "
                  "Open the profile with the build that created it, or use another profile.");
     else

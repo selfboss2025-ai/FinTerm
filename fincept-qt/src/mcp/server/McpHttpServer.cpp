@@ -642,7 +642,7 @@ void McpHttpServer::set_configured_port(quint16 port) {
     if (edition::is_private_mcp_port(port)) {
         // The other Fincept edition's MCP port: two servers on one port would
         // answer each other's clients. Kept at the current port; the UI shows why.
-        d_->last_error = QStringLiteral("Port %1 is used by the other Fincept Terminal edition; keeping port %2.")
+        d_->last_error = QStringLiteral("Port %1 is used by the other FinTerminal edition; keeping port %2.")
                              .arg(port)
                              .arg(d_->configured_port);
         LOG_WARN(kTag, logf("Refused the other edition's MCP port", {{"port", port}}));

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""gen_data_connectors.py — build the Python data-connector catalogue for Fincept Terminal.
+"""gen_data_connectors.py — build the Python data-connector catalogue for FinTerminal.
 
 Every `fincept-qt/scripts/*_data.py` (plus the extra scripts named in the overrides file) is a
 standalone CLI that follows one calling convention:

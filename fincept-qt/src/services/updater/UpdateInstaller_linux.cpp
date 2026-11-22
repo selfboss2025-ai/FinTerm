@@ -176,12 +176,12 @@ class PackageInstaller final : public UpdateInstaller {
         const QString installed = context_.target_path + QStringLiteral("/bin/FinceptTerminal");
         const QString program = QFileInfo(installed).isExecutable() ? installed : QCoreApplication::applicationFilePath();
         if (!relaunch_after_exit(program, {})) {
-            emit handed_off(tr("Fincept Terminal %1 is installed. Close Fincept Terminal and open it again to use "
+            emit handed_off(tr("FinTerminal %1 is installed. Close FinTerminal and open it again to use "
                                "the new version.")
                                 .arg(version_));
             return;
         }
-        emit status(tr("Restarting Fincept Terminal…"));
+        emit status(tr("Restarting FinTerminal…"));
         emit ready_to_restart();
     }
 
@@ -206,7 +206,7 @@ class FlatpakInstaller final : public UpdateInstaller {
         if (QDesktopServices::openUrl(QUrl::fromLocalFile(bundle))) {
             LOG_INFO("UpdateInstaller", QStringLiteral("Flatpak bundle %1 handed to the system").arg(bundle));
             emit handed_off(tr("Your system's software installer has been opened to finish the update to version "
-                               "%1. When it is done, close Fincept Terminal and open it again.")
+                               "%1. When it is done, close FinTerminal and open it again.")
                                 .arg(info.version));
             return;
         }

@@ -184,7 +184,7 @@ class WindowsIfwInstaller final : public UpdateInstaller {
             return;
         }
         if (target_.isEmpty() || !QFileInfo(QDir(target_).filePath(QStringLiteral("FinceptMaintenanceTool.exe"))).isFile()) {
-            finish_failed(tr("The installation folder of Fincept Terminal could not be found, so the update cannot "
+            finish_failed(tr("The installation folder of FinTerminal could not be found, so the update cannot "
                              "be applied. Nothing has been changed."));
             return;
         }
@@ -346,7 +346,7 @@ class WindowsIfwInstaller final : public UpdateInstaller {
             LOG_WARN("UpdateInstaller", QStringLiteral("Installer still running without a window after %1 ms — "
                                                        "handing over anyway")
                                             .arg(since_.elapsed()));
-        emit status(tr("The installer is updating Fincept Terminal to version %1. Fincept Terminal closes now and "
+        emit status(tr("The installer is updating FinTerminal to version %1. FinTerminal closes now and "
                        "opens again when the update is done.")
                         .arg(version_));
         finish_ready();

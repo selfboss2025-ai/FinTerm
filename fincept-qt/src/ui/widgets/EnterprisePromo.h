@@ -1,7 +1,7 @@
 #pragma once
 // EnterprisePromo — the single place the terminal makes upgrade offers.
 //
-//  * Fincept Terminal Enterprise — the private, closed-source edition the team
+//  * FinTerminal Enterprise — the private, closed-source edition the team
 //    develops daily for funds, family offices and research desks. It is a
 //    separate product with its own accounts and billing. Every in-app mention
 //    (toolbar, status bar, dialog, dashboard strip, setup showcase, pricing
@@ -47,7 +47,7 @@ QString signup_url();
 /// URL (the scheduling page's own slug still reads "demo").
 QString meeting_url();
 /// "mailto:" link to support@fincept.in with the subject
-/// "Fincept Terminal — partnership enquiry" filled in.
+/// "FinTerminal — partnership enquiry" filled in.
 QString partnership_mailto();
 
 /// `base` tagged with `ref=terminal-<placement>` so the website can attribute
@@ -111,7 +111,7 @@ void open_plans(QWidget* origin = nullptr);
 
 } // namespace billing
 
-/// "Fincept Terminal Enterprise" dialog. Opened on demand (toolbar ENTERPRISE
+/// "FinTerminal Enterprise" dialog. Opened on demand (toolbar ENTERPRISE
 /// button, Help menu, command palette → "enterprise") and, at most every 72 hours or
 /// once per new release, as a reminder scheduled after sign-in/unlock.
 class UpgradeDialog : public QDialog {
@@ -207,7 +207,7 @@ QWidget* make_enterprise_showcase(QWidget* parent = nullptr);
 
 /// Enterprise promotion for the lock / PIN screen. Generic, compiled-in copy
 /// only: no network call and no account data. Two forms:
-///   Panel — "Fincept Terminal Enterprise", a one-line pitch, five stacked
+///   Panel — "FinTerminal Enterprise", a one-line pitch, five stacked
 ///           value points, SEE ENTERPRISE, DISCUSS CUSTOM REQUIREMENTS and a
 ///           partnership e-mail link (the second column of a wide lock screen).
 ///   Strip — one slim line under the PIN card: a value point that rotates

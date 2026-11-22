@@ -1,6 +1,6 @@
 # FinceptTerminal — 台灣股市資料連接器
 
-> **本專案是 [FinceptTerminal](https://github.com/Fincept-Corporation/FinceptTerminal) 的開源社群貢獻分支。**
+> **本專案是 [FinceptTerminal](https://github.com/selfboss2025-ai/FinTerm) 的開源社群貢獻分支。**
 > 原始專案版權歸 Fincept Corporation 所有，本修改依照 AGPL-3.0 授權條款釋出。
 > 本分支無任何商業目的，僅供學習與研究使用。
 
@@ -67,7 +67,7 @@ FinceptTerminal 採用雙授權制：
 ❌ **你不可以**：
 - 將本程式碼或衍生作品用於任何商業目的（需另行取得 Fincept 商業授權）
 - 移除原始版權聲明
-- 以「Fincept」、「Fincept Terminal」等商標命名你的衍生產品
+- 以「Fincept」、「FinTerminal」等商標命名你的衍生產品
 
 ### 我們如何確保合規？
 
@@ -91,11 +91,11 @@ FinceptTerminal 採用雙授權制：
 ### 方法一：直接使用預編譯版本（推薦新手）
 
 本分支的 Python 連接器**不需要重新編譯** C++ 程式碼。
-你可以先從[官方發布頁面](https://github.com/Fincept-Corporation/FinceptTerminal/releases)下載預編譯版本安裝後，再手動加入本連接器檔案。
+你可以先從[官方發布頁面](https://github.com/selfboss2025-ai/FinTerm/releases)下載預編譯版本安裝後，再手動加入本連接器檔案。
 
 ```bash
 # 1. 下載並安裝官方預編譯版本（Windows / macOS / Linux）
-# 從 https://github.com/Fincept-Corporation/FinceptTerminal/releases 下載
+# 從 https://github.com/selfboss2025-ai/FinTerm/releases 下載
 
 # 2. 複製台灣股市連接器到 Python 層目錄
 cp taiwan_market_connector.py 路徑/到/fincept-qt/src/python/
@@ -466,7 +466,7 @@ git push origin feature/你的功能名稱
 
 ## 致謝
 
-- **[Fincept Corporation](https://github.com/Fincept-Corporation/FinceptTerminal)**：感謝原始專案的開源貢獻，提供了這個優秀的金融分析框架。
+- **[Fincept Corporation](https://github.com/selfboss2025-ai/FinTerm)**：感謝原始專案的開源貢獻，提供了這個優秀的金融分析框架。
 - **[Yahoo Finance / yfinance](https://github.com/ranaroussi/yfinance)**：提供免費的台股歷史資料介面。
 - **[TWSE 臺灣證券交易所](https://openapi.twse.com.tw/)**：提供官方免費 OpenAPI。
 - **[twstock](https://github.com/mlouielu/twstock)**：提供 Python 台股分析套件。
@@ -477,7 +477,7 @@ git push origin feature/你的功能名稱
 
 若有問題或建議，歡迎在本 Repository 開啟 [Issue](../../issues)。
 
-若涉及原始 FinceptTerminal 的功能問題，請至[官方 Repository](https://github.com/Fincept-Corporation/FinceptTerminal/issues) 回報。
+若涉及原始 FinceptTerminal 的功能問題，請至[官方 Repository](https://github.com/selfboss2025-ai/FinTerm/issues) 回報。
 
 ---
 

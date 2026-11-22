@@ -35,7 +35,7 @@ void profiles_relaunch_and_quit(QWidget* parent, const QString& profile) {
     if (!QProcess::startDetached(exe, {"--profile", profile})) {
         LOG_ERROR("ProfilesSection", logf("Profile switch could not relaunch the app", {{"profile", profile}}));
         QMessageBox::critical(parent, ProfilesSection::tr("Switch Profile"),
-                              ProfilesSection::tr("Could not launch Fincept Terminal for profile \"%1\". "
+                              ProfilesSection::tr("Could not launch FinTerminal for profile \"%1\". "
                                                   "The current session stays open.")
                                   .arg(profile));
         return;
@@ -136,7 +136,7 @@ QWidget* ProfilesSection::build_content() {
                 // on a single unconfirmed click.
                 const auto reply = QMessageBox::question(
                     this, tr("Switch Profile"),
-                    tr("Switch to profile \"%1\"?\n\nFincept Terminal will restart. Unsaved work in the "
+                    tr("Switch to profile \"%1\"?\n\nFinTerminal will restart. Unsaved work in the "
                        "current session may be lost.")
                         .arg(name),
                     QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
@@ -189,7 +189,7 @@ QWidget* ProfilesSection::build_content() {
         }
         const auto reply =
             QMessageBox::question(this, tr("Create Profile"),
-                                  tr("Create profile \"%1\" and switch to it?\n\nFincept Terminal will restart. "
+                                  tr("Create profile \"%1\" and switch to it?\n\nFinTerminal will restart. "
                                      "Unsaved work in the current session may be lost.")
                                       .arg(name),
                                   QMessageBox::Yes | QMessageBox::No, QMessageBox::No);

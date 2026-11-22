@@ -36,33 +36,33 @@ const QList<PromptDef>& prompt_defs() {
         {"research_company", "Research a company",
          "Open the company in Equity Research and build a sourced brief: price, fundamentals, news, peers.", "symbol",
          "Ticker, e.g. AAPL or RELIANCE.NS", true,
-         "Research %1 using Fincept Terminal. ui_open(screen=\"equity_research\", symbol=\"%1\"), wait until it "
+         "Research %1 using FinTerminal. ui_open(screen=\"equity_research\", symbol=\"%1\"), wait until it "
          "is idle, then read its tabs (overview, financials, news, peers, technicals) with ui_snapshot / ui_read. "
          "Add anything useful from the News screen. Write a concise brief with the figures exactly as the "
          "terminal shows them and say which screen each one came from."},
         {"market_briefing", "Market briefing", "Summarise what markets, news and the economic calendar show right now.",
          "focus", "Optional region or theme, e.g. India, rates, crypto", false,
-         "Give me a market briefing from Fincept Terminal (focus: %1). Open the Markets screen and the News "
+         "Give me a market briefing from FinTerminal (focus: %1). Open the Markets screen and the News "
          "screen, wait for them to load, read the movers, indices and top headlines, and check Economics for "
          "upcoming data. Summarise in a few bullet points with numbers quoted from the terminal."},
         {"portfolio_review", "Portfolio review",
          "Review a portfolio's holdings, performance and risk as the Portfolio screen shows them.", "portfolio",
          "Optional portfolio name", false,
-         "Review my portfolio in Fincept Terminal (%1). ui_open(screen=\"portfolio\"), select that portfolio if "
+         "Review my portfolio in FinTerminal (%1). ui_open(screen=\"portfolio\"), select that portfolio if "
          "one is named, and read holdings, allocation, P&L and risk figures with ui_read. Point out "
          "concentration, the biggest movers and anything that needs attention. Do not place or change any "
          "orders."},
         {"run_analytics", "Run an analytics script",
          "Find the right bundled Python analytics script for a task and run it.", "goal",
          "What to compute, e.g. 'black-scholes price for a call' or 'FRED GDP series'", true,
-         "Use Fincept Terminal's bundled analytics for this: %1. python(action=\"search\", query=…) to find "
+         "Use FinTerminal's bundled analytics for this: %1. python(action=\"search\", query=…) to find "
          "candidate scripts, python(action=\"info\", script=…) to learn the command and arguments, then "
          "python(action=\"run\", …). If it returns a job_id, wait with python(action=\"status\"). Report the "
          "result and the script you used."},
         {"operate_terminal", "Do something in the terminal",
-         "Carry out a task in Fincept Terminal by operating its screens.", "task",
+         "Carry out a task in FinTerminal by operating its screens.", "task",
          "What to do, e.g. 'add NVDA to my watchlist'", true,
-         "In Fincept Terminal: %1. Start with ui_overview, open the screen that does this with ui_open, find the "
+         "In FinTerminal: %1. Start with ui_overview, open the screen that does this with ui_open, find the "
          "controls with ui_snapshot (use query=…), and work them with ui_act. Check the result before you say "
          "it is done. If the terminal asks you to approve something, tell me what it is."},
     };
@@ -70,7 +70,7 @@ const QList<PromptDef>& prompt_defs() {
 }
 
 QString guide_markdown() {
-    return QStringLiteral("# Operating Fincept Terminal over MCP\n\n") + server_instructions() +
+    return QStringLiteral("# Operating FinTerminal over MCP\n\n") + server_instructions() +
            QStringLiteral("\n\n## Refs\n"
                           "w1 window · p3 panel (an open screen) · d1 dialog · m1 popup menu · e12 element · "
                           "e12:r5 row 5 of table e12. Refs stay valid while the element lives; a panel that is "
@@ -137,12 +137,12 @@ QJsonObject resources_list() {
     const QJsonArray resources{
         QJsonObject{{QStringLiteral("uri"), QStringLiteral("fincept://guide")},
                     {QStringLiteral("name"), QStringLiteral("guide")},
-                    {QStringLiteral("title"), QStringLiteral("How to operate Fincept Terminal")},
+                    {QStringLiteral("title"), QStringLiteral("How to operate FinTerminal")},
                     {QStringLiteral("description"), QStringLiteral("The tools, refs and a typical flow.")},
                     {QStringLiteral("mimeType"), QStringLiteral("text/markdown")}},
         QJsonObject{{QStringLiteral("uri"), QStringLiteral("fincept://screens")},
                     {QStringLiteral("name"), QStringLiteral("screens")},
-                    {QStringLiteral("title"), QStringLiteral("Fincept Terminal screens")},
+                    {QStringLiteral("title"), QStringLiteral("FinTerminal screens")},
                     {QStringLiteral("description"), QStringLiteral("Every screen ui_open can open, with a line each.")},
                     {QStringLiteral("mimeType"), QStringLiteral("text/plain")}},
     };
@@ -153,7 +153,7 @@ QJsonObject resources_list() {
 
 QString server_instructions() {
     QStringList lines;
-    lines << QStringLiteral("You are connected to the user's running Fincept Terminal (a financial terminal: markets, "
+    lines << QStringLiteral("You are connected to the user's running FinTerminal (a financial terminal: markets, "
                             "research, news, filings, macro, portfolios, trading, analytics). You operate it the way "
                             "a person does.");
     lines << QStringLiteral("- Start with ui_overview: windows, open panels (refs like p3), dialogs, sign-in state.");

@@ -1503,7 +1503,7 @@ QWidget* resolve_scope(const QString& target_raw, QString* label, QString* error
     if (target.isEmpty() || target.compare(QLatin1String("window"), Qt::CaseInsensitive) == 0) {
         QWidget* f = active_frame();
         if (!f)
-            return fail(err_text(Err::NotFound, QStringLiteral("No Fincept Terminal window is open.")));
+            return fail(err_text(Err::NotFound, QStringLiteral("No FinTerminal window is open.")));
         if (label)
             *label = location_label(f);
         return f;

@@ -417,7 +417,7 @@ void WindowFrame::enter_terminal_after_auth() {
     // seconds after the first window is up — sign-in and lock screen included —
     // see wire_updater() in main.cpp.)
 
-    // Fincept Terminal Enterprise reminder. maybe_show() applies the cadence
+    // FinTerminal Enterprise reminder. maybe_show() applies the cadence
     // (new release, or 72 h since last shown) and refuses to cover another
     // modal or an inactive / minimised window; the guard here keeps it off the
     // lock, login and pricing screens and out of chat mode.

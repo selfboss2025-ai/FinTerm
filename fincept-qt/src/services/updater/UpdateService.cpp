@@ -38,10 +38,10 @@ namespace fincept::services {
 namespace {
 
 constexpr const char* kSvcLatestReleaseManifestUrl =
-    "https://github.com/Fincept-Corporation/FinceptTerminal/releases/latest/download/updates.json";
+    "https://github.com/selfboss2025-ai/FinTerm/releases/latest/download/updates.json";
 constexpr const char* kSvcMainBranchManifestUrl =
-    "https://raw.githubusercontent.com/Fincept-Corporation/FinceptTerminal/main/updates.json";
-constexpr const char* kSvcReleasesPageUrl = "https://github.com/Fincept-Corporation/FinceptTerminal/releases/latest";
+    "https://raw.githubusercontent.com/selfboss2025-ai/FinTerm/main/updates.json";
+constexpr const char* kSvcReleasesPageUrl = "https://github.com/selfboss2025-ai/FinTerm/releases/latest";
 constexpr const char* kSvcTooLargeProperty = "fincept_update_reply_too_large";
 
 constexpr int kSvcManifestTimeoutMs = 20000;
@@ -98,7 +98,7 @@ bool svc_allow_loopback_http() {
 }
 
 QString svc_user_agent() {
-    return QStringLiteral("FinceptTerminal/%1").arg(QCoreApplication::applicationVersion());
+    return QStringLiteral("FinTerminal/%1").arg(QCoreApplication::applicationVersion());
 }
 
 QNetworkRequest svc_small_request(const QString& url) {
@@ -193,7 +193,7 @@ QString svc_download_file_name(const QString& url) {
 }
 
 QString svc_available_text(const QString& version) {
-    return UpdateService::tr("Fincept Terminal %1 is available (you have %2).")
+    return UpdateService::tr("FinTerminal %1 is available (you have %2).")
         .arg(version, QCoreApplication::applicationVersion());
 }
 
@@ -273,7 +273,7 @@ void UpdateService::check_for_updates(bool user_initiated) {
     if (!update_checks_available()) {
         LOG_INFO("UpdateService",
                  QStringLiteral("Update check skipped — '%1' is a development build, not a release").arg(local));
-        fail_check(tr("This is a development build of Fincept Terminal (%1), so it cannot check for updates. "
+        fail_check(tr("This is a development build of FinTerminal (%1), so it cannot check for updates. "
                       "Released versions are published on the releases page.")
                        .arg(local));
         return;
@@ -439,7 +439,7 @@ void UpdateService::process_verified_manifest(const QByteArray& manifest) {
         info_ = {};
         LOG_INFO("UpdateService",
                  QStringLiteral("Up to date — running %1, latest release %2").arg(local, remote.version));
-        set_stage(S::UpToDate, tr("Fincept Terminal is up to date (version %1).").arg(local));
+        set_stage(S::UpToDate, tr("FinTerminal is up to date (version %1).").arg(local));
         emit check_finished(false);
         return;
     }
@@ -530,7 +530,7 @@ void UpdateService::start_update() {
     installer_ = updater::UpdateInstaller::create(updater::install_context(), this);
     if (!installer_) {
         LOG_ERROR("UpdateService", "No installer for this installation kind in this build");
-        fail_update(tr("This installation of Fincept Terminal cannot be updated automatically. Download the new "
+        fail_update(tr("This installation of FinTerminal cannot be updated automatically. Download the new "
                        "version from the releases page instead."));
         return;
     }
@@ -591,20 +591,20 @@ void UpdateService::start_update() {
         set_stage(updater::UpdateStage::Available, svc_available_text(info_.version));
     });
 
-    set_stage(S::Downloading, tr("Downloading Fincept Terminal %1…").arg(info_.version));
+    set_stage(S::Downloading, tr("Downloading FinTerminal %1…").arg(info_.version));
     emit progress_changed(0, info_.asset.size);
     downloader->start(info_.asset, path);
 }
 
 void UpdateService::begin_install(const QString& package_path) {
     using S = updater::UpdateStage;
-    set_stage(S::Installing, tr("Installing Fincept Terminal %1…").arg(info_.version));
+    set_stage(S::Installing, tr("Installing FinTerminal %1…").arg(info_.version));
 
     if (!installer_)
         installer_ = updater::UpdateInstaller::create(updater::install_context(), this);
     if (!installer_) {
         LOG_ERROR("UpdateService", "No installer for this installation kind in this build");
-        fail_update(tr("This installation of Fincept Terminal cannot be updated automatically. Download the new "
+        fail_update(tr("This installation of FinTerminal cannot be updated automatically. Download the new "
                        "version from the releases page instead."));
         return;
     }
@@ -623,7 +623,7 @@ void UpdateService::begin_install(const QString& package_path) {
         }
         LOG_INFO("UpdateService", QStringLiteral("Update to %1 is in place — restarting").arg(info_.version));
         write_pending_marker();
-        set_stage(updater::UpdateStage::Restarting, tr("Restarting Fincept Terminal…"));
+        set_stage(updater::UpdateStage::Restarting, tr("Restarting FinTerminal…"));
         QTimer::singleShot(kSvcRestartDelayMs, this, [this] {
             LOG_INFO("UpdateService", "Asking the application to close for the update");
             emit restart_requested();

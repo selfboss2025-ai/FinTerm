@@ -1006,7 +1006,7 @@ void register_builtins() {
 
     register_one(ActionDef{
         "help.enterprise",
-        "Fincept Terminal Enterprise",
+        "FinTerminal Enterprise",
         "Help",
         {"enterprise", "private edition", "upgrade", "custom requirements", "partnership", "firm"},
         QKeySequence{},

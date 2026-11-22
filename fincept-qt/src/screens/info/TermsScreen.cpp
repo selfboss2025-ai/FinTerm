@@ -127,12 +127,12 @@ QWidget* TermsScreen::build_page() {
     // Section 1
     pvl->addWidget(section_heading("1", tr("ACCEPTANCE OF TERMS")));
     pvl->addWidget(
-        body_text(tr("By accessing or using Fincept Terminal (\"the Service\"), you agree to be bound by these "
+        body_text(tr("By accessing or using FinTerminal (\"the Service\"), you agree to be bound by these "
                      "Terms of Service. If you do not agree to these terms, do not use the Service.")));
 
     // Section 2
     pvl->addWidget(section_heading("2", tr("DESCRIPTION OF SERVICE")));
-    pvl->addWidget(body_text(tr("Fincept Terminal is open-source desktop software for financial research, with "
+    pvl->addWidget(body_text(tr("FinTerminal is open-source desktop software for financial research, with "
                                 "analytics, trading tools and AI-powered research. Market data is fetched on your "
                                 "device from the sources you choose; Fincept does not supply exchange price data.")));
 

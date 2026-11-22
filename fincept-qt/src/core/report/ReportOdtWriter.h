@@ -27,7 +27,7 @@
 namespace fincept::report::odt {
 
 struct OdtOptions {
-    QString generator = QStringLiteral("Fincept Terminal");
+    QString generator = QStringLiteral("FinTerminal");
     QDateTime created; ///< invalid = now (tests pass a fixed one: the output is then byte-for-byte stable)
 };
 

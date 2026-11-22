@@ -349,7 +349,7 @@ void LlmService::ensure_config() const {
     // declining tool-feasible requests. Kept short: it is re-sent on every tool round.
     if (system_prompt_.trimmed().isEmpty()) {
         system_prompt_ =
-            "You are Fincept AI, the assistant inside Fincept Terminal, a professional financial terminal. "
+            "You are Fincept AI, the assistant inside FinTerminal, a professional financial terminal. "
             "You work the terminal the way the user does, through tools: ui_overview (what is open — call it "
             "first), ui_open (open any screen, optionally on a symbol), ui_snapshot (a panel's controls, each "
             "with a ref), ui_act (click, type, select by ref or by the words on a control; several steps per "
@@ -686,8 +686,8 @@ QMap<QString, QString> LlmService::get_headers() const {
             h["Authorization"] = "Bearer " + api_key_;
         if (p == "openrouter") {
             // Attribution for the openrouter.ai/rankings leaderboard.
-            h["HTTP-Referer"] = "https://fincept.in";
-            h["X-Title"] = "Fincept Terminal";
+            h["HTTP-Referer"] = "https://github.com/selfboss2025-ai/FinTerm";
+            h["X-Title"] = "FinTerminal";
         }
     }
     return h;

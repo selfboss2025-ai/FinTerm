@@ -23,8 +23,8 @@ jobs:
           - os: windows-2022
             arch: x64
             platform: Windows
-            artifact: FinceptTerminal-Windows-x64
-            exe: FinceptTerminal.exe
+            artifact: FinTerminal-Windows-x64
+            exe: FinTerminal.exe
             qt_arch: win64_msvc2022_64
             cmake_extra: ""
 
@@ -32,23 +32,17 @@ jobs:
           - os: windows-2022
             arch: arm64
             platform: Windows
-            artifact: FinceptTerminal-Windows-arm64
-            exe: FinceptTerminal.exe
+            artifact: FinTerminal-Windows-arm64
+            exe: FinTerminal.exe
             qt_arch: win64_msvc2022_arm64_cross_compiled
             cmake_extra: "-A ARM64"
 
           # ---- Linux x64 ----
-          # qt_arch is NOT empty: this leg used to skip install-qt-action and
-          # apt-install qt6-base-dev, which is Qt 6.2.4 on ubuntu-22.04 while
-          # CMakeLists.txt pins Qt 6.8 (FINCEPT_QT_PIN_MODE defaults to MINOR
-          # → find_package(Qt6 6.8 REQUIRED)). The job could never configure.
-          # release.yml:588-595 documents that exact trap and installs Qt via
-          # aqt; the fix had simply never been mirrored here.
           - os: ubuntu-22.04
             arch: x64
             platform: Linux
-            artifact: FinceptTerminal-Linux-x64
-            exe: FinceptTerminal
+            artifact: FinTerminal-Linux-x64
+            exe: FinTerminal
             qt_arch: linux_gcc_64
             cmake_extra: ""
 
@@ -56,19 +50,17 @@ jobs:
           - os: macos-15
             arch: arm64
             platform: macOS
-            artifact: FinceptTerminal-macOS-arm64
-            exe: FinceptTerminal
+            artifact: FinTerminal-macOS-arm64
+            exe: FinTerminal
             qt_arch: clang_64
             cmake_extra: "-DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0"
 
           # ---- macOS x64 (Intel) ----
-          # Cross-compiled on ARM64 runner. CMakeLists.txt auto-disables GGML_NATIVE
-          # and GGML_METAL when CMAKE_OSX_ARCHITECTURES != host processor.
           - os: macos-15
             arch: x64
             platform: macOS
-            artifact: FinceptTerminal-macOS-x64
-            exe: FinceptTerminal
+            artifact: FinTerminal-macOS-x64
+            exe: FinTerminal
             qt_arch: clang_64
             cmake_extra: "-DCMAKE_OSX_ARCHITECTURES=x86_64 -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0"
 
@@ -683,9 +675,9 @@ jobs:
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0"><dict>
-            <key>CFBundleExecutable</key><string>FinceptTerminal</string>
-            <key>CFBundleIdentifier</key><string>com.fincept.terminal.community</string>
-            <key>CFBundleName</key><string>FinceptTerminal</string>
+            <key>CFBundleExecutable</key><string>FinTerminal</string>
+            <key>CFBundleIdentifier</key><string>com.finterminal.app</string>
+            <key>CFBundleName</key><string>FinTerminal</string>
             <key>CFBundlePackageType</key><string>APPL</string>
             <key>CFBundleShortVersionString</key><string>${VERSION}</string>
             <key>CFBundleVersion</key><string>${VERSION}</string>
@@ -895,10 +887,10 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: Fincept Terminal ${{ github.ref_name }}
+          name: FinTerminal ${{ github.ref_name }}
           make_latest: true
           body: |
-            ## Fincept Terminal ${{ github.ref_name }}
+            ## FinTerminal ${{ github.ref_name }}
 
             ### Downloads
 

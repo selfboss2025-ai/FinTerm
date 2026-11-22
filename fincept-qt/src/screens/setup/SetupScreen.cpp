@@ -409,7 +409,7 @@ QLabel#setupInstallDir { color: @text_dim; font-family: @font; font-size: )" + f
 }
 
 void SetupScreen::retranslateUi() {
-    setWindowTitle(tr("Fincept Terminal — First-Time Setup"));
+    setWindowTitle(tr("FinTerminal — First-Time Setup"));
     title_lbl_->setText(tr("FINCEPT TERMINAL — FIRST-TIME SETUP"));
     quit_btn_->setText(tr("QUIT"));
     later_btn_->setText(tr("NOT NOW — LAUNCH TERMINAL"));
@@ -562,8 +562,8 @@ void SetupScreen::render_buttons(bool has_run, bool running, bool succeeded, boo
         subtitle =
             anything_installed_
                 ? tr("Part of the Python environment is already in place — only the missing pieces are installed.")
-            : full_scope ? tr("Fincept Terminal installs its own Python runtime and all of its analytics libraries.")
-                         : tr("Fincept Terminal installs its own Python runtime and the essential market-data "
+            : full_scope ? tr("FinTerminal installs its own Python runtime and all of its analytics libraries.")
+                         : tr("FinTerminal installs its own Python runtime and the essential market-data "
                               "libraries — about a minute. AI, machine-learning and backtesting libraries are "
                               "optional: install them later from Settings → Python Env while you keep working.");
         note = full_scope ? tr("Needs an internet connection. You can open the terminal as soon as the essentials "
@@ -599,7 +599,7 @@ void SetupScreen::render_buttons(bool has_run, bool running, bool succeeded, boo
         primary_action_ = PrimaryAction::Launch;
         primary = tr("LAUNCH TERMINAL");
         subtitle = full_scope ? tr("Everything is installed.") : tr("The essential libraries are installed.");
-        note = full_scope ? tr("Launching Fincept Terminal…") : QString();
+        note = full_scope ? tr("Launching FinTerminal…") : QString();
     } else if (core_ready) {
         primary_action_ = PrimaryAction::Launch;
         primary = tr("LAUNCH TERMINAL");
@@ -814,7 +814,7 @@ void SetupScreen::closeEvent(QCloseEvent* event) {
     auto& psm = python::PythonSetupManager::instance();
     if (psm.is_running()) {
         const auto answer =
-            QMessageBox::question(this, tr("Quit Fincept Terminal"), tr("Setup is still running. Quit Fincept Terminal?"),
+            QMessageBox::question(this, tr("Quit FinTerminal"), tr("Setup is still running. Quit FinTerminal?"),
                                   QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
         if (answer != QMessageBox::Yes) {
             event->ignore();

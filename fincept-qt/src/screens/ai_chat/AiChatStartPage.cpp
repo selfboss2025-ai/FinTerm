@@ -278,7 +278,7 @@ void AicStartPage::retranslate() {
     lead_->setText(tr("Ask about markets, companies, your portfolio or macro data. Answers can use the terminal's "
                       "tools; nothing is sent until you press Send."));
     recent_title_->setText(tr("RECENT SESSIONS"));
-    ui::enterprise::set_mention_text(ent_, tr("Fincept Terminal Enterprise — multi-agent research for firms, AI credits included:"),
+    ui::enterprise::set_mention_text(ent_, tr("FinTerminal Enterprise — multi-agent research for firms, AI credits included:"),
                                      tr("Discuss custom requirements ↗"), ui::enterprise::meeting_url());
     ent_->setToolTip(tr("Opens a page to arrange a meeting with the Fincept team about custom requirements or a partnership"));
     scroll_->setAccessibleName(tr("AI Chat start page"));

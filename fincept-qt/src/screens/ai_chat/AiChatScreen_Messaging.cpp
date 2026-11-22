@@ -84,7 +84,7 @@ void AiChatScreen::on_send() {
         const QString ent_url = ui::enterprise::url_with_ref(ui::enterprise::site_url(), QStringLiteral("ai"));
         add_notice(aichat::NoticeKind::Setup,
                    tr("No LLM provider configured. Go to Settings > LLM Configuration to set up a provider.") +
-                       QStringLiteral("\n\n") + tr("Or use Fincept Terminal Enterprise — AI credits included.") +
+                       QStringLiteral("\n\n") + tr("Or use FinTerminal Enterprise — AI credits included.") +
                        QStringLiteral(" [") + tr("See Enterprise ↗") + QStringLiteral("](") + ent_url +
                        QStringLiteral(")"));
         return;

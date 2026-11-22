@@ -84,11 +84,11 @@ QString approval_refusal_text(ToolApprovalVerdict verdict, const QString& what) 
                 .arg(what);
         case ToolApprovalVerdict::TimedOut:
             return QStringLiteral(
-                       "Nobody approved \"%1\" in Fincept Terminal in time, so it was not done. Ask the user "
+                       "Nobody approved \"%1\" in FinTerminal in time, so it was not done. Ask the user "
                        "to approve it and retry.")
                 .arg(what);
         case ToolApprovalVerdict::Unavailable:
-            return QStringLiteral("\"%1\" needs the user's approval, but no Fincept Terminal window is open to ask in, "
+            return QStringLiteral("\"%1\" needs the user's approval, but no FinTerminal window is open to ask in, "
                                   "so it was not done.")
                 .arg(what);
     }

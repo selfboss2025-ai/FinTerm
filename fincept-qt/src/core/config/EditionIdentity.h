@@ -1,5 +1,5 @@
 #pragma once
-// EditionIdentity.h — the one place that names this build of Fincept Terminal to
+// EditionIdentity.h — the one place that names this build of FinTerminal to
 // the operating system.
 //
 // Two builds of the same product exist: this open-source "community" terminal and
@@ -21,37 +21,37 @@
 // community install over.
 
 #ifndef FINCEPT_EDITION_ID
-#    define FINCEPT_EDITION_ID "community"
+#    define FINCEPT_EDITION_ID "finterminal"
 #endif
 #ifndef FINCEPT_EDITION_DATA_DIR_NAME
-#    define FINCEPT_EDITION_DATA_DIR_NAME "com.fincept.terminal.community"
+#    define FINCEPT_EDITION_DATA_DIR_NAME "com.finterminal.app"
 #endif
 #ifndef FINCEPT_EDITION_SETTINGS_ORG
-#    define FINCEPT_EDITION_SETTINGS_ORG "FinceptCommunity"
+#    define FINCEPT_EDITION_SETTINGS_ORG "FinTerminal"
 #endif
 #ifndef FINCEPT_EDITION_SETTINGS_APP
-#    define FINCEPT_EDITION_SETTINGS_APP "FinceptTerminalCommunity"
+#    define FINCEPT_EDITION_SETTINGS_APP "FinTerminal"
 #endif
 #ifndef FINCEPT_EDITION_DESKTOP_ID
-#    define FINCEPT_EDITION_DESKTOP_ID "fincept-terminal-community"
+#    define FINCEPT_EDITION_DESKTOP_ID "finterminal"
 #endif
 #ifndef FINCEPT_EDITION_FLATPAK_ID
-#    define FINCEPT_EDITION_FLATPAK_ID "in.fincept.FinceptTerminal"
+#    define FINCEPT_EDITION_FLATPAK_ID "io.github.selfboss2025_ai.FinTerm"
 #endif
 #ifndef FINCEPT_EDITION_BUNDLE_ID
-#    define FINCEPT_EDITION_BUNDLE_ID "com.fincept.terminal.community"
+#    define FINCEPT_EDITION_BUNDLE_ID "com.finterminal.app"
 #endif
 #ifndef FINCEPT_EDITION_LINUX_PACKAGE
-#    define FINCEPT_EDITION_LINUX_PACKAGE "fincept-terminal-community"
+#    define FINCEPT_EDITION_LINUX_PACKAGE "finterminal"
 #endif
 #ifndef FINCEPT_EDITION_LINUX_PREFIX
-#    define FINCEPT_EDITION_LINUX_PREFIX "/opt/fincept-terminal-community"
+#    define FINCEPT_EDITION_LINUX_PREFIX "/opt/finterminal"
 #endif
 #ifndef FINCEPT_EDITION_TEMP_PREFIX
-#    define FINCEPT_EDITION_TEMP_PREFIX "fincept-community"
+#    define FINCEPT_EDITION_TEMP_PREFIX "finterminal"
 #endif
 #ifndef FINCEPT_EDITION_MCP_SERVER_NAME
-#    define FINCEPT_EDITION_MCP_SERVER_NAME "fincept_community"
+#    define FINCEPT_EDITION_MCP_SERVER_NAME "finterminal"
 #endif
 
 namespace fincept::edition {

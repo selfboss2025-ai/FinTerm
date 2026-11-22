@@ -275,7 +275,7 @@ void McpServerEngine::shutdown(const QString& reason) {
     // Every call still running is answered — a client must never wait on a
     // request the server has forgotten — and its tool is told to stop.
     const QString text =
-        QStringLiteral("Fincept Terminal's MCP server stopped (%1) before this tool call finished. The action may or "
+        QStringLiteral("FinTerminal's MCP server stopped (%1) before this tool call finished. The action may or "
                        "may not have completed; check the terminal before retrying.")
             .arg(reason);
     const QList<quint64> live = calls_.keys();
@@ -492,7 +492,7 @@ bool McpServerEngine::check_head(QTcpSocket* sock, Conn& c) {
                      QJsonObject{{QStringLiteral("error"), QStringLiteral("unauthorized")},
                                  {QStringLiteral("message"),
                                   QStringLiteral("A valid 'Authorization: Bearer <token>' header is required. Copy the "
-                                                 "current token from Fincept Terminal → Settings → AI Agents (MCP).")}},
+                                                 "current token from FinTerminal → Settings → AI Agents (MCP).")}},
                      {{QByteArrayLiteral("WWW-Authenticate"), challenge}}, /*force_close=*/true);
         return false;
     }
@@ -1010,7 +1010,7 @@ void McpServerEngine::start_tool_call(const QJsonValue& id, const QJsonObject& p
     const int mine = inflight_by_client_.value(ctx.scope);
     if (inflight_.load() >= limits_.max_inflight || mine >= limits_.max_inflight_per_client) {
         p.responses.append(wire::rpc_result(
-            id, wire::error_call_result(QStringLiteral("Fincept Terminal is busy: %1 tool calls are already running%2. "
+            id, wire::error_call_result(QStringLiteral("FinTerminal is busy: %1 tool calls are already running%2. "
                                                        "Wait for one to finish, then retry.")
                                             .arg(mine >= limits_.max_inflight_per_client ? mine : inflight_.load())
                                             .arg(mine >= limits_.max_inflight_per_client ? QStringLiteral(" for you")
@@ -1294,7 +1294,7 @@ void McpServerEngine::tick() {
         const qint64 secs = (now - lc->started_ms) / 1000;
         const QString text =
             cancelled ? QStringLiteral("Cancelled — the client gave up on this call.")
-                      : QStringLiteral("Timed out: %1 did not finish within %2 s in Fincept Terminal, so the terminal "
+                      : QStringLiteral("Timed out: %1 did not finish within %2 s in FinTerminal, so the terminal "
                                        "stopped waiting for it. It may still complete on screen — check with "
                                        "ui_overview before retrying.")
                             .arg(lc->tool)

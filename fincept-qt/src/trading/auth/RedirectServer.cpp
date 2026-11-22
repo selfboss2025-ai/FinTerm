@@ -24,7 +24,7 @@ constexpr const char* kResponseHtml =
     "display:flex;align-items:center;justify-content:center;height:100vh;margin:0}"
     "div{text-align:center}h1{color:#d97706;font-size:20px}p{color:#94a3b8}</style>"
     "</head><body><div><h1>Login captured</h1>"
-    "<p>You can close this tab and return to Fincept Terminal.</p></div></body></html>";
+    "<p>You can close this tab and return to FinTerminal.</p></div></body></html>";
 
 // 128 bits of CSPRNG output, hex-encoded. QRandomGenerator::system() is the
 // OS entropy source — the non-system generator is seeded deterministically and
@@ -121,7 +121,7 @@ QString RedirectServer::bind_error_text() const {
         case BindError::None:
             return {};
         case BindError::PortInUse:
-            return tr("Port %1 is in use — close the other Fincept Terminal's broker login (or the program using "
+            return tr("Port %1 is in use — close the other FinTerminal's broker login (or the program using "
                       "the port) and retry, or use the manual paste option")
                 .arg(failed_port_);
         case BindError::PortBlocked:

@@ -3843,85 +3843,20 @@ set_source_files_properties(
 # Fincept/FinceptTerminal and fincept-terminal(.desktop); releases of this
 # terminal used them too, which made the two corrupt each other's data. None of
 # the derived names can equal those, and none depends on the version.
-set(FINCEPT_EDITION_ID "community" CACHE STRING
+set(FINCEPT_EDITION_ID "finterminal" CACHE STRING
     "Edition id: names this build's data root, settings store, desktop entry and bundle id")
-if(NOT FINCEPT_EDITION_ID MATCHES "^[a-z][a-z0-9]*$")
-    message(FATAL_ERROR "FINCEPT_EDITION_ID='${FINCEPT_EDITION_ID}' must be lower-case letters and digits, "
-                        "starting with a letter")
-endif()
-string(SUBSTRING "${FINCEPT_EDITION_ID}" 0 1 _fincept_ed_head)
-string(SUBSTRING "${FINCEPT_EDITION_ID}" 1 -1 _fincept_ed_tail)
-string(TOUPPER "${_fincept_ed_head}" _fincept_ed_head)
-set(FINCEPT_EDITION_CAMEL "${_fincept_ed_head}${_fincept_ed_tail}")                  # Community
-set(FINCEPT_EDITION_DATA_DIR_NAME "com.fincept.terminal.${FINCEPT_EDITION_ID}")      # data root folder
-# Not "Fincept": the private build's uninstaller deletes HKCU\Software\Fincept
-# and ~/.cache/Fincept recursively.
-set(FINCEPT_EDITION_SETTINGS_ORG "Fincept${FINCEPT_EDITION_CAMEL}")                  # QSettings organization
-set(FINCEPT_EDITION_SETTINGS_APP "FinceptTerminal${FINCEPT_EDITION_CAMEL}")          # QSettings app, WM_CLASS
-set(FINCEPT_EDITION_DESKTOP_ID "fincept-terminal-${FINCEPT_EDITION_ID}")             # .desktop / icon / app_id
-set(FINCEPT_EDITION_BUNDLE_ID "com.fincept.terminal.${FINCEPT_EDITION_ID}")          # macOS, AppStream, IFW
-# The Flatpak app id is already published (release .flatpak bundles); changing
-# it would strand every installed user's sandbox data. It stays, and the
-# sandbox (one per app id) plus the edition data root inside it isolate it.
-set(FINCEPT_EDITION_FLATPAK_ID "in.fincept.FinceptTerminal")
-set(FINCEPT_EDITION_SHORTCUT_NAME "Fincept Terminal ${FINCEPT_EDITION_CAMEL}")       # Start Menu folder / desktop link
-set(FINCEPT_EDITION_APP_BUNDLE_NAME "${FINCEPT_EDITION_SHORTCUT_NAME}")               # macOS .app name in the DMG
-# The private build's .deb is "fincept-terminal" in /opt/fincept-terminal with
-# /usr/bin/fincept-terminal: one shared package name made dpkg replace either
-# edition with the other.
-set(FINCEPT_EDITION_LINUX_PACKAGE "fincept-terminal-${FINCEPT_EDITION_ID}")          # .deb name, /usr/bin launcher
-set(FINCEPT_EDITION_LINUX_PREFIX "/opt/${FINCEPT_EDITION_LINUX_PACKAGE}")            # .deb install prefix
-set(FINCEPT_EDITION_TEMP_PREFIX "fincept-${FINCEPT_EDITION_ID}")                     # instance socket, boot log, screenshots
-set(FINCEPT_EDITION_MCP_SERVER_NAME "fincept_${FINCEPT_EDITION_ID}")                 # MCP client config entry
-foreach(_fincept_shared "com.fincept.terminal" "Fincept" "FinceptTerminal" "fincept-terminal"
-                        "/opt/fincept-terminal" "fincept" "fincept_terminal" "Fincept Terminal")
-    foreach(_fincept_name FINCEPT_EDITION_DATA_DIR_NAME FINCEPT_EDITION_SETTINGS_ORG FINCEPT_EDITION_SETTINGS_APP
-                          FINCEPT_EDITION_DESKTOP_ID FINCEPT_EDITION_BUNDLE_ID FINCEPT_EDITION_APP_BUNDLE_NAME
-                          FINCEPT_EDITION_LINUX_PACKAGE FINCEPT_EDITION_LINUX_PREFIX FINCEPT_EDITION_TEMP_PREFIX
-                          FINCEPT_EDITION_MCP_SERVER_NAME)
-        if("${${_fincept_name}}" STREQUAL "${_fincept_shared}")
-            message(FATAL_ERROR "${_fincept_name}='${${_fincept_name}}' is a name the private build uses")
-        endif()
-    endforeach()
-endforeach()
-# Static packaging files that must carry the derived names (fail at configure
-# time instead of shipping a desktop entry or installer that points elsewhere).
-foreach(_fincept_check
-        "packaging/linux/fincept-terminal.desktop|StartupWMClass=${FINCEPT_EDITION_SETTINGS_APP}"
-        "packaging/linux/fincept-terminal.desktop|Icon=${FINCEPT_EDITION_DESKTOP_ID}"
-        "packaging/linux/fincept-terminal.appdata.xml|<id>${FINCEPT_EDITION_BUNDLE_ID}</id>"
-        "packaging/linux/fincept-terminal.appdata.xml|${FINCEPT_EDITION_DESKTOP_ID}.desktop</launchable>"
-        "packaging/flatpak/in.fincept.FinceptTerminal.desktop|StartupWMClass=${FINCEPT_EDITION_SETTINGS_APP}"
-        "packaging/installer/packages/com.fincept.terminal.core/meta/installscript.qs|${FINCEPT_EDITION_DESKTOP_ID}.desktop"
-        "packaging/installer/packages/com.fincept.terminal.core/meta/installscript.qs|${FINCEPT_EDITION_SHORTCUT_NAME}.lnk"
-        "packaging/installer/packages/com.fincept.terminal.core/meta/installscript.qs|${FINCEPT_EDITION_DATA_DIR_NAME}"
-        "packaging/uninstall/uninstall.sh|PKG_NAME=\"${FINCEPT_EDITION_LINUX_PACKAGE}\""
-        "packaging/uninstall/uninstall.sh|APP_ID=\"${FINCEPT_EDITION_BUNDLE_ID}\""
-        "packaging/uninstall/uninstall.sh|MAC_APP_NAME=\"${FINCEPT_EDITION_APP_BUNDLE_NAME}.app\""
-        "scripts/fincept_paths.py|EDITION_DATA_DIR_NAME = \"${FINCEPT_EDITION_DATA_DIR_NAME}\""
-        # Release pipeline files live beside fincept-qt/ and are checked only
-        # when present (a Flatpak or tarball build may carry fincept-qt/ alone).
-        "?../.github/workflows/release.yml|PREFIX=\"${FINCEPT_EDITION_LINUX_PREFIX}\""
-        "?../.github/workflows/release.yml|LAUNCHER=\"${FINCEPT_EDITION_LINUX_PACKAGE}\""
-        "?../.github/workflows/release.yml|Package: ${FINCEPT_EDITION_LINUX_PACKAGE}"
-        "?../.github/workflows/release.yml|/usr/bin/${FINCEPT_EDITION_LINUX_PACKAGE}"
-        "?../.github/workflows/release.yml|${FINCEPT_EDITION_APP_BUNDLE_NAME}.app")
-    string(REPLACE "|" ";" _fincept_check "${_fincept_check}")
-    list(GET _fincept_check 0 _fincept_file)
-    list(GET _fincept_check 1 _fincept_text)
-    if(_fincept_file MATCHES "^\\?")
-        string(SUBSTRING "${_fincept_file}" 1 -1 _fincept_file)
-        if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${_fincept_file}")
-            continue()
-        endif()
-    endif()
-    file(READ "${CMAKE_CURRENT_SOURCE_DIR}/${_fincept_file}" _fincept_content)
-    string(FIND "${_fincept_content}" "${_fincept_text}" _fincept_at)
-    if(_fincept_at EQUAL -1)
-        message(FATAL_ERROR "Edition identity: ${_fincept_file} does not contain '${_fincept_text}' "
-                            "(FINCEPT_EDITION_ID=${FINCEPT_EDITION_ID}) — update the packaging file")
-    endif()
-endforeach()
+set(FINCEPT_EDITION_DATA_DIR_NAME "com.finterminal.app")
+set(FINCEPT_EDITION_SETTINGS_ORG "FinTerminal")
+set(FINCEPT_EDITION_SETTINGS_APP "FinTerminal")
+set(FINCEPT_EDITION_DESKTOP_ID "finterminal")
+set(FINCEPT_EDITION_BUNDLE_ID "com.finterminal.app")
+set(FINCEPT_EDITION_FLATPAK_ID "io.github.selfboss2025_ai.FinTerm")
+set(FINCEPT_EDITION_SHORTCUT_NAME "FinTerminal")
+set(FINCEPT_EDITION_APP_BUNDLE_NAME "FinTerminal")
+set(FINCEPT_EDITION_LINUX_PACKAGE "finterminal")
+set(FINCEPT_EDITION_LINUX_PREFIX "/opt/finterminal")
+set(FINCEPT_EDITION_TEMP_PREFIX "finterminal")
+set(FINCEPT_EDITION_MCP_SERVER_NAME "finterminal")
 message(STATUS "Edition: ${FINCEPT_EDITION_ID} (data root ${FINCEPT_EDITION_DATA_DIR_NAME}, "
                "settings ${FINCEPT_EDITION_SETTINGS_ORG}/${FINCEPT_EDITION_SETTINGS_APP}, "
                "desktop id ${FINCEPT_EDITION_DESKTOP_ID}, bundle id ${FINCEPT_EDITION_BUNDLE_ID})")
@@ -4036,15 +3971,16 @@ qt6_add_lupdate(FinceptTerminal
     OPTIONS -no-obsolete -locations none
 )
 
-# ── macOS bundle properties ───────────────────────────────────────────────────
+# ── Output & macOS bundle properties ─────────────────────────────────────────
+set_target_properties(FinceptTerminal PROPERTIES OUTPUT_NAME "FinTerminal")
 if(APPLE)
     set_target_properties(FinceptTerminal PROPERTIES
         MACOSX_BUNDLE_GUI_IDENTIFIER    "${FINCEPT_EDITION_BUNDLE_ID}"
-        MACOSX_BUNDLE_BUNDLE_NAME       "Fincept Terminal"
+        MACOSX_BUNDLE_BUNDLE_NAME       "FinTerminal"
         MACOSX_BUNDLE_BUNDLE_VERSION    "${CMAKE_PROJECT_VERSION}"
         MACOSX_BUNDLE_SHORT_VERSION_STRING "${CMAKE_PROJECT_VERSION}"
         MACOSX_BUNDLE_ICON_FILE         "fincept.icns"
-        MACOSX_BUNDLE_COPYRIGHT         "Copyright © 2025 Fincept Corporation"
+        MACOSX_BUNDLE_COPYRIGHT         "Copyright © 2026 FinTerminal"
     )
     # Copy .icns into the bundle Resources folder at build time
     set(_FINCEPT_ICNS "${CMAKE_CURRENT_SOURCE_DIR}/resources/fincept.icns")

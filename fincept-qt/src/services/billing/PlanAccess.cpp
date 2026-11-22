@@ -41,43 +41,27 @@ PlanAccess::PlanAccess() {
 }
 
 bool PlanAccess::is_paid() const {
-    const auto& auth = auth::AuthManager::instance();
-    return auth.is_authenticated() && auth.session().has_paid_plan();
+    return true;
 }
 
-const PlanPrice* PlanAccess::price(const QString& category) const {
-    if (!has_table_)
-        return nullptr;
-    for (const auto& p : prices_) {
-        if (p.category == category)
-            return &p;
-    }
+const PlanPrice* PlanAccess::price(const QString&) const {
     return nullptr;
 }
 
-double PlanAccess::effective_cost(const QString& category, double list_credits) const {
-    const PlanPrice* p = price(category);
-    if (!p || !is_paid())
-        return list_credits;
-    return list_credits * p->pro_share;
+double PlanAccess::effective_cost(const QString&, double) const {
+    return 0.0;
 }
 
-bool PlanAccess::included(const QString& category) const {
-    const PlanPrice* p = price(category);
-    return p && p->included_with_pro && is_paid();
+bool PlanAccess::included(const QString&) const {
+    return true;
 }
 
-QString PlanAccess::upgrade_note(const QString& category) const {
-    const PlanPrice* p = price(category);
-    if (!p || is_paid() || !p->cheaper_on_pro())
-        return {};
-    return p->included_with_pro ? tr("%1 is included with Pro ($10/month) — no credits used.").arg(p->label)
-                                : tr("%1 is %2 with Pro ($10/month).").arg(p->label, p->pro_price.toLower());
+QString PlanAccess::upgrade_note(const QString&) const {
+    return {};
 }
 
-QString PlanAccess::with_upgrade_note(const QString& text, const QString& category) const {
-    const QString note = upgrade_note(category);
-    return note.isEmpty() ? text : text + QLatin1Char(' ') + note;
+QString PlanAccess::with_upgrade_note(const QString& text, const QString&) const {
+    return text;
 }
 
 QStringList PlanAccess::included_labels() const {
@@ -195,60 +179,8 @@ void PlanAccess::apply(const QJsonObject& data) {
     has_table_ = !prices_.isEmpty();
 }
 
-void PlanAccess::refresh(bool force) {
-    const QString account = account_key();
-    if (account.isEmpty())
-        return;
-    const qint64 now = QDateTime::currentMSecsSinceEpoch();
-    if (!force && fetched_ms_ > 0 && now - fetched_ms_ < kPlanAccessFreshMs)
-        return;
-    if (in_flight_) {
-        refetch_wanted_ = refetch_wanted_ || force;
-        return;
-    }
-    in_flight_ = true;
-    const QString signature = plan_signature();
-    fincept::HttpClient::instance().get(
-        QStringLiteral("/user/entitlements"),
-        [this, account, signature](fincept::Result<QJsonDocument> result) {
-            in_flight_ = false;
-            fetched_ms_ = QDateTime::currentMSecsSinceEpoch();
-            signature_ = signature;
-            if (account != account_key()) {
-                // Signed out, or another account signed in, while this was in flight.
-                refetch_wanted_ = false;
-                on_auth_changed();
-                return;
-            }
-            if (result.is_err()) {
-                // 404: a server without the route — nothing to show, keep any cached table
-                // out of sight too (it describes a server that is not the one answering).
-                const int status = fincept::HttpClient::status_from_error(result.error());
-                if (status == 404 && has_table_) {
-                    has_table_ = false;
-                    emit changed();
-                }
-                LOG_DEBUG(kPlanAccessTag, QString("Plan table not available (HTTP %1)").arg(status));
-            } else {
-                const QJsonObject body = result.value().object();
-                const QJsonObject data = body.value(QStringLiteral("data")).toObject();
-                if (body.value(QStringLiteral("success")).toBool(true) && !data.isEmpty()) {
-                    apply(data);
-                    const QJsonObject cached{{QStringLiteral("account"), account}, {QStringLiteral("data"), data}};
-                    const auto saved = SettingsRepository::instance().set(
-                        kPlanAccessCacheKey, QString::fromUtf8(QJsonDocument(cached).toJson(QJsonDocument::Compact)),
-                        QStringLiteral("billing"));
-                    if (saved.is_err())
-                        LOG_DEBUG(kPlanAccessTag, "Could not cache the plan table");
-                    emit changed();
-                }
-            }
-            if (refetch_wanted_) {
-                refetch_wanted_ = false;
-                refresh(true);
-            }
-        },
-        this);
+void PlanAccess::refresh(bool) {
+    // FinTerminal is completely free — no server-side plan table or billing checks.
 }
 
 } // namespace fincept::billing

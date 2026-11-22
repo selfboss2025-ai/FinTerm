@@ -120,7 +120,7 @@ QWidget* TrademarksScreen::build_page() {
     pvl->addWidget(heading("1", tr("FINCEPT TRADEMARKS")));
     // Trademark marks themselves are brand strings — shown verbatim, not translated.
     pvl->addWidget(bullet("Fincept (TM)"));
-    pvl->addWidget(bullet("Fincept Terminal (TM)"));
+    pvl->addWidget(bullet("FinTerminal (TM)"));
     pvl->addWidget(bullet("Fincept Corporation (TM)"));
     pvl->addWidget(bullet(tr("Fincept Logo and associated visual identities")));
 
@@ -149,7 +149,7 @@ QWidget* TrademarksScreen::build_page() {
     pvl->addWidget(heading("4", tr("COPYRIGHT NOTICE")));
     pvl->addWidget(body(tr("Copyright 2024-2026 Fincept Corporation. All rights reserved.")));
     pvl->addWidget(body(tr("This software is licensed under AGPL-3.0-or-later, and under no other licence. "
-                           "Fincept Terminal Enterprise is a separate closed-source product and is not "
+                           "FinTerminal Enterprise is a separate closed-source product and is not "
                            "covered by this licence.")));
 
     pvl->addWidget(heading("5", tr("DATA PROVIDER ACKNOWLEDGMENTS")));
@@ -166,7 +166,7 @@ QWidget* TrademarksScreen::build_page() {
                              "Database License (ODbL)")));
 
     pvl->addWidget(heading("6", tr("THIRD-PARTY SOFTWARE")));
-    pvl->addWidget(body(tr("Fincept Terminal is built on the following open source components, "
+    pvl->addWidget(body(tr("FinTerminal is built on the following open source components, "
                            "used under their respective licenses:")));
     // Component/license names are proper nouns — shown verbatim.
     pvl->addWidget(bullet("Qt 6 — The Qt Company (LGPL-3.0)"));

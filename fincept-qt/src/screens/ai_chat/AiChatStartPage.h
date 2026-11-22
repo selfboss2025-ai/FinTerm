@@ -9,7 +9,7 @@
 //   [card] [card]      [card] [card]        [card] …                                           (re-flows: 5 → 3 → 2 → 1 columns)
 //   RECENT SESSIONS
 //   Fed path after CPI · 14:32 …
-//   Multi-agent research for firms, AI credits included: Fincept Terminal Enterprise ↗
+//   Multi-agent research for firms, AI credits included: FinTerminal Enterprise ↗
 //
 // Cards only FILL the composer (prompt_chosen) — they never send. Scrolls when short, so
 // nothing is cut or blank at any size.

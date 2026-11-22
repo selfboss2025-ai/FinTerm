@@ -1,4 +1,4 @@
-# Fincept Terminal — Architecture
+# FinTerminal — Architecture
 
 **Status:** Living document. Reflects the codebase as of 2026-05 and the target state we are converging on.
 **Audience:** Contributors (C++ and Python), maintainers, and AI assistants modifying the codebase.
@@ -10,7 +10,7 @@
 
 ## 1. What this codebase is
 
-Fincept Terminal v4 is a native C++20/Qt6 desktop application — a Bloomberg-style multi-window financial workstation with embedded Python analytics, multi-broker trading, AI agents, and an in-process data plane.
+FinTerminal v4 is a native C++20/Qt6 desktop application — a Bloomberg-style multi-window financial workstation with embedded Python analytics, multi-broker trading, AI agents, and an in-process data plane.
 
 | Dimension | Scale |
 |-----------|-------|
@@ -495,7 +495,7 @@ These are the deltas between current and target state. Each has a phase in [`REF
 
 ## 12. Contact and process
 
-- **Issues:** https://github.com/Fincept-Corporation/FinceptTerminal/issues
+- **Issues:** https://github.com/selfboss2025-ai/FinTerm/issues
 - **Contributing:** see `CONTRIBUTING.md`, `CPP_CONTRIBUTOR_GUIDE.md`, `PYTHON_CONTRIBUTOR_GUIDE.md`.
 - **Architecture decisions:** add an ADR under `docs/adr/` when reversing or refining a section here.
 - **Discord:** https://discord.gg/ae87a8ygbN

@@ -14,7 +14,7 @@
 // Sources, in order, with nothing invented: (1) the terminal's existing Yahoo Finance path
 // (EquityResearchService: company info + financial statements, both cached there); (2) for US
 // SEC filers only, SEC EDGAR company facts (scripts/Analytics/corporateFinance/valuation/
-// sec_company_facts.py: declared User-Agent "Fincept Terminal support@fincept.in", at most 8
+// sec_company_facts.py: declared User-Agent "FinTerminal support@fincept.in", at most 8
 // requests per second) fills the fields Yahoo did not give. A field neither source has stays NaN and
 // is listed in `missing`. Each filled field records its source.
 //

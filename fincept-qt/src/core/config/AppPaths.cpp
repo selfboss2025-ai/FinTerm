@@ -58,12 +58,12 @@ RootOverride app_paths_evaluate_override(const QString& raw) {
     const QString dir = QDir::cleanPath(raw);
     QString why;
     if (app_paths_is_same_or_inside(dir, AppPaths::legacy_shared_root())) {
-        why = QStringLiteral("it is the com.fincept.terminal folder, which the private build of Fincept Terminal uses");
+        why = QStringLiteral("it is the com.fincept.terminal folder, which the private build of FinTerminal uses");
     } else {
         for (const char* rel : edition::kPrivateBuildFingerprints) {
             const QFileInfo fi(QDir(dir).filePath(QString::fromLatin1(rel)));
             if (fi.exists() || fi.isSymLink()) {
-                why = QStringLiteral("it holds %1, a file only the private build of Fincept Terminal writes")
+                why = QStringLiteral("it holds %1, a file only the private build of FinTerminal writes")
                           .arg(QString::fromLatin1(rel));
                 break;
             }

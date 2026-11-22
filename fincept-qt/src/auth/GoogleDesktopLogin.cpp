@@ -181,13 +181,13 @@ void GoogleDesktopLogin::on_new_connection() {
         if (code.isEmpty()) {
             // Secondary request (e.g. /favicon.ico) or callback without a code.
             // Keep the listener alive — the real callback may still be coming.
-            send_page(sock, tr("Fincept Terminal"), tr("Waiting for sign-in to complete…"));
+            send_page(sock, tr("FinTerminal"), tr("Waiting for sign-in to complete…"));
             sock->disconnectFromHost();
             return;
         }
 
         if (done_) {
-            send_page(sock, tr("Fincept Terminal"), tr("Login already completed — you can close this tab."));
+            send_page(sock, tr("FinTerminal"), tr("Login already completed — you can close this tab."));
             sock->disconnectFromHost();
             return;
         }
@@ -197,7 +197,7 @@ void GoogleDesktopLogin::on_new_connection() {
 
 void GoogleDesktopLogin::finish_success(const QString& code, QTcpSocket* sock) {
     done_ = true;
-    send_page(sock, tr("Login complete"), tr("You can close this tab and return to Fincept Terminal."));
+    send_page(sock, tr("Login complete"), tr("You can close this tab and return to FinTerminal."));
     sock->disconnectFromHost();
     LOG_INFO("GoogleLogin", "Handoff code received via loopback");
     emit code_received(code);

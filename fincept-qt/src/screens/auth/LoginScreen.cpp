@@ -673,10 +673,7 @@ void LoginScreen::retranslateUi() {
     if (signup_btn_)
         signup_btn_->setText(tr("SIGN UP"));
     if (auto* ent_hint = findChild<QLabel*>(QStringLiteral("loginEnterpriseHint")))
-        ui::enterprise::set_mention_text(
-            ent_hint, tr("Enterprise customer? Enterprise has its own sign-in and installer"),
-            tr("fincept.in/enterprise ↗"),
-            ui::enterprise::url_with_ref(ui::enterprise::site_url(), QStringLiteral("login")));
+        ent_hint->setVisible(false);
 
     if (mfa_title_)
         mfa_title_->setText(tr("TWO-FACTOR AUTH"));

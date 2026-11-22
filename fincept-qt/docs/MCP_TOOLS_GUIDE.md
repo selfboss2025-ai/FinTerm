@@ -1,7 +1,7 @@
 # MCP Tools — Author & Maintainer Guide
 
 This guide documents how the Model Context Protocol (MCP) tool system works
-inside Fincept Terminal after the 6-phase refactor (see
+inside FinTerminal after the 6-phase refactor (see
 `fincept-qt/plans/mcp-refactor-INDEX.md`).
 
 If you are adding a new tool, jump to **§5 Adding a new tool**. If you are

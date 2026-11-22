@@ -1,5 +1,5 @@
 #pragma once
-// VersionLabel.h — the "Fincept Terminal vX.Y.Z" tag in the top-left corner of
+// VersionLabel.h — the "FinTerminal vX.Y.Z" tag in the top-left corner of
 // the screens a user meets before the terminal opens: sign-in, sign-up,
 // password reset, the PIN lock and first-time setup. It is what support asks
 // for first, and these screens are exactly where a user is stuck when they ask.
@@ -17,8 +17,8 @@ namespace fincept::ui {
 
 inline QLabel* make_version_label(QWidget* parent) {
     const QString version = QCoreApplication::applicationVersion();
-    auto* label = new QLabel(version.isEmpty() ? QStringLiteral("Fincept Terminal")
-                                               : QStringLiteral("Fincept Terminal v%1").arg(version),
+    auto* label = new QLabel(version.isEmpty() ? QStringLiteral("FinTerminal")
+                                               : QStringLiteral("FinTerminal v%1").arg(version),
                              parent);
     label->setObjectName(QStringLiteral("dimLabel"));
     label->setTextInteractionFlags(Qt::TextSelectableByMouse); // copyable into a support request

@@ -412,7 +412,7 @@ void NotificationsSection::build_ui() {
 
             NotificationRequest req;
             req.title = tr("Fincept Test");
-            req.message = tr("This is a test notification from Fincept Terminal.");
+            req.message = tr("This is a test notification from FinTerminal.");
             req.trigger = NotifTrigger::Manual;
 
             // Transport errors can echo the request URL, which for Telegram embeds

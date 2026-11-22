@@ -110,7 +110,7 @@ struct ToolPolicyFacts {
 QJsonObject tool_entry(const McpProvider::ToolAuditInfo& info, const QString& advertised) {
     QString description = info.description.trimmed();
     if (needs_approval(info.auth_required))
-        description += QStringLiteral(" [Every call needs the user's approval in Fincept Terminal.]");
+        description += QStringLiteral(" [Every call needs the user's approval in FinTerminal.]");
     const bool read_only = info.category == QLatin1String(core::kCategoryUiRead);
     // destructiveHint is what clients use to decide whether a call may run
     // without asking their own user (Codex `default_tools_approval_mode =
@@ -304,7 +304,7 @@ class TerminalBackend final : public server::McpServerBackend {
         // id says which one this is (also in GET /health, checked by the stdio
         // bridge and the self-check before they send a token).
         return QJsonObject{{QStringLiteral("name"), QStringLiteral("fincept-terminal")},
-                           {QStringLiteral("title"), QStringLiteral("Fincept Terminal (%1 edition)")
+                           {QStringLiteral("title"), QStringLiteral("FinTerminal (%1 edition)")
                                                          .arg(QString::fromLatin1(edition::kId))},
                            {QStringLiteral("version"), version},
                            {QStringLiteral("edition"), QString::fromLatin1(edition::kId)}};
@@ -344,7 +344,7 @@ class TerminalBackend final : public server::McpServerBackend {
     /// START the tool and return; the result arrives through the continuation.
     static void start_on_pool(const std::shared_ptr<BackendShared>& state, const CallRequest& req, const CallDone& done) {
         if (!state->accepting.load()) {
-            done(refused(QStringLiteral("Fincept Terminal's MCP server is stopping; the call was not run."),
+            done(refused(QStringLiteral("FinTerminal's MCP server is stopping; the call was not run."),
                          QStringLiteral("denied — server stopping"), true));
             return;
         }
@@ -360,7 +360,7 @@ class TerminalBackend final : public server::McpServerBackend {
 
         // ── The user's permissions for external agents ──
         if (is_ui_control(req.tool.category) && !state->allow_ui_control.load()) {
-            done(refused(QStringLiteral("The user has set external agents to look-only in Fincept Terminal (Settings › AI "
+            done(refused(QStringLiteral("The user has set external agents to look-only in FinTerminal (Settings › AI "
                                         "Agents (MCP)): %1 cannot open, arrange or operate screens. Use ui_overview, "
                                         "ui_snapshot, ui_read and ui_screenshot, or ask the user to allow UI control.")
                              .arg(internal),
@@ -399,16 +399,16 @@ class TerminalBackend final : public server::McpServerBackend {
                     approved = true;
                     break;
                 case ToolApprovalVerdict::Denied:
-                    done(refused(QStringLiteral("Denied by the user in Fincept Terminal"),
+                    done(refused(QStringLiteral("Denied by the user in FinTerminal"),
                                  QStringLiteral("denied by the user"), true));
                     return;
                 case ToolApprovalVerdict::TimedOut:
-                    done(refused(QStringLiteral("Approval timed out — ask the user to approve it in Fincept Terminal "
+                    done(refused(QStringLiteral("Approval timed out — ask the user to approve it in FinTerminal "
                                                 "and retry"),
                                  QStringLiteral("approval timed out"), true));
                     return;
                 case ToolApprovalVerdict::Unavailable:
-                    done(refused(QStringLiteral("Fincept Terminal could not ask the user to approve this call (no "
+                    done(refused(QStringLiteral("FinTerminal could not ask the user to approve this call (no "
                                                 "terminal window is open), so it was not run."),
                                  QStringLiteral("denied — no terminal window to ask"), true));
                     return;

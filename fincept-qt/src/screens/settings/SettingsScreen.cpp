@@ -428,7 +428,7 @@ void SettingsScreen::retranslateUi() {
             scope_headers_[i]->setText(tr(scope_header_keys_[i].toUtf8().constData()));
     }
     if (auto* ent_link = findChild<QPushButton*>(QStringLiteral("settingsEnterpriseLink")))
-        ent_link->setText(tr("Fincept Terminal Enterprise ↗"));
+        ent_link->setText(tr("FinTerminal Enterprise ↗"));
     fit_nav_width(); // the footer link's length depends on the language
 }
 
@@ -438,7 +438,7 @@ void SettingsScreen::fit_nav_width() {
     // 200px at the default font size; wider for larger fonts so the section
     // names are not cut off — and never narrower than the footer link, the
     // longest text in the panel (it lost its arrow at 14 px and read
-    // "Fincept Terminal Enterpris" at 24 px). Measured from font metrics, not
+    // "FinTerminal Enterpris" at 24 px). Measured from font metrics, not
     // sizeHint(): this also runs inside a theme_changed handler, where asking
     // a widget for its size hint styles it on the spot.
     int width = qMax(200, 200 * ui::fonts::font_px(0) / ui::ThemeManager::kDefaultFontPx);

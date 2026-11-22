@@ -991,7 +991,7 @@ using namespace ui_observe_detail;
 void ui_overview(const QJsonObject& /*args*/, Reply reply) {
     QStringList lines;
     const host::TerminalStatus st = host::terminal_status();
-    QString header = QStringLiteral("Fincept Terminal %1").arg(st.version);
+    QString header = QStringLiteral("FinTerminal %1").arg(st.version);
     header += st.signed_in ? QStringLiteral(" · signed in (%1)").arg(st.plan)
                            : QStringLiteral(" · not signed in (the sign-in screen is showing)");
     if (!st.layout.isEmpty())

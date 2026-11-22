@@ -207,7 +207,7 @@ SelfCheckReport run_mcp_self_check(const SelfCheckOptions& options) {
             ours ? QStringLiteral("this terminal (%1 edition)").arg(edition)
                  : !r.ok ? QStringLiteral("no answer at %1: %2").arg(url.toString(), r.error)
                  : edition.isEmpty()
-                     ? QStringLiteral("the program on port %1 is not this Fincept Terminal (no edition reported); "
+                     ? QStringLiteral("the program on port %1 is not this FinTerminal (no edition reported); "
                                       "no token was sent")
                            .arg(url.port())
                      : QStringLiteral("port %1 is answered by the %2 edition, not this %3 edition; no token was sent")

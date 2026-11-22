@@ -57,10 +57,10 @@ ToolResult rt_refused(ToolApprovalVerdict v, const QString& what) {
             text = QStringLiteral("The user declined: %1. Do not retry it; tell the user what you wanted to do.").arg(what);
             break;
         case ToolApprovalVerdict::TimedOut:
-            text = QStringLiteral("Nobody approved \"%1\" in Fincept Terminal in time, so it was not done.").arg(what);
+            text = QStringLiteral("Nobody approved \"%1\" in FinTerminal in time, so it was not done.").arg(what);
             break;
         case ToolApprovalVerdict::Unavailable:
-            text = QStringLiteral("\"%1\" needs the user's approval, but no Fincept Terminal window is open to ask in.")
+            text = QStringLiteral("\"%1\" needs the user's approval, but no FinTerminal window is open to ask in.")
                        .arg(what);
             break;
     }

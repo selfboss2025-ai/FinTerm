@@ -364,7 +364,7 @@ void LoggingSection::retranslateUi() {
 QString LoggingSection::diagnostics_text() const {
     auto& log = Logger::instance();
     QStringList out;
-    out << QStringLiteral("Fincept Terminal diagnostics (redacted)");
+    out << QStringLiteral("FinTerminal diagnostics (redacted)");
 #ifdef NDEBUG
     const QString build = QStringLiteral("release");
 #else

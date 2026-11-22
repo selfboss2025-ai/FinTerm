@@ -2,7 +2,7 @@
 
 ## Our Pledge
 
-We pledge to make participation in the Fincept Terminal community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity.
+We pledge to make participation in the FinTerminal community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity.
 
 We pledge to act in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
@@ -128,8 +128,8 @@ Adapted from [Contributor Covenant](https://www.contributor-covenant.org), versi
 ## Contact
 
 - **Email:** support@fincept.in
-- **GitHub Issues:** https://github.com/Fincept-Corporation/FinceptTerminal/issues
-- **GitHub Discussions:** https://github.com/Fincept-Corporation/FinceptTerminal/discussions
+- **GitHub Issues:** https://github.com/selfboss2025-ai/FinTerm/issues
+- **GitHub Discussions:** https://github.com/selfboss2025-ai/FinTerm/discussions
 
 ---
 

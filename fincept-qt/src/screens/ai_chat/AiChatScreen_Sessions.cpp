@@ -437,7 +437,7 @@ QString AiChatScreen::conversation_markdown(const QString& session_id) const {
                               : session_title(session_id);
     QString md = QStringLiteral("# ") + title + QStringLiteral("\n\n");
     md += QStringLiteral("_") +
-          tr("Exported from Fincept Terminal · %1").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm")) +
+          tr("Exported from FinTerminal · %1").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm")) +
           QStringLiteral("_\n\n");
     for (int i = 0; i < msgs.size(); ++i) {
         const auto& m = msgs[i];

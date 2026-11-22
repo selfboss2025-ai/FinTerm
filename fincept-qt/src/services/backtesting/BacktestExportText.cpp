@@ -118,7 +118,7 @@ QStringList bt_export_header(const BtExportMeta& meta) {
                             "meaning");
     const QString when =
         meta.generated_at.isEmpty() ? QDateTime::currentDateTime().toString(Qt::ISODate) : meta.generated_at;
-    h << QStringLiteral("# Fincept Terminal backtesting export (%1), generated %2")
+    h << QStringLiteral("# FinTerminal backtesting export (%1), generated %2")
              .arg(meta.command.isEmpty() ? QStringLiteral("backtest") : meta.command, when);
     QString engine = meta.engine;
     if (!meta.engine_implementation.isEmpty())

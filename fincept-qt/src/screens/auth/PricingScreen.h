@@ -21,7 +21,7 @@ namespace fincept::screens {
 
 /// PLANS & PRICING — three equal cards: FREE and PRO (fetched from
 /// /cashfree/plans; content such as credits and features is backend-owned) and
-/// a static Fincept Terminal Enterprise card (separate product, separate
+/// a static FinTerminal Enterprise card (separate product, separate
 /// account). Reached from the toolbar plan badge, Profile → Billing, low-credit
 /// prompts and the "billing.plans" action; free accounts also see it once per
 /// release after signing in (WindowFrame_Auth.cpp).

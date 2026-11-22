@@ -60,7 +60,7 @@ QString ss_action_subtitle(const ActionDef& def) {
         {"terminal.lock_now", QT_TRANSLATE_NOOP("CommandBar", "Locks the terminal; your PIN unlocks it")},
         {"help.replay_tour", QT_TRANSLATE_NOOP("CommandBar", "Shows the short tour of the terminal again")},
         {"billing.plans", QT_TRANSLATE_NOOP("CommandBar", "Opens Plans & Pricing")},
-        {"help.enterprise", QT_TRANSLATE_NOOP("CommandBar", "About Fincept Terminal Enterprise")},
+        {"help.enterprise", QT_TRANSLATE_NOOP("CommandBar", "About FinTerminal Enterprise")},
         {"cmdbar.toggle", QT_TRANSLATE_NOOP("CommandBar", "Shows the command line at the bottom of the window")},
         {"palette.open", QT_TRANSLATE_NOOP("CommandBar", "Opens the command palette")},
         {"layout.tile_2x2", QT_TRANSLATE_NOOP("CommandBar", "Arranges the panels in a 2×2 grid")},

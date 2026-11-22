@@ -128,7 +128,7 @@ const ScreenRow kScreens[] = {
     {"help", QT_TRANSLATE_NOOP("CommandSeed", "Help Center"), "helpcenter, faq", "help, faq, guide",
      QT_TRANSLATE_NOOP("CommandSeed", "Help and FAQs")},
     {"about", QT_TRANSLATE_NOOP("CommandSeed", "About"), "about, info, version", "about, information, version",
-     QT_TRANSLATE_NOOP("CommandSeed", "About Fincept Terminal")},
+     QT_TRANSLATE_NOOP("CommandSeed", "About FinTerminal")},
     {"support", QT_TRANSLATE_NOOP("CommandSeed", "Support"), "support, ticket", "support, ticket, assistance, problem",
      QT_TRANSLATE_NOOP("CommandSeed", "Support tickets")},
     {"contact", QT_TRANSLATE_NOOP("CommandSeed", "Contact"), "contact", "contact, email, sales",

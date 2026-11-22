@@ -40,7 +40,7 @@ void DesktopNotifier::init() {
     if (ico.isNull())
         ico = qApp->style()->standardIcon(QStyle::SP_MessageBoxInformation);
     tray_->setIcon(ico);
-    tray_->setToolTip(QStringLiteral("Fincept Terminal"));
+    tray_->setToolTip(QStringLiteral("FinTerminal"));
 
     auto* menu = new QMenu();
     menu->addAction(QStringLiteral("Show Fincept"), qApp, []() {
@@ -76,7 +76,7 @@ void DesktopNotifier::init() {
     // toast was silent. Mirror each one to a native OS notification.
     connect(&ToastService::instance(), &ToastService::posted, this, [this](const ToastService::Notification& n) {
         const QString title = n.source.startsWith(QStringLiteral("scan:")) ? QStringLiteral("Fincept Alert")
-                                                                           : QStringLiteral("Fincept Terminal");
+                                                                           : QStringLiteral("FinTerminal");
         notify(title, n.message, static_cast<int>(n.severity));
         show_inapp(title, n.message, static_cast<int>(n.severity));
     });

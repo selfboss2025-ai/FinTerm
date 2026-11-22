@@ -583,8 +583,8 @@ void McpServersScreen::refresh_tools() {
         chk->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
         tools_table_->setItem(row, 0, chk);
         tools_table_->setItem(row, 1, new QTableWidgetItem(t.name));
-        // "Fincept Terminal" is the product name — kept in English for brand consistency.
-        auto* si = new QTableWidgetItem(QStringLiteral("Fincept Terminal"));
+        // "FinTerminal" is the product name — kept in English for brand consistency.
+        auto* si = new QTableWidgetItem(QStringLiteral("FinTerminal"));
         si->setData(Qt::UserRole, QString(INTERNAL_SERVER_ID));
         si->setForeground(QColor(colors::AMBER()));
         tools_table_->setItem(row, 2, si);

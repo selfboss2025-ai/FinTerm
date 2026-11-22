@@ -1354,7 +1354,7 @@ class CtbCredits : public CtbCard {
         row->addStretch(1);
         body_->addLayout(row);
         auto* ent = ui::enterprise::make_mention_label(card_);
-        ui::enterprise::set_mention_text(ent, ctb_tr("Teams and firms: Fincept Terminal Enterprise includes AI credits."),
+        ui::enterprise::set_mention_text(ent, ctb_tr("Teams and firms: FinTerminal Enterprise includes AI credits."),
                                          ctb_tr("See Enterprise ↗"),
                                          ui::enterprise::url_with_ref(ui::enterprise::site_url(), QStringLiteral("chat")));
         body_->addWidget(ent);

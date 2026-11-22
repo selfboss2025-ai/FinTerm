@@ -153,7 +153,7 @@ AboutScreen::AboutScreen(QWidget* parent) : QWidget(parent) {
 
         auto* left = new QVBoxLayout;
         left->setSpacing(4);
-        app_name_ = new QLabel(QStringLiteral("Fincept Terminal"));
+        app_name_ = new QLabel(QStringLiteral("FinTerminal"));
         app_name_->setStyleSheet(QString("color: %1; font-size: " + fincept::ui::fonts::px(1) + "px; font-weight: bold; background: transparent; ")
                                      .arg(ui::colors::TEXT_PRIMARY()));
         left->addWidget(app_name_);
@@ -211,7 +211,7 @@ AboutScreen::AboutScreen(QWidget* parent) : QWidget(parent) {
         pvl->addWidget(body);
 
         // Footer bar
-        copyright_ = new QLabel(tr("© 2024-2026 Fincept Corporation. All rights reserved."));
+        copyright_ = new QLabel(tr("FinTerminal — Free & Open Source Financial Intelligence Terminal (AGPL-3.0)."));
         copyright_->setStyleSheet(
             QString("color: %1; font-size: " + fincept::ui::fonts::px(-3) + "px; background: %2; "
                     "padding: 6px 14px; border-top: 1px solid %3; ")
@@ -255,61 +255,6 @@ AboutScreen::AboutScreen(QWidget* parent) : QWidget(parent) {
             // Footer link
             auto* foot = makeLinkLabel(QStringLiteral("gnu.org/licenses/agpl-3.0"),
                                        QStringLiteral("https://www.gnu.org/licenses/agpl-3.0.html"),
-                                       QString("color: %1; font-size: " + fincept::ui::fonts::px(-3) + "px; background: transparent; "
-                                               "padding: 6px 14px; border-top: 1px solid %2; ")
-                                           .arg(ui::colors::CYAN(), ui::colors::BORDER_DIM()));
-            pvl->addWidget(foot);
-
-            rl->addWidget(panel, 1);
-        }
-
-        // Enterprise — the separate closed-source product, not a licence for this build.
-        // Fincept no longer sells a commercial licence for the open-source edition;
-        // commercial, institutional and academic use is served by Enterprise instead.
-        {
-            auto* panel = makePanel();
-            auto* pvl = new QVBoxLayout(panel);
-            pvl->setContentsMargins(0, 0, 0, 0);
-            pvl->setSpacing(0);
-            enterprise_header_ = makePanelHeader("★", tr("FINCEPT TERMINAL ENTERPRISE"), ui::colors::AMBER);
-            pvl->addWidget(enterprise_header_);
-
-            auto* body = new QWidget(this);
-            body->setStyleSheet("background: transparent;");
-            auto* bvl = new QVBoxLayout(body);
-            bvl->setContentsMargins(14, 10, 14, 10);
-            bvl->setSpacing(6);
-            // No prices in-app: the Enterprise price list lives on the website.
-            enterprise_bullets_ = {makeBullet(tr("41 modules · private & proprietary datasets")),
-                                   makeBullet(tr("Multi-agent research · AI credits included")),
-                                   makeBullet(tr("SSO/SAML, audit logs & SLA-backed support")),
-                                   makeBullet(tr("Separate product & account · no copyleft"))};
-            for (auto* b : enterprise_bullets_)
-                bvl->addWidget(b);
-            pvl->addWidget(body);
-
-            // Actions — a layout, not a container widget, so the panel's
-            // blanket sheet has nothing to box in; the buttons style themselves.
-            auto* cta_row = new QHBoxLayout;
-            cta_row->setContentsMargins(14, 2, 14, 12);
-            cta_row->setSpacing(16);
-            auto* see = ui::enterprise::make_cta_button(
-                tr("SEE ENTERPRISE ↗"), ui::enterprise::url_with_ref(ui::enterprise::site_url(), QStringLiteral("about")),
-                ui::enterprise::CtaStyle::Primary, panel);
-            see->setObjectName("aboutEntSee");
-            cta_row->addWidget(see);
-            auto* compare = ui::enterprise::make_cta_button(
-                tr("COMPARE EDITIONS"),
-                ui::enterprise::url_with_ref(ui::enterprise::comparison_url(), QStringLiteral("about")),
-                ui::enterprise::CtaStyle::Link, panel);
-            compare->setObjectName("aboutEntCompare");
-            cta_row->addWidget(compare);
-            cta_row->addStretch();
-            pvl->addLayout(cta_row);
-
-            // Footer link
-            auto* foot = makeLinkLabel(QStringLiteral("fincept.in/enterprise"),
-                                       ui::enterprise::url_with_ref(ui::enterprise::site_url(), QStringLiteral("about")),
                                        QString("color: %1; font-size: " + fincept::ui::fonts::px(-3) + "px; background: transparent; "
                                                "padding: 6px 14px; border-top: 1px solid %2; ")
                                            .arg(ui::colors::CYAN(), ui::colors::BORDER_DIM()));
@@ -374,7 +319,7 @@ AboutScreen::AboutScreen(QWidget* parent) : QWidget(parent) {
         copy_info_btn_->setCursor(Qt::PointingHandCursor);
         copy_info_btn_->setToolTip(tr("Copy version and OS details to the clipboard for bug reports"));
         connect(copy_info_btn_, &QPushButton::clicked, this, [this]() {
-            const QString info = QStringLiteral("Fincept Terminal v%1\nQt: %2 (built with %3)\nOS: %4 (%5 %6)\n"
+            const QString info = QStringLiteral("FinTerminal v%1\nQt: %2 (built with %3)\nOS: %4 (%5 %6)\n"
                                                 "CPU architecture: %7\nBuild ABI: %8\nLocale: %9")
                                      .arg(QApplication::applicationVersion(), QString::fromLatin1(qVersion()),
                                           QStringLiteral(QT_VERSION_STR), QSysInfo::prettyProductName(),
@@ -394,40 +339,7 @@ AboutScreen::AboutScreen(QWidget* parent) : QWidget(parent) {
         vl->addWidget(panel);
     }
 
-    // ── Trademarks ────────────────────────────────────────────────────────────
-    {
-        auto* panel = makePanel();
-        auto* pvl = new QVBoxLayout(panel);
-        pvl->setContentsMargins(0, 0, 0, 0);
-        pvl->setSpacing(0);
-        trademarks_header_ = makePanelHeader("", tr("TRADEMARKS"), ui::colors::AMBER);
-        pvl->addWidget(trademarks_header_);
-
-        auto* body = new QWidget(this);
-        body->setStyleSheet("background: transparent;");
-        auto* bvl = new QVBoxLayout(body);
-        bvl->setContentsMargins(14, 10, 14, 12);
-        bvl->setSpacing(6);
-
-        trademarks_desc_ =
-            new QLabel(tr("\"Fincept\", \"Fincept Terminal\", and associated logos are trademarks of "
-                          "Fincept Corporation. Use of these marks requires explicit written permission."));
-        trademarks_desc_->setStyleSheet(BODY());
-        trademarks_desc_->setWordWrap(true);
-        bvl->addWidget(trademarks_desc_);
-
-        trademarks_perm_ =
-            new QLabel(tr("Permission is not granted to use Fincept trademarks in a way that suggests "
-                          "affiliation with or endorsement by Fincept Corporation without prior written consent."));
-        trademarks_perm_->setStyleSheet(MUTED());
-        trademarks_perm_->setWordWrap(true);
-        bvl->addWidget(trademarks_perm_);
-
-        pvl->addWidget(body);
-        vl->addWidget(panel);
-    }
-
-    // ── Resources — 3×2 grid ─────────────────────────────────────────────────
+    // ── Resources ────────────────────────────────────────────────────────────
     {
         auto* panel = makePanel();
         auto* pvl = new QVBoxLayout(panel);
@@ -446,17 +358,13 @@ AboutScreen::AboutScreen(QWidget* parent) : QWidget(parent) {
             QString label;
             QString url;
         };
-        // Every URL here must resolve. docs/TRADEMARK.md and docs/CLA.md do NOT
-        // exist in the repository — those two buttons opened GitHub 404 pages.
-        // Replaced with documents that are actually checked in.
         const Link links[] = {
-            {tr("GitHub Repository"), "https://github.com/Fincept-Corporation/FinceptTerminal"},
-            {tr("License (AGPL-3.0)"), "https://github.com/Fincept-Corporation/FinceptTerminal/blob/main/LICENSE"},
-            {tr("Fincept Enterprise"), ui::enterprise::url_with_ref(ui::enterprise::site_url(), QStringLiteral("about"))},
-            {tr("Documentation"), "https://github.com/Fincept-Corporation/FinceptTerminal/tree/main/docs"},
-            {tr("Contributing Guide"),
-             "https://github.com/Fincept-Corporation/FinceptTerminal/blob/main/docs/CONTRIBUTING.md"},
-            {tr("Official Website"), "https://fincept.in"},
+            {tr("GitHub Repository"), "https://github.com/selfboss2025-ai/FinTerm"},
+            {tr("License (AGPL-3.0)"), "https://github.com/selfboss2025-ai/FinTerm/blob/main/LICENSE"},
+            {tr("Releases"), "https://github.com/selfboss2025-ai/FinTerm/releases"},
+            {tr("Documentation"), "https://github.com/selfboss2025-ai/FinTerm/tree/main/docs"},
+            {tr("Issues"), "https://github.com/selfboss2025-ai/FinTerm/issues"},
+            {tr("Contributing Guide"), "https://github.com/selfboss2025-ai/FinTerm/blob/main/docs/CONTRIBUTING.md"},
         };
 
         for (int i = 0; i < 6; ++i) {
@@ -469,54 +377,6 @@ AboutScreen::AboutScreen(QWidget* parent) : QWidget(parent) {
             connect(btn, &QPushButton::clicked, this, [url]() { QDesktopServices::openUrl(QUrl(url)); });
             grid->addWidget(btn, i / 3, i % 3);
             resource_btns_.append(btn);
-        }
-
-        pvl->addWidget(body);
-        vl->addWidget(panel);
-    }
-
-    // ── Contact ───────────────────────────────────────────────────────────────
-    {
-        auto* panel = makePanel();
-        auto* pvl = new QVBoxLayout(panel);
-        pvl->setContentsMargins(0, 0, 0, 0);
-        pvl->setSpacing(0);
-        contact_header_ = makePanelHeader("✉", tr("CONTACT"), ui::colors::AMBER);
-        pvl->addWidget(contact_header_);
-
-        auto* body = new QWidget(this);
-        body->setStyleSheet("background: transparent;");
-        auto* grid = new QGridLayout(body);
-        grid->setContentsMargins(14, 10, 14, 12);
-        grid->setSpacing(12);
-
-        struct Contact {
-            QString label;
-            QString email;
-        };
-        const Contact contacts[] = {
-            {tr("GENERAL"), "support@fincept.in"},
-            {tr("COMMERCIAL"), "support@fincept.in"},
-            {tr("SECURITY"), "support@fincept.in"},
-            {tr("LEGAL"), "support@fincept.in"},
-        };
-
-        for (int i = 0; i < 4; ++i) {
-            auto* col = new QWidget(this);
-            col->setStyleSheet("background: transparent;");
-            auto* cvl = new QVBoxLayout(col);
-            cvl->setContentsMargins(0, 0, 0, 0);
-            cvl->setSpacing(2);
-
-            auto* lbl = new QLabel(contacts[i].label);
-            lbl->setStyleSheet(SECTION_LABEL());
-            cvl->addWidget(lbl);
-            contact_labels_.append(lbl);
-
-            auto* email = makeLinkLabel(contacts[i].email, QStringLiteral("mailto:") + contacts[i].email, LINK_STYLE());
-            cvl->addWidget(email);
-
-            grid->addWidget(col, 0, i);
         }
 
         pvl->addWidget(body);
@@ -563,7 +423,7 @@ void AboutScreen::retranslateUi() {
             check_btn_->setToolTip(tr("Development build — opens the releases page."));
     }
     if (copyright_)
-        copyright_->setText(tr("© 2024-2026 Fincept Corporation. All rights reserved."));
+        copyright_->setText(tr("FinTerminal — Free & Open Source Financial Intelligence Terminal (AGPL-3.0)."));
 
     // Open source license — bullet 0 is the SPDX identifier (untranslated).
     setPanelHeaderText(oss_header_, "", tr("OPEN SOURCE LICENSE"));
@@ -572,19 +432,6 @@ void AboutScreen::retranslateUi() {
         setBulletText(oss_bullets_[2], tr("Share modifications under same license"));
         setBulletText(oss_bullets_[3], tr("Network use counts as distribution"));
     }
-
-    // Enterprise (separate closed-source product)
-    setPanelHeaderText(enterprise_header_, "★", tr("FINCEPT TERMINAL ENTERPRISE"));
-    if (enterprise_bullets_.size() == 4) {
-        setBulletText(enterprise_bullets_[0], tr("41 modules · private & proprietary datasets"));
-        setBulletText(enterprise_bullets_[1], tr("Multi-agent research · AI credits included"));
-        setBulletText(enterprise_bullets_[2], tr("SSO/SAML, audit logs & SLA-backed support"));
-        setBulletText(enterprise_bullets_[3], tr("Separate product & account · no copyleft"));
-    }
-    if (auto* see = findChild<QPushButton*>(QStringLiteral("aboutEntSee")))
-        see->setText(tr("SEE ENTERPRISE ↗"));
-    if (auto* compare = findChild<QPushButton*>(QStringLiteral("aboutEntCompare")))
-        compare->setText(tr("COMPARE EDITIONS"));
 
     // Diagnostics
     setPanelHeaderText(diag_header_, "⚙", tr("DIAGNOSTICS"));
@@ -597,34 +444,15 @@ void AboutScreen::retranslateUi() {
         copy_info_btn_->setToolTip(tr("Copy version and OS details to the clipboard for bug reports"));
     }
 
-    // Trademarks
-    setPanelHeaderText(trademarks_header_, "", tr("TRADEMARKS"));
-    if (trademarks_desc_)
-        trademarks_desc_->setText(tr("\"Fincept\", \"Fincept Terminal\", and associated logos are trademarks of "
-                                     "Fincept Corporation. Use of these marks requires explicit written permission."));
-    if (trademarks_perm_)
-        trademarks_perm_->setText(
-            tr("Permission is not granted to use Fincept trademarks in a way that suggests "
-               "affiliation with or endorsement by Fincept Corporation without prior written consent."));
-
     // Resources
     setPanelHeaderText(resources_header_, "", tr("RESOURCES"));
     if (resource_btns_.size() == 6) {
         resource_btns_[0]->setText(tr("GitHub Repository"));
         resource_btns_[1]->setText(tr("License (AGPL-3.0)"));
-        resource_btns_[2]->setText(tr("Fincept Enterprise"));
+        resource_btns_[2]->setText(tr("Releases"));
         resource_btns_[3]->setText(tr("Documentation"));
-        resource_btns_[4]->setText(tr("Contributing Guide"));
-        resource_btns_[5]->setText(tr("Official Website"));
-    }
-
-    // Contact
-    setPanelHeaderText(contact_header_, "✉", tr("CONTACT"));
-    if (contact_labels_.size() == 4) {
-        contact_labels_[0]->setText(tr("GENERAL"));
-        contact_labels_[1]->setText(tr("COMMERCIAL"));
-        contact_labels_[2]->setText(tr("SECURITY"));
-        contact_labels_[3]->setText(tr("LEGAL"));
+        resource_btns_[4]->setText(tr("Issues"));
+        resource_btns_[5]->setText(tr("Contributing Guide"));
     }
 }
 

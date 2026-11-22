@@ -107,7 +107,7 @@ class MacBundleInstaller final : public UpdateInstaller {
             return;
         }
         if (target_.isEmpty() || !QFileInfo(target_).isDir()) {
-            fail(tr("The installed Fincept Terminal could not be found, so it cannot be replaced. Nothing has been "
+            fail(tr("The installed FinTerminal could not be found, so it cannot be replaced. Nothing has been "
                     "changed."));
             return;
         }
@@ -181,7 +181,7 @@ class MacBundleInstaller final : public UpdateInstaller {
             QDir(mount_).entryList({QStringLiteral("*.app")}, QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks);
         if (apps.size() != 1) {
             LOG_ERROR("UpdateInstaller", QStringLiteral("Expected one .app in the image, found: %1").arg(apps.join(QStringLiteral(", "))));
-            fail(tr("The downloaded update does not contain the Fincept Terminal app. Nothing has been changed."));
+            fail(tr("The downloaded update does not contain the FinTerminal app. Nothing has been changed."));
             return;
         }
         new_app_ = QDir(mount_).filePath(apps.first());
@@ -199,7 +199,7 @@ class MacBundleInstaller final : public UpdateInstaller {
                                                      .arg(id)
                                                      .arg(code)
                                                      .arg(QLatin1String(edition::kBundleId)));
-                    fail(tr("The downloaded update is not this edition of Fincept Terminal, so it was not installed. "
+                    fail(tr("The downloaded update is not this edition of FinTerminal, so it was not installed. "
                             "Nothing has been changed."));
                     return;
                 }
@@ -253,7 +253,7 @@ class MacBundleInstaller final : public UpdateInstaller {
         } else if (new_team != running_team) {
             LOG_ERROR("UpdateInstaller",
                       QStringLiteral("Team ID mismatch: running %1, update %2").arg(running_team, new_team));
-            fail(tr("The downloaded update was not signed by the publisher of this Fincept Terminal, so it was not "
+            fail(tr("The downloaded update was not signed by the publisher of this FinTerminal, so it was not "
                     "installed. Nothing has been changed."));
             return;
         } else {
@@ -365,7 +365,7 @@ class MacBundleInstaller final : public UpdateInstaller {
             if (swap_armed_) {
                 // The root half replaces the bundle when we exit anyway.
                 busy_ = false;
-                emit handed_off(tr("Fincept Terminal %1 will be installed when you close Fincept Terminal. Open it "
+                emit handed_off(tr("FinTerminal %1 will be installed when you close FinTerminal. Open it "
                                    "again afterwards.")
                                     .arg(version_));
                 return;
@@ -377,7 +377,7 @@ class MacBundleInstaller final : public UpdateInstaller {
                                         .arg(helper)
                                         .arg(privileged_ ? QStringLiteral("root swap + user open") : QStringLiteral("user"))
                                         .arg(staged_, target_, pid));
-        emit status(tr("Restarting Fincept Terminal…"));
+        emit status(tr("Restarting FinTerminal…"));
         emit ready_to_restart();
     }
 

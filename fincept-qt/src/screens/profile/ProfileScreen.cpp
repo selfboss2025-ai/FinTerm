@@ -938,10 +938,10 @@ QWidget* ProfileScreen::build_support() {
         lrl->addWidget(b);
     };
     // DOCS / FAQ are localisable; GITHUB / DISCORD are brand names — left raw.
-    make_link_btn(tr("DOCS"), "https://github.com/Fincept-Corporation/FinceptTerminal/tree/main/docs");
-    make_link_btn(QStringLiteral("GITHUB"), "https://github.com/Fincept-Corporation/FinceptTerminal");
+    make_link_btn(tr("DOCS"), "https://github.com/selfboss2025-ai/FinTerm/tree/main/docs");
+    make_link_btn(QStringLiteral("GITHUB"), "https://github.com/selfboss2025-ai/FinTerm");
     make_link_btn(QStringLiteral("DISCORD"), "https://discord.gg/ae87a8ygbN");
-    make_link_btn(tr("FAQ"), "https://github.com/Fincept-Corporation/FinceptTerminal/wiki");
+    make_link_btn(tr("FAQ"), "https://github.com/selfboss2025-ai/FinTerm/wiki");
     lrl->addStretch();
     lvl->addLayout(lrl);
     vl->addWidget(lp);
@@ -998,7 +998,7 @@ void ProfileScreen::refresh_all() {
         ui::enterprise::set_cta_style(btn, paid ? ui::enterprise::CtaStyle::Outline : ui::enterprise::CtaStyle::Primary);
     }
     for (auto* hint : findChildren<QLabel*>(QStringLiteral("profilePlanHint")))
-        hint->setText(paid ? tr("See plans and credits, or compare with Fincept Terminal Enterprise for teams.")
+        hint->setText(paid ? tr("See plans and credits, or compare with FinTerminal Enterprise for teams.")
                            : tr("Pro — $10/month: monthly credits, higher limits, every cloud analytics module and "
                                 "priority support."));
 }

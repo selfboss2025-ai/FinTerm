@@ -1,6 +1,6 @@
 #pragma once
 // ReportScheduler — scheduled regeneration of library reports, IN-PROCESS: schedules run
-// only while Fincept Terminal is open (nothing is installed in the operating system). The
+// only while FinTerminal is open (nothing is installed in the operating system). The
 // rules (daily / weekly / on start, the missed-run rule) are core/report/ReportSchedule.h.
 //
 // Every minute the due schedules are queued; runs never overlap (one at a time, in order).

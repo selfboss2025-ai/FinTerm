@@ -59,7 +59,7 @@ void WindowFrame::confirm_logout() {
         return;
     asking = true;
     const auto answer = QMessageBox::question(
-        this, tr("Log out"), tr("Log out of Fincept Terminal? You will need to sign in again to come back."),
+        this, tr("Log out"), tr("Log out of FinTerminal? You will need to sign in again to come back."),
         QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
     asking = false;
     if (answer == QMessageBox::Yes)

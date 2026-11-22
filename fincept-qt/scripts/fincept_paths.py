@@ -43,7 +43,7 @@ from pathlib import Path
 # (fincept-qt/CMakeLists.txt "Edition identity"): the configure step fails when
 # this line does not carry it. Never "com.fincept.terminal" - the folder a
 # separate private build of Fincept Terminal uses.
-EDITION_DATA_DIR_NAME = "com.fincept.terminal.community"
+EDITION_DATA_DIR_NAME = "com.finterminal.app"
 
 DATA_DIR_ENV = "FINCEPT_DATA_DIR"
 
