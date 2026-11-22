@@ -91,7 +91,28 @@ elif [ "$PLATFORM" = "macos" ]; then
         info "Homebrew not found. Installing..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
-    brew install cmake ninja python@3.11 openssl@3 yt-dlp expat
+    # Install only missing Homebrew formulas; avoid `brew install yt-dlp` on macOS 12
+    # because its Homebrew formula pulls in `deno`, which fails to build without Xcode 15+.
+    BREW_PKGS=()
+    command -v cmake      &>/dev/null || BREW_PKGS+=(cmake)
+    command -v ninja      &>/dev/null || BREW_PKGS+=(ninja)
+    command -v python3.11 &>/dev/null || BREW_PKGS+=(python@3.11)
+    [ -d "$(brew --prefix openssl@3 2>/dev/null || true)" ] || BREW_PKGS+=(openssl@3)
+    [ -d "$(brew --prefix expat 2>/dev/null || true)" ]     || BREW_PKGS+=(expat)
+    if [ ${#BREW_PKGS[@]} -gt 0 ]; then
+        brew install "${BREW_PKGS[@]}"
+    else
+        info "All required Homebrew build tools are already installed."
+    fi
+    # yt-dlp is optional (dashboard video playback); install via pip/uv if absent
+    # without pulling Homebrew's deno dependency.
+    if ! command -v yt-dlp &>/dev/null; then
+        if command -v uv &>/dev/null; then
+            uv tool install yt-dlp 2>/dev/null || info "Skipping optional yt-dlp install."
+        else
+            python3 -m pip install --user --quiet yt-dlp 2>/dev/null || info "Skipping optional yt-dlp install."
+        fi
+    fi
 
     # ── Self-heal brewed Python's pyexpat on macOS 26+ ──────────────────────
     # On macOS Tahoe (Darwin 25+), the Homebrew python@3.11 / python@3.14
