@@ -2022,8 +2022,8 @@ Pasar, ekuitas, portofolio, wawasan makro.</translation>
         <translation>MEREK DAGANG</translation>
     </message>
     <message>
-        <source>"Fincept", "Fincept Terminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
-        <translation>"Fincept", "Fincept Terminal", dan logo terkait adalah merek dagang Fincept Corporation. Penggunaan merek ini memerlukan izin tertulis yang tegas.</translation>
+        <source>"Fincept", "FinTerminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
+        <translation>"Fincept", "FinTerminal", dan logo terkait adalah merek dagang Fincept Corporation. Penggunaan merek ini memerlukan izin tertulis yang tegas.</translation>
     </message>
     <message>
         <source>Permission is not granted to use Fincept trademarks in a way that suggests affiliation with or endorsement by Fincept Corporation without prior written consent.</source>
@@ -5371,8 +5371,8 @@ Ini akan menghapus semua kepemilikan dan transaksi.</translation>
 <context>
     <name>fincept::screens::CrashRecoveryDialog</name>
     <message>
-        <source>Fincept Terminal — Recover Previous Session</source>
-        <translation>Fincept Terminal — Pulihkan Sesi Sebelumnya</translation>
+        <source>FinTerminal — Recover Previous Session</source>
+        <translation>FinTerminal — Pulihkan Sesi Sebelumnya</translation>
     </message>
     <message>
         <source>RECOVER PREVIOUS SESSION</source>
@@ -7810,12 +7810,12 @@ Ini tidak dapat dibatalkan. Anda dapat menambahkannya kembali dari layar Sumber 
         <translation>APA ITU FINCEPT TERMINAL?</translation>
     </message>
     <message>
-        <source>Fincept Terminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
+        <source>FinTerminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
 
-With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, Fincept Terminal bridges the gap between retail and institutional tooling.</source>
-        <translation>Fincept Terminal adalah platform intelijen keuangan desktop berkelas profesional yang dibangun dengan C++ native dan Qt6. Platform ini menyediakan data pasar berkualitas institusional, kemampuan trading, alat riset kuantitatif, dan analitik bertenaga AI — semuanya dalam satu antarmuka terminal terpadu.
+With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, FinTerminal bridges the gap between retail and institutional tooling.</source>
+        <translation>FinTerminal adalah platform intelijen keuangan desktop berkelas profesional yang dibangun dengan C++ native dan Qt6. Platform ini menyediakan data pasar berkualitas institusional, kemampuan trading, alat riset kuantitatif, dan analitik bertenaga AI — semuanya dalam satu antarmuka terminal terpadu.
 
-Dengan 45+ layar terintegrasi, umpan WebSocket real-time, analitik Python tertanam, dan dukungan untuk 15+ integrasi broker, Fincept Terminal menjembatani kesenjangan antara perkakas ritel dan institusional.</translation>
+Dengan 45+ layar terintegrasi, umpan WebSocket real-time, analitik Python tertanam, dan dukungan untuk 15+ integrasi broker, FinTerminal menjembatani kesenjangan antara perkakas ritel dan institusional.</translation>
     </message>
     <message>
         <source>KEY CAPABILITIES</source>
@@ -7888,22 +7888,22 @@ Dengan 45+ layar terintegrasi, umpan WebSocket real-time, analitik Python tertan
 ■  Tingkat Keahlian — panduan dari Pemula hingga Pro</translation>
     </message>
     <message>
-        <source>Your first steps with Fincept Terminal</source>
-        <translation>Langkah pertama Anda dengan Fincept Terminal</translation>
+        <source>Your first steps with FinTerminal</source>
+        <translation>Langkah pertama Anda dengan FinTerminal</translation>
     </message>
     <message>
         <source>LAUNCH &amp; LOGIN</source>
         <translation>LUNCURKAN &amp; MASUK</translation>
     </message>
     <message>
-        <source>When you first launch Fincept Terminal, you'll see the login screen. You can either:
+        <source>When you first launch FinTerminal, you'll see the login screen. You can either:
 
 ■  Register a new account with email and password
 ■  Continue as Guest (limited features)
 ■  Log in with existing credentials
 
 After login, you'll land on the Dashboard — your home base.</source>
-        <translation>Saat pertama kali meluncurkan Fincept Terminal, Anda akan melihat layar masuk. Anda dapat:
+        <translation>Saat pertama kali meluncurkan FinTerminal, Anda akan melihat layar masuk. Anda dapat:
 
 ■  Mendaftarkan akun baru dengan email dan kata sandi
 ■  Lanjutkan sebagai Tamu (fitur terbatas)
@@ -7952,14 +7952,14 @@ Ctrl+P — Ambil tangkapan layar (disimpan ke direktori home)</translation>
         <translation>PAKET LANGGANAN</translation>
     </message>
     <message>
-        <source>Fincept Terminal offers tiered access:
+        <source>FinTerminal offers tiered access:
 
 ■  FREE — Basic market data, limited screens, paper trading
 ■  PRO — Full market data, all screens, real trading, AI chat
 ■  ENTERPRISE — Everything + API access, priority support
 
 Manage your plan from Settings or the Pricing screen.</source>
-        <translation>Fincept Terminal menawarkan akses berjenjang:
+        <translation>FinTerminal menawarkan akses berjenjang:
 
 ■  GRATIS — Data pasar dasar, layar terbatas, paper trading
 ■  PRO — Data pasar lengkap, semua layar, trading nyata, obrolan AI
@@ -18173,8 +18173,8 @@ Klik '+ Tambah' untuk menambahkan.</translation>
         <translation>Uji Fincept</translation>
     </message>
     <message>
-        <source>This is a test notification from Fincept Terminal.</source>
-        <translation>Ini adalah notifikasi uji dari Fincept Terminal.</translation>
+        <source>This is a test notification from FinTerminal.</source>
+        <translation>Ini adalah notifikasi uji dari FinTerminal.</translation>
     </message>
     <message>
         <source>✓ Sent successfully</source>
@@ -18287,8 +18287,8 @@ Klik '+ Tambah' untuk menambahkan.</translation>
 <context>
     <name>fincept::screens::OnboardingTour</name>
     <message>
-        <source>Welcome to Fincept Terminal</source>
-        <translation>Selamat datang di Fincept Terminal</translation>
+        <source>Welcome to FinTerminal</source>
+        <translation>Selamat datang di FinTerminal</translation>
     </message>
     <message>
         <source>A 30-second tour</source>
@@ -20300,8 +20300,8 @@ Expected format:
         <translation>PAKET DAN HARGA</translation>
     </message>
     <message>
-        <source>Unlock the full power of Fincept Terminal</source>
-        <translation>Buka semua kekuatan Fincept Terminal</translation>
+        <source>Unlock the full power of FinTerminal</source>
+        <translation>Buka semua kekuatan FinTerminal</translation>
     </message>
     <message>
         <source>Loading plans...</source>
@@ -20399,8 +20399,8 @@ Expected format:
         <translation>KOMITMEN KAMI TERHADAP PRIVASI</translation>
     </message>
     <message>
-        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use Fincept Terminal.</source>
-        <translation>Di Fincept Corporation, kami berkomitmen untuk melindungi privasi Anda. Kebijakan ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan menjaga informasi pribadi Anda saat Anda menggunakan Fincept Terminal.</translation>
+        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use FinTerminal.</source>
+        <translation>Di Fincept Corporation, kami berkomitmen untuk melindungi privasi Anda. Kebijakan ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan menjaga informasi pribadi Anda saat Anda menggunakan FinTerminal.</translation>
     </message>
     <message>
         <source>INFORMATION WE COLLECT</source>
@@ -30352,8 +30352,8 @@ Hanya terjadi saat pertama kali — peluncuran selanjutnya akan langsung.</trans
         <translation>Pemasangan sedang berlangsung — harap biarkan aplikasi tetap terbuka</translation>
     </message>
     <message>
-        <source>Everything is ready! Launching Fincept Terminal...</source>
-        <translation>Semua siap! Meluncurkan Fincept Terminal...</translation>
+        <source>Everything is ready! Launching FinTerminal...</source>
+        <translation>Semua siap! Meluncurkan FinTerminal...</translation>
     </message>
     <message>
         <source>Only the missing pieces will be downloaded. Needs an internet connection.</source>
@@ -31506,16 +31506,16 @@ Buat tiket asli dan tim kami akan merespons dalam 24 jam.</translation>
         <translation>PENERIMAAN KETENTUAN</translation>
     </message>
     <message>
-        <source>By accessing or using Fincept Terminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
-        <translation>Dengan mengakses atau menggunakan Fincept Terminal ("Layanan"), Anda setuju untuk terikat oleh Ketentuan Layanan ini. Jika Anda tidak menyetujui ketentuan ini, jangan gunakan Layanan.</translation>
+        <source>By accessing or using FinTerminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
+        <translation>Dengan mengakses atau menggunakan FinTerminal ("Layanan"), Anda setuju untuk terikat oleh Ketentuan Layanan ini. Jika Anda tidak menyetujui ketentuan ini, jangan gunakan Layanan.</translation>
     </message>
     <message>
         <source>DESCRIPTION OF SERVICE</source>
         <translation>DESKRIPSI LAYANAN</translation>
     </message>
     <message>
-        <source>Fincept Terminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
-        <translation>Fincept Terminal adalah perangkat lunak desktop sumber terbuka untuk riset keuangan, dengan analitik, alat trading, dan riset berbasis AI. Data pasar diambil di perangkat Anda dari sumber yang Anda pilih; Fincept tidak menyediakan data harga bursa.</translation>
+        <source>FinTerminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
+        <translation>FinTerminal adalah perangkat lunak desktop sumber terbuka untuk riset keuangan, dengan analitik, alat trading, dan riset berbasis AI. Data pasar diambil di perangkat Anda dari sumber yang Anda pilih; Fincept tidak menyediakan data harga bursa.</translation>
     </message>
     <message>
         <source>USER ACCOUNTS AND REGISTRATION</source>
@@ -37167,8 +37167,8 @@ P/L Target: %3</translation>
         <translation>Berikutnya: kunci %1 untuk mencapai tingkat berikutnya.</translation>
     </message>
     <message>
-        <source>All Fincept Terminal features unlocked.</source>
-        <translation>Semua fitur Fincept Terminal terbuka.</translation>
+        <source>All FinTerminal features unlocked.</source>
+        <translation>Semua fitur FinTerminal terbuka.</translation>
     </message>
     <message>
         <source>TIER</source>

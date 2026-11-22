@@ -4,6 +4,7 @@
 #include "storage/repositories/SettingsRepository.h"
 
 #include <QCoreApplication>
+#include <QLibraryInfo>
 #include <QLocale>
 #include <QTranslator>
 
@@ -148,6 +149,11 @@ void LanguageManager::set_language(const QString& code) {
         delete translator_;
         translator_ = nullptr;
     }
+    if (qt_translator_) {
+        QCoreApplication::removeTranslator(qt_translator_);
+        delete qt_translator_;
+        qt_translator_ = nullptr;
+    }
 
     // English is the source language — no .qm shipped. Removing the previous
     // translator is enough to fall back to the in-source strings.
@@ -162,6 +168,19 @@ void LanguageManager::set_language(const QString& code) {
             LOG_WARN("i18n", QStringLiteral("Failed to load translator %1 from %2 — falling back to English")
                                  .arg(code, resource_path));
             delete t;
+        }
+
+        // Also load Qt's own base translations (OK/Cancel/Yes/No/file dialogs/context menus)
+        // when present in Qt's translations directory.
+        auto* qt_t = new QTranslator(qApp);
+        const QString qt_dir = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+        const QString short_code = code.section(QLatin1Char('_'), 0, 0);
+        if (qt_t->load(QStringLiteral("qtbase_") + code, qt_dir) ||
+            qt_t->load(QStringLiteral("qtbase_") + short_code, qt_dir)) {
+            QCoreApplication::installTranslator(qt_t);
+            qt_translator_ = qt_t;
+        } else {
+            delete qt_t;
         }
     }
 

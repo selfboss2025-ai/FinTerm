@@ -57,6 +57,7 @@ class LanguageManager : public QObject {
     LanguageManager() = default;
     QString current_code_;
     QTranslator* translator_ = nullptr;
+    QTranslator* qt_translator_ = nullptr;
 };
 
 } // namespace fincept::i18n

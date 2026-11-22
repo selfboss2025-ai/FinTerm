@@ -2022,8 +2022,8 @@ Piyasalar, hisse senetleri, portföy, makro içgörüler.</translation>
         <translation>TİCARİ MARKALAR</translation>
     </message>
     <message>
-        <source>"Fincept", "Fincept Terminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
-        <translation>"Fincept", "Fincept Terminal" ve ilgili logolar Fincept Corporation'ın tescilli markalarıdır. Bu markaların kullanımı açık yazılı izin gerektirir.</translation>
+        <source>"Fincept", "FinTerminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
+        <translation>"Fincept", "FinTerminal" ve ilgili logolar Fincept Corporation'ın tescilli markalarıdır. Bu markaların kullanımı açık yazılı izin gerektirir.</translation>
     </message>
     <message>
         <source>Permission is not granted to use Fincept trademarks in a way that suggests affiliation with or endorsement by Fincept Corporation without prior written consent.</source>
@@ -5371,8 +5371,8 @@ Bu, tüm varlıkları ve işlemleri kaldıracaktır.</translation>
 <context>
     <name>fincept::screens::CrashRecoveryDialog</name>
     <message>
-        <source>Fincept Terminal — Recover Previous Session</source>
-        <translation>Fincept Terminal — Önceki Oturumu Kurtar</translation>
+        <source>FinTerminal — Recover Previous Session</source>
+        <translation>FinTerminal — Önceki Oturumu Kurtar</translation>
     </message>
     <message>
         <source>RECOVER PREVIOUS SESSION</source>
@@ -7810,12 +7810,12 @@ Bu işlem geri alınamaz. Bunları tam Veri Kaynakları ekranından yeniden ekle
         <translation>FINCEPT TERMINAL NEDİR?</translation>
     </message>
     <message>
-        <source>Fincept Terminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
+        <source>FinTerminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
 
-With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, Fincept Terminal bridges the gap between retail and institutional tooling.</source>
-        <translation>Fincept Terminal, yerel C++ ve Qt6 ile geliştirilmiş profesyonel düzeyde bir masaüstü finansal zeka platformudur. Kurumsal kalitede piyasa verileri, işlem yetenekleri, kantitatif araştırma araçları ve AI destekli analitik sunar — tümü tek bir birleşik terminal arayüzünde.
+With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, FinTerminal bridges the gap between retail and institutional tooling.</source>
+        <translation>FinTerminal, yerel C++ ve Qt6 ile geliştirilmiş profesyonel düzeyde bir masaüstü finansal zeka platformudur. Kurumsal kalitede piyasa verileri, işlem yetenekleri, kantitatif araştırma araçları ve AI destekli analitik sunar — tümü tek bir birleşik terminal arayüzünde.
 
-45+ entegre ekran, gerçek zamanlı WebSocket akışları, gömülü Python analitiği ve 15+ aracı kurum entegrasyonu desteği ile Fincept Terminal, bireysel ve kurumsal araçlar arasındaki boşluğu kapatır.</translation>
+45+ entegre ekran, gerçek zamanlı WebSocket akışları, gömülü Python analitiği ve 15+ aracı kurum entegrasyonu desteği ile FinTerminal, bireysel ve kurumsal araçlar arasındaki boşluğu kapatır.</translation>
     </message>
     <message>
         <source>KEY CAPABILITIES</source>
@@ -7888,22 +7888,22 @@ With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytic
 ■  Beceri Seviyeleri — Başlangıçtan Pro'ya rehberlik</translation>
     </message>
     <message>
-        <source>Your first steps with Fincept Terminal</source>
-        <translation>Fincept Terminal ile ilk adımlarınız</translation>
+        <source>Your first steps with FinTerminal</source>
+        <translation>FinTerminal ile ilk adımlarınız</translation>
     </message>
     <message>
         <source>LAUNCH &amp; LOGIN</source>
         <translation>BAŞLAT &amp; GİRİŞ</translation>
     </message>
     <message>
-        <source>When you first launch Fincept Terminal, you'll see the login screen. You can either:
+        <source>When you first launch FinTerminal, you'll see the login screen. You can either:
 
 ■  Register a new account with email and password
 ■  Continue as Guest (limited features)
 ■  Log in with existing credentials
 
 After login, you'll land on the Dashboard — your home base.</source>
-        <translation>Fincept Terminal'i ilk kez başlattığınızda giriş ekranını göreceksiniz. Şunları yapabilirsiniz:
+        <translation>FinTerminal'i ilk kez başlattığınızda giriş ekranını göreceksiniz. Şunları yapabilirsiniz:
 
 ■  E-posta ve parolayla yeni bir hesap kaydedin
 ■  Misafir olarak devam edin (sınırlı özellikler)
@@ -7952,14 +7952,14 @@ Ctrl+P — Ekran görüntüsü al (ana dizine kaydedilir)</translation>
         <translation>ABONELİK PLANLARI</translation>
     </message>
     <message>
-        <source>Fincept Terminal offers tiered access:
+        <source>FinTerminal offers tiered access:
 
 ■  FREE — Basic market data, limited screens, paper trading
 ■  PRO — Full market data, all screens, real trading, AI chat
 ■  ENTERPRISE — Everything + API access, priority support
 
 Manage your plan from Settings or the Pricing screen.</source>
-        <translation>Fincept Terminal kademeli erişim sunar:
+        <translation>FinTerminal kademeli erişim sunar:
 
 ■  ÜCRETSİZ — Temel piyasa verileri, sınırlı ekranlar, kağıt işlem
 ■  PRO — Tam piyasa verileri, tüm ekranlar, gerçek işlem, AI sohbet
@@ -18177,8 +18177,8 @@ Eklemek için '+ Ekle'ye tıklayın.</translation>
         <translation>Fincept Testi</translation>
     </message>
     <message>
-        <source>This is a test notification from Fincept Terminal.</source>
-        <translation>Bu, Fincept Terminal'den bir test bildirimidir.</translation>
+        <source>This is a test notification from FinTerminal.</source>
+        <translation>Bu, FinTerminal'den bir test bildirimidir.</translation>
     </message>
     <message>
         <source>✓ Sent successfully</source>
@@ -18287,8 +18287,8 @@ Eklemek için '+ Ekle'ye tıklayın.</translation>
 <context>
     <name>fincept::screens::OnboardingTour</name>
     <message>
-        <source>Welcome to Fincept Terminal</source>
-        <translation>Fincept Terminal'e hoş geldiniz</translation>
+        <source>Welcome to FinTerminal</source>
+        <translation>FinTerminal'e hoş geldiniz</translation>
     </message>
     <message>
         <source>A 30-second tour</source>
@@ -20300,8 +20300,8 @@ Beklenen biçim:
         <translation>PLANLAR VE FİYATLAR</translation>
     </message>
     <message>
-        <source>Unlock the full power of Fincept Terminal</source>
-        <translation>Fincept Terminal'in tüm gücünü açın</translation>
+        <source>Unlock the full power of FinTerminal</source>
+        <translation>FinTerminal'in tüm gücünü açın</translation>
     </message>
     <message>
         <source>Loading plans...</source>
@@ -20399,8 +20399,8 @@ Beklenen biçim:
         <translation>GİZLİLİĞE BAĞLILIĞIMIZ</translation>
     </message>
     <message>
-        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use Fincept Terminal.</source>
-        <translation>Fincept Corporation olarak gizliliğinizi korumaya kararlıyız. Bu politika, Fincept Terminal'i kullandığınızda kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar.</translation>
+        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use FinTerminal.</source>
+        <translation>Fincept Corporation olarak gizliliğinizi korumaya kararlıyız. Bu politika, FinTerminal'i kullandığınızda kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar.</translation>
     </message>
     <message>
         <source>INFORMATION WE COLLECT</source>
@@ -30352,8 +30352,8 @@ Bu yalnızca ilk seferde olur — sonraki açılışlar anlık olur.</translatio
         <translation>Kurulum sürüyor — lütfen uygulamayı açık tutun</translation>
     </message>
     <message>
-        <source>Everything is ready! Launching Fincept Terminal...</source>
-        <translation>Her şey hazır! Fincept Terminal başlatılıyor...</translation>
+        <source>Everything is ready! Launching FinTerminal...</source>
+        <translation>Her şey hazır! FinTerminal başlatılıyor...</translation>
     </message>
     <message>
         <source>Only the missing pieces will be downloaded. Needs an internet connection.</source>
@@ -31506,16 +31506,16 @@ Gerçek bir talep oluşturun, ekibimiz 24 saat içinde yanıt verecektir.</trans
         <translation>ŞARTLARIN KABULÜ</translation>
     </message>
     <message>
-        <source>By accessing or using Fincept Terminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
-        <translation>Fincept Terminal'e ("Hizmet") erişerek veya kullanarak bu Hizmet Şartları'na bağlı kalmayı kabul edersiniz. Bu şartları kabul etmiyorsanız Hizmet'i kullanmayın.</translation>
+        <source>By accessing or using FinTerminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
+        <translation>FinTerminal'e ("Hizmet") erişerek veya kullanarak bu Hizmet Şartları'na bağlı kalmayı kabul edersiniz. Bu şartları kabul etmiyorsanız Hizmet'i kullanmayın.</translation>
     </message>
     <message>
         <source>DESCRIPTION OF SERVICE</source>
         <translation>HİZMET AÇIKLAMASI</translation>
     </message>
     <message>
-        <source>Fincept Terminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
-        <translation>Fincept Terminal; analiz, alım satım araçları ve yapay zekâ destekli araştırma sunan, finansal araştırma için açık kaynaklı bir masaüstü yazılımıdır. Piyasa verileri, seçtiğiniz kaynaklardan cihazınızda alınır; Fincept borsa fiyat verisi sağlamaz.</translation>
+        <source>FinTerminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
+        <translation>FinTerminal; analiz, alım satım araçları ve yapay zekâ destekli araştırma sunan, finansal araştırma için açık kaynaklı bir masaüstü yazılımıdır. Piyasa verileri, seçtiğiniz kaynaklardan cihazınızda alınır; Fincept borsa fiyat verisi sağlamaz.</translation>
     </message>
     <message>
         <source>USER ACCOUNTS AND REGISTRATION</source>
@@ -37167,8 +37167,8 @@ Hedef K/Z: %3</translation>
         <translation>Sıradaki: bir sonraki kademeye ulaşmak için %1 kilitleyin.</translation>
     </message>
     <message>
-        <source>All Fincept Terminal features unlocked.</source>
-        <translation>Tüm Fincept Terminal özellikleri açıldı.</translation>
+        <source>All FinTerminal features unlocked.</source>
+        <translation>Tüm FinTerminal özellikleri açıldı.</translation>
     </message>
     <message>
         <source>TIER</source>

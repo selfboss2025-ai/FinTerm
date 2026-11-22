@@ -2022,8 +2022,8 @@ Markets, equities, portfolio, macro insights.</source>
         <translation>商標</translation>
     </message>
     <message>
-        <source>"Fincept", "Fincept Terminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
-        <translation>「Fincept」、「Fincept Terminal」及相關標誌均為 Fincept Corporation 的商標。使用這些標誌須獲得明確的書面許可。</translation>
+        <source>"Fincept", "FinTerminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
+        <translation>「Fincept」、「FinTerminal」及相關標誌均為 Fincept Corporation 的商標。使用這些標誌須獲得明確的書面許可。</translation>
     </message>
     <message>
         <source>Permission is not granted to use Fincept trademarks in a way that suggests affiliation with or endorsement by Fincept Corporation without prior written consent.</source>
@@ -5371,8 +5371,8 @@ This will remove all holdings and transactions.</source>
 <context>
     <name>fincept::screens::CrashRecoveryDialog</name>
     <message>
-        <source>Fincept Terminal — Recover Previous Session</source>
-        <translation>Fincept Terminal — 復原上次工作階段</translation>
+        <source>FinTerminal — Recover Previous Session</source>
+        <translation>FinTerminal — 復原上次工作階段</translation>
     </message>
     <message>
         <source>RECOVER PREVIOUS SESSION</source>
@@ -7810,12 +7810,12 @@ This cannot be undone. You can re-add them from the full Data Sources screen.</s
         <translation>什麼是 FINCEPT TERMINAL？</translation>
     </message>
     <message>
-        <source>Fincept Terminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
+        <source>FinTerminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
 
-With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, Fincept Terminal bridges the gap between retail and institutional tooling.</source>
-        <translation>Fincept Terminal 是一個專業級桌面金融智能平台，使用原生 C++ 和 Qt6 構建。它提供機構級市場數據、交易功能、量化研究工具和 AI 驅動的分析——全部整合在一個統一的終端介面中。
+With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, FinTerminal bridges the gap between retail and institutional tooling.</source>
+        <translation>FinTerminal 是一個專業級桌面金融智能平台，使用原生 C++ 和 Qt6 構建。它提供機構級市場數據、交易功能、量化研究工具和 AI 驅動的分析——全部整合在一個統一的終端介面中。
 
-憑藉 45 多個整合畫面、即時 WebSocket 行情、嵌入式 Python 分析以及對 15 多個券商整合的支援，Fincept Terminal 彌合了零售與機構工具之間的差距。</translation>
+憑藉 45 多個整合畫面、即時 WebSocket 行情、嵌入式 Python 分析以及對 15 多個券商整合的支援，FinTerminal 彌合了零售與機構工具之間的差距。</translation>
     </message>
     <message>
         <source>KEY CAPABILITIES</source>
@@ -7888,22 +7888,22 @@ With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytic
 ■  技能等級——從初學者到專業版的指導</translation>
     </message>
     <message>
-        <source>Your first steps with Fincept Terminal</source>
-        <translation>您使用 Fincept Terminal 的第一步</translation>
+        <source>Your first steps with FinTerminal</source>
+        <translation>您使用 FinTerminal 的第一步</translation>
     </message>
     <message>
         <source>LAUNCH &amp; LOGIN</source>
         <translation>啟動與登入</translation>
     </message>
     <message>
-        <source>When you first launch Fincept Terminal, you'll see the login screen. You can either:
+        <source>When you first launch FinTerminal, you'll see the login screen. You can either:
 
 ■  Register a new account with email and password
 ■  Continue as Guest (limited features)
 ■  Log in with existing credentials
 
 After login, you'll land on the Dashboard — your home base.</source>
-        <translation>首次啟動 Fincept Terminal 時，您會看到登入畫面。您可以：
+        <translation>首次啟動 FinTerminal 時，您會看到登入畫面。您可以：
 
 ■  使用電子郵件和密碼註冊新帳戶
 ■  以訪客身份繼續（功能有限）
@@ -7952,14 +7952,14 @@ Ctrl+P — 擷取螢幕截圖（儲存至主目錄）</translation>
         <translation>訂閱計劃</translation>
     </message>
     <message>
-        <source>Fincept Terminal offers tiered access:
+        <source>FinTerminal offers tiered access:
 
 ■  FREE — Basic market data, limited screens, paper trading
 ■  PRO — Full market data, all screens, real trading, AI chat
 ■  ENTERPRISE — Everything + API access, priority support
 
 Manage your plan from Settings or the Pricing screen.</source>
-        <translation>Fincept Terminal 提供分級存取：
+        <translation>FinTerminal 提供分級存取：
 
 ■  免費版——基礎市場數據、有限畫面、模擬交易
 ■  專業版——完整市場數據、所有畫面、真實交易、AI 聊天
@@ -18177,8 +18177,8 @@ Click '+ Add' to add one.</source>
         <translation>Fincept 測試</translation>
     </message>
     <message>
-        <source>This is a test notification from Fincept Terminal.</source>
-        <translation>這是來自 Fincept Terminal 的測試通知。</translation>
+        <source>This is a test notification from FinTerminal.</source>
+        <translation>這是來自 FinTerminal 的測試通知。</translation>
     </message>
     <message>
         <source>✓ Sent successfully</source>
@@ -18287,8 +18287,8 @@ Click '+ Add' to add one.</source>
 <context>
     <name>fincept::screens::OnboardingTour</name>
     <message>
-        <source>Welcome to Fincept Terminal</source>
-        <translation>歡迎使用 Fincept Terminal</translation>
+        <source>Welcome to FinTerminal</source>
+        <translation>歡迎使用 FinTerminal</translation>
     </message>
     <message>
         <source>A 30-second tour</source>
@@ -20299,8 +20299,8 @@ Expected format:
         <translation>方案與價格</translation>
     </message>
     <message>
-        <source>Unlock the full power of Fincept Terminal</source>
-        <translation>解鎖 Fincept Terminal 的全部功能</translation>
+        <source>Unlock the full power of FinTerminal</source>
+        <translation>解鎖 FinTerminal 的全部功能</translation>
     </message>
     <message>
         <source>Loading plans...</source>
@@ -20398,8 +20398,8 @@ Expected format:
         <translation>我們對私隱的承諾</translation>
     </message>
     <message>
-        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use Fincept Terminal.</source>
-        <translation>Fincept Corporation 致力於保護您的私隱。本政策說明當您使用 Fincept Terminal 時，我們如何收集、使用及保護您的個人資料。</translation>
+        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use FinTerminal.</source>
+        <translation>Fincept Corporation 致力於保護您的私隱。本政策說明當您使用 FinTerminal 時，我們如何收集、使用及保護您的個人資料。</translation>
     </message>
     <message>
         <source>INFORMATION WE COLLECT</source>
@@ -30351,8 +30351,8 @@ This only happens the first time — future launches are instant.</source>
         <translation>正在安裝 — 請保持應用程式開啟</translation>
     </message>
     <message>
-        <source>Everything is ready! Launching Fincept Terminal...</source>
-        <translation>一切就緒！正在啟動 Fincept Terminal...</translation>
+        <source>Everything is ready! Launching FinTerminal...</source>
+        <translation>一切就緒！正在啟動 FinTerminal...</translation>
     </message>
     <message>
         <source>Only the missing pieces will be downloaded. Needs an internet connection.</source>
@@ -31505,16 +31505,16 @@ Create a real ticket and our team will respond within 24 hours.</source>
         <translation>條款的接受</translation>
     </message>
     <message>
-        <source>By accessing or using Fincept Terminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
-        <translation>透過存取或使用 Fincept Terminal（「本服務」），即表示您同意受本服務條款的約束。如果您不同意這些條款，請勿使用本服務。</translation>
+        <source>By accessing or using FinTerminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
+        <translation>透過存取或使用 FinTerminal（「本服務」），即表示您同意受本服務條款的約束。如果您不同意這些條款，請勿使用本服務。</translation>
     </message>
     <message>
         <source>DESCRIPTION OF SERVICE</source>
         <translation>服務說明</translation>
     </message>
     <message>
-        <source>Fincept Terminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
-        <translation>Fincept Terminal 是一款用於金融研究的開源桌面軟件，提供分析、交易工具及 AI 驅動的研究功能。市場數據由您的裝置從您選擇的來源獲取；Fincept 不提供交易所價格數據。</translation>
+        <source>FinTerminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
+        <translation>FinTerminal 是一款用於金融研究的開源桌面軟件，提供分析、交易工具及 AI 驅動的研究功能。市場數據由您的裝置從您選擇的來源獲取；Fincept 不提供交易所價格數據。</translation>
     </message>
     <message>
         <source>USER ACCOUNTS AND REGISTRATION</source>
@@ -37166,8 +37166,8 @@ Target P/L: %3</source>
         <translation>下一步：鎖定 %1 以達到下一等級。</translation>
     </message>
     <message>
-        <source>All Fincept Terminal features unlocked.</source>
-        <translation>已解鎖所有 Fincept Terminal 功能。</translation>
+        <source>All FinTerminal features unlocked.</source>
+        <translation>已解鎖所有 FinTerminal 功能。</translation>
     </message>
     <message>
         <source>TIER</source>

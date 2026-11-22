@@ -2024,8 +2024,8 @@ Märkte, Aktien, Portfolio, Makro-Einblicke.</translation>
         <translation>MARKEN</translation>
     </message>
     <message>
-        <source>"Fincept", "Fincept Terminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
-        <translation>„Fincept“, „Fincept Terminal“ und zugehörige Logos sind Marken der Fincept Corporation. Die Verwendung dieser Marken erfordert eine ausdrückliche schriftliche Genehmigung.</translation>
+        <source>"Fincept", "FinTerminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
+        <translation>„Fincept“, „FinTerminal“ und zugehörige Logos sind Marken der Fincept Corporation. Die Verwendung dieser Marken erfordert eine ausdrückliche schriftliche Genehmigung.</translation>
     </message>
     <message>
         <source>Permission is not granted to use Fincept trademarks in a way that suggests affiliation with or endorsement by Fincept Corporation without prior written consent.</source>
@@ -5373,8 +5373,8 @@ Dadurch werden alle Positionen und Transaktionen entfernt.</translation>
 <context>
     <name>fincept::screens::CrashRecoveryDialog</name>
     <message>
-        <source>Fincept Terminal — Recover Previous Session</source>
-        <translation>Fincept Terminal — Vorherige Sitzung wiederherstellen</translation>
+        <source>FinTerminal — Recover Previous Session</source>
+        <translation>FinTerminal — Vorherige Sitzung wiederherstellen</translation>
     </message>
     <message>
         <source>RECOVER PREVIOUS SESSION</source>
@@ -7812,12 +7812,12 @@ Dies kann nicht rückgängig gemacht werden. Sie können sie über den vollstän
         <translation>WAS IST FINCEPT TERMINAL?</translation>
     </message>
     <message>
-        <source>Fincept Terminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
+        <source>FinTerminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
 
-With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, Fincept Terminal bridges the gap between retail and institutional tooling.</source>
-        <translation>Fincept Terminal ist eine professionelle Desktop-Plattform für Finanzintelligenz, entwickelt in nativem C++ mit Qt6. Sie bietet Marktdaten in institutioneller Qualität, Handelsfunktionen, quantitative Research-Tools und KI-gestützte Analytik — alles in einer einzigen einheitlichen Terminaloberfläche.
+With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, FinTerminal bridges the gap between retail and institutional tooling.</source>
+        <translation>FinTerminal ist eine professionelle Desktop-Plattform für Finanzintelligenz, entwickelt in nativem C++ mit Qt6. Sie bietet Marktdaten in institutioneller Qualität, Handelsfunktionen, quantitative Research-Tools und KI-gestützte Analytik — alles in einer einzigen einheitlichen Terminaloberfläche.
 
-Mit über 45 integrierten Bildschirmen, Echtzeit-WebSocket-Feeds, eingebetteter Python-Analytik und Unterstützung für über 15 Broker-Integrationen schließt Fincept Terminal die Lücke zwischen Privatanleger- und institutionellen Werkzeugen.</translation>
+Mit über 45 integrierten Bildschirmen, Echtzeit-WebSocket-Feeds, eingebetteter Python-Analytik und Unterstützung für über 15 Broker-Integrationen schließt FinTerminal die Lücke zwischen Privatanleger- und institutionellen Werkzeugen.</translation>
     </message>
     <message>
         <source>KEY CAPABILITIES</source>
@@ -7890,22 +7890,22 @@ Mit über 45 integrierten Bildschirmen, Echtzeit-WebSocket-Feeds, eingebetteter 
 ■  Kenntnisstufen — Anleitung vom Anfänger bis Pro</translation>
     </message>
     <message>
-        <source>Your first steps with Fincept Terminal</source>
-        <translation>Ihre ersten Schritte mit Fincept Terminal</translation>
+        <source>Your first steps with FinTerminal</source>
+        <translation>Ihre ersten Schritte mit FinTerminal</translation>
     </message>
     <message>
         <source>LAUNCH &amp; LOGIN</source>
         <translation>START &amp; ANMELDUNG</translation>
     </message>
     <message>
-        <source>When you first launch Fincept Terminal, you'll see the login screen. You can either:
+        <source>When you first launch FinTerminal, you'll see the login screen. You can either:
 
 ■  Register a new account with email and password
 ■  Continue as Guest (limited features)
 ■  Log in with existing credentials
 
 After login, you'll land on the Dashboard — your home base.</source>
-        <translation>Wenn Sie Fincept Terminal zum ersten Mal starten, sehen Sie den Anmeldebildschirm. Sie können:
+        <translation>Wenn Sie FinTerminal zum ersten Mal starten, sehen Sie den Anmeldebildschirm. Sie können:
 
 ■  Ein neues Konto mit E-Mail und Passwort registrieren
 ■  Als Gast fortfahren (eingeschränkte Funktionen)
@@ -7954,14 +7954,14 @@ Strg+P — Screenshot aufnehmen (im Home-Verzeichnis gespeichert)</translation>
         <translation>ABONNEMENT-PLÄNE</translation>
     </message>
     <message>
-        <source>Fincept Terminal offers tiered access:
+        <source>FinTerminal offers tiered access:
 
 ■  FREE — Basic market data, limited screens, paper trading
 ■  PRO — Full market data, all screens, real trading, AI chat
 ■  ENTERPRISE — Everything + API access, priority support
 
 Manage your plan from Settings or the Pricing screen.</source>
-        <translation>Fincept Terminal bietet gestaffelten Zugang:
+        <translation>FinTerminal bietet gestaffelten Zugang:
 
 ■  KOSTENLOS — Basis-Marktdaten, begrenzte Bildschirme, Paper-Trading
 ■  PRO — Vollständige Marktdaten, alle Bildschirme, echter Handel, KI-Chat
@@ -18199,8 +18199,8 @@ Klicken Sie auf '+ Hinzufügen', um einen hinzuzufügen.</translation>
         <translation>Fincept-Test</translation>
     </message>
     <message>
-        <source>This is a test notification from Fincept Terminal.</source>
-        <translation>Dies ist eine Testbenachrichtigung von Fincept Terminal.</translation>
+        <source>This is a test notification from FinTerminal.</source>
+        <translation>Dies ist eine Testbenachrichtigung von FinTerminal.</translation>
     </message>
     <message>
         <source>In-App Alerts (toast + bell)</source>
@@ -18293,8 +18293,8 @@ Klicken Sie auf '+ Hinzufügen', um einen hinzuzufügen.</translation>
 <context>
     <name>fincept::screens::OnboardingTour</name>
     <message>
-        <source>Welcome to Fincept Terminal</source>
-        <translation>Willkommen bei Fincept Terminal</translation>
+        <source>Welcome to FinTerminal</source>
+        <translation>Willkommen bei FinTerminal</translation>
     </message>
     <message>
         <source>A 30-second tour</source>
@@ -20307,8 +20307,8 @@ Erwartetes Format:
         <translation>PLÄNE &amp; PREISE</translation>
     </message>
     <message>
-        <source>Unlock the full power of Fincept Terminal</source>
-        <translation>Schalten Sie die volle Leistung von Fincept Terminal frei</translation>
+        <source>Unlock the full power of FinTerminal</source>
+        <translation>Schalten Sie die volle Leistung von FinTerminal frei</translation>
     </message>
     <message>
         <source>Loading plans...</source>
@@ -20406,8 +20406,8 @@ Erwartetes Format:
         <translation>UNSER ENGAGEMENT FÜR DEN DATENSCHUTZ</translation>
     </message>
     <message>
-        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use Fincept Terminal.</source>
-        <translation>Bei Fincept Corporation verpflichten wir uns, Ihre Privatsphäre zu schützen. Diese Richtlinie beschreibt, wie wir Ihre personenbezogenen Daten erfassen, verwenden und schützen, wenn Sie Fincept Terminal nutzen.</translation>
+        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use FinTerminal.</source>
+        <translation>Bei Fincept Corporation verpflichten wir uns, Ihre Privatsphäre zu schützen. Diese Richtlinie beschreibt, wie wir Ihre personenbezogenen Daten erfassen, verwenden und schützen, wenn Sie FinTerminal nutzen.</translation>
     </message>
     <message>
         <source>INFORMATION WE COLLECT</source>
@@ -30360,8 +30360,8 @@ Dies geschieht nur beim ersten Mal — spätere Starts erfolgen sofort.</transla
         <translation>Einrichtung läuft — bitte lassen Sie die Anwendung geöffnet</translation>
     </message>
     <message>
-        <source>Everything is ready! Launching Fincept Terminal...</source>
-        <translation>Alles bereit! Fincept Terminal wird gestartet...</translation>
+        <source>Everything is ready! Launching FinTerminal...</source>
+        <translation>Alles bereit! FinTerminal wird gestartet...</translation>
     </message>
     <message>
         <source>Only the missing pieces will be downloaded. Needs an internet connection.</source>
@@ -31514,16 +31514,16 @@ Erstellen Sie ein echtes Ticket, und unser Team antwortet innerhalb von 24 Stund
         <translation>ANNAHME DER BEDINGUNGEN</translation>
     </message>
     <message>
-        <source>By accessing or using Fincept Terminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
-        <translation>Durch den Zugriff auf Fincept Terminal („der Dienst“) oder dessen Nutzung erklären Sie sich mit diesen Nutzungsbedingungen einverstanden. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie den Dienst nicht.</translation>
+        <source>By accessing or using FinTerminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
+        <translation>Durch den Zugriff auf FinTerminal („der Dienst“) oder dessen Nutzung erklären Sie sich mit diesen Nutzungsbedingungen einverstanden. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie den Dienst nicht.</translation>
     </message>
     <message>
         <source>DESCRIPTION OF SERVICE</source>
         <translation>BESCHREIBUNG DES DIENSTES</translation>
     </message>
     <message>
-        <source>Fincept Terminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
-        <translation>Fincept Terminal ist quelloffene Desktop-Software für die Finanzrecherche mit Analysen, Handelswerkzeugen und KI-gestützter Recherche. Marktdaten werden auf Ihrem Gerät aus den von Ihnen gewählten Quellen abgerufen; Fincept liefert keine Börsenkursdaten.</translation>
+        <source>FinTerminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
+        <translation>FinTerminal ist quelloffene Desktop-Software für die Finanzrecherche mit Analysen, Handelswerkzeugen und KI-gestützter Recherche. Marktdaten werden auf Ihrem Gerät aus den von Ihnen gewählten Quellen abgerufen; Fincept liefert keine Börsenkursdaten.</translation>
     </message>
     <message>
         <source>USER ACCOUNTS AND REGISTRATION</source>
@@ -37175,8 +37175,8 @@ Ziel-G/V: %3</translation>
         <translation>Nächster Schritt: Sperren Sie %1, um die nächste Stufe zu erreichen.</translation>
     </message>
     <message>
-        <source>All Fincept Terminal features unlocked.</source>
-        <translation>Alle Funktionen von Fincept Terminal freigeschaltet.</translation>
+        <source>All FinTerminal features unlocked.</source>
+        <translation>Alle Funktionen von FinTerminal freigeschaltet.</translation>
     </message>
     <message>
         <source>TIER</source>

@@ -2022,8 +2022,8 @@ Thị trường, cổ phiếu, danh mục, phân tích vĩ mô.</translation>
         <translation>THƯƠNG HIỆU</translation>
     </message>
     <message>
-        <source>"Fincept", "Fincept Terminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
-        <translation>"Fincept", "Fincept Terminal" và các logo liên quan là thương hiệu của Fincept Corporation. Việc sử dụng các nhãn hiệu này đòi hỏi sự cho phép rõ ràng bằng văn bản.</translation>
+        <source>"Fincept", "FinTerminal", and associated logos are trademarks of Fincept Corporation. Use of these marks requires explicit written permission.</source>
+        <translation>"Fincept", "FinTerminal" và các logo liên quan là thương hiệu của Fincept Corporation. Việc sử dụng các nhãn hiệu này đòi hỏi sự cho phép rõ ràng bằng văn bản.</translation>
     </message>
     <message>
         <source>Permission is not granted to use Fincept trademarks in a way that suggests affiliation with or endorsement by Fincept Corporation without prior written consent.</source>
@@ -5371,8 +5371,8 @@ Thao tác này sẽ xóa tất cả khoản nắm giữ và giao dịch.</transl
 <context>
     <name>fincept::screens::CrashRecoveryDialog</name>
     <message>
-        <source>Fincept Terminal — Recover Previous Session</source>
-        <translation>Fincept Terminal — Khôi phục phiên trước</translation>
+        <source>FinTerminal — Recover Previous Session</source>
+        <translation>FinTerminal — Khôi phục phiên trước</translation>
     </message>
     <message>
         <source>RECOVER PREVIOUS SESSION</source>
@@ -7810,12 +7810,12 @@ Thao tác này không thể hoàn tác. Bạn có thể thêm lại chúng từ 
         <translation>FINCEPT TERMINAL LÀ GÌ?</translation>
     </message>
     <message>
-        <source>Fincept Terminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
+        <source>FinTerminal is a professional-grade desktop financial intelligence platform built in native C++ with Qt6. It provides institutional-quality market data, trading capabilities, quantitative research tools, and AI-powered analytics — all in a single unified terminal interface.
 
-With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, Fincept Terminal bridges the gap between retail and institutional tooling.</source>
-        <translation>Fincept Terminal là một nền tảng trí tuệ tài chính trên máy tính cấp chuyên nghiệp, được xây dựng bằng C++ gốc với Qt6. Nó cung cấp dữ liệu thị trường chất lượng tổ chức, khả năng giao dịch, công cụ nghiên cứu định lượng và phân tích hỗ trợ AI — tất cả trong một giao diện terminal hợp nhất.
+With 45+ integrated screens, real-time WebSocket feeds, embedded Python analytics, and support for 15+ broker integrations, FinTerminal bridges the gap between retail and institutional tooling.</source>
+        <translation>FinTerminal là một nền tảng trí tuệ tài chính trên máy tính cấp chuyên nghiệp, được xây dựng bằng C++ gốc với Qt6. Nó cung cấp dữ liệu thị trường chất lượng tổ chức, khả năng giao dịch, công cụ nghiên cứu định lượng và phân tích hỗ trợ AI — tất cả trong một giao diện terminal hợp nhất.
 
-Với hơn 45 màn hình tích hợp, luồng WebSocket thời gian thực, phân tích Python nhúng và hỗ trợ hơn 15 tích hợp nhà môi giới, Fincept Terminal thu hẹp khoảng cách giữa công cụ bán lẻ và tổ chức.</translation>
+Với hơn 45 màn hình tích hợp, luồng WebSocket thời gian thực, phân tích Python nhúng và hỗ trợ hơn 15 tích hợp nhà môi giới, FinTerminal thu hẹp khoảng cách giữa công cụ bán lẻ và tổ chức.</translation>
     </message>
     <message>
         <source>KEY CAPABILITIES</source>
@@ -7888,22 +7888,22 @@ Với hơn 45 màn hình tích hợp, luồng WebSocket thời gian thực, phâ
 ■  Cấp độ kỹ năng — hướng dẫn từ Người mới đến Pro</translation>
     </message>
     <message>
-        <source>Your first steps with Fincept Terminal</source>
-        <translation>Những bước đầu tiên của bạn với Fincept Terminal</translation>
+        <source>Your first steps with FinTerminal</source>
+        <translation>Những bước đầu tiên của bạn với FinTerminal</translation>
     </message>
     <message>
         <source>LAUNCH &amp; LOGIN</source>
         <translation>KHỞI CHẠY &amp; ĐĂNG NHẬP</translation>
     </message>
     <message>
-        <source>When you first launch Fincept Terminal, you'll see the login screen. You can either:
+        <source>When you first launch FinTerminal, you'll see the login screen. You can either:
 
 ■  Register a new account with email and password
 ■  Continue as Guest (limited features)
 ■  Log in with existing credentials
 
 After login, you'll land on the Dashboard — your home base.</source>
-        <translation>Khi khởi chạy Fincept Terminal lần đầu, bạn sẽ thấy màn hình đăng nhập. Bạn có thể:
+        <translation>Khi khởi chạy FinTerminal lần đầu, bạn sẽ thấy màn hình đăng nhập. Bạn có thể:
 
 ■  Đăng ký tài khoản mới bằng email và mật khẩu
 ■  Tiếp tục với tư cách Khách (tính năng hạn chế)
@@ -7952,14 +7952,14 @@ Ctrl+P — Chụp màn hình (lưu vào thư mục home)</translation>
         <translation>GÓI ĐĂNG KÝ</translation>
     </message>
     <message>
-        <source>Fincept Terminal offers tiered access:
+        <source>FinTerminal offers tiered access:
 
 ■  FREE — Basic market data, limited screens, paper trading
 ■  PRO — Full market data, all screens, real trading, AI chat
 ■  ENTERPRISE — Everything + API access, priority support
 
 Manage your plan from Settings or the Pricing screen.</source>
-        <translation>Fincept Terminal cung cấp quyền truy cập theo cấp:
+        <translation>FinTerminal cung cấp quyền truy cập theo cấp:
 
 ■  MIỄN PHÍ — Dữ liệu thị trường cơ bản, màn hình hạn chế, giao dịch thử nghiệm
 ■  PRO — Dữ liệu thị trường đầy đủ, mọi màn hình, giao dịch thật, trò chuyện AI
@@ -18173,8 +18173,8 @@ Nhấp '+ Thêm' để thêm một máy chủ.</translation>
         <translation>Thử nghiệm Fincept</translation>
     </message>
     <message>
-        <source>This is a test notification from Fincept Terminal.</source>
-        <translation>Đây là thông báo thử nghiệm từ Fincept Terminal.</translation>
+        <source>This is a test notification from FinTerminal.</source>
+        <translation>Đây là thông báo thử nghiệm từ FinTerminal.</translation>
     </message>
     <message>
         <source>✓ Sent successfully</source>
@@ -18287,8 +18287,8 @@ Nhấp '+ Thêm' để thêm một máy chủ.</translation>
 <context>
     <name>fincept::screens::OnboardingTour</name>
     <message>
-        <source>Welcome to Fincept Terminal</source>
-        <translation>Chào mừng đến với Fincept Terminal</translation>
+        <source>Welcome to FinTerminal</source>
+        <translation>Chào mừng đến với FinTerminal</translation>
     </message>
     <message>
         <source>A 30-second tour</source>
@@ -20300,8 +20300,8 @@ Expected format:
         <translation>GÓI &amp; GIÁ</translation>
     </message>
     <message>
-        <source>Unlock the full power of Fincept Terminal</source>
-        <translation>Mở khóa toàn bộ sức mạnh của Fincept Terminal</translation>
+        <source>Unlock the full power of FinTerminal</source>
+        <translation>Mở khóa toàn bộ sức mạnh của FinTerminal</translation>
     </message>
     <message>
         <source>Loading plans...</source>
@@ -20399,8 +20399,8 @@ Expected format:
         <translation>CAM KẾT CỦA CHÚNG TÔI VỀ QUYỀN RIÊNG TƯ</translation>
     </message>
     <message>
-        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use Fincept Terminal.</source>
-        <translation>Tại Fincept Corporation, chúng tôi cam kết bảo vệ quyền riêng tư của bạn. Chính sách này mô tả cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn khi bạn sử dụng Fincept Terminal.</translation>
+        <source>At Fincept Corporation, we are committed to protecting your privacy. This policy describes how we collect, use, and safeguard your personal information when you use FinTerminal.</source>
+        <translation>Tại Fincept Corporation, chúng tôi cam kết bảo vệ quyền riêng tư của bạn. Chính sách này mô tả cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn khi bạn sử dụng FinTerminal.</translation>
     </message>
     <message>
         <source>INFORMATION WE COLLECT</source>
@@ -30352,8 +30352,8 @@ Việc này chỉ xảy ra lần đầu — các lần khởi chạy sau sẽ t�
         <translation>Đang cài đặt — vui lòng giữ ứng dụng mở</translation>
     </message>
     <message>
-        <source>Everything is ready! Launching Fincept Terminal...</source>
-        <translation>Mọi thứ đã sẵn sàng! Đang khởi chạy Fincept Terminal...</translation>
+        <source>Everything is ready! Launching FinTerminal...</source>
+        <translation>Mọi thứ đã sẵn sàng! Đang khởi chạy FinTerminal...</translation>
     </message>
     <message>
         <source>Only the missing pieces will be downloaded. Needs an internet connection.</source>
@@ -31506,16 +31506,16 @@ Tạo một phiếu thực và đội ngũ của chúng tôi sẽ phản hồi t
         <translation>CHẤP NHẬN ĐIỀU KHOẢN</translation>
     </message>
     <message>
-        <source>By accessing or using Fincept Terminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
-        <translation>Bằng việc truy cập hoặc sử dụng Fincept Terminal ("Dịch vụ"), bạn đồng ý chịu sự ràng buộc của các Điều khoản Dịch vụ này. Nếu bạn không đồng ý với các điều khoản này, vui lòng không sử dụng Dịch vụ.</translation>
+        <source>By accessing or using FinTerminal ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the Service.</source>
+        <translation>Bằng việc truy cập hoặc sử dụng FinTerminal ("Dịch vụ"), bạn đồng ý chịu sự ràng buộc của các Điều khoản Dịch vụ này. Nếu bạn không đồng ý với các điều khoản này, vui lòng không sử dụng Dịch vụ.</translation>
     </message>
     <message>
         <source>DESCRIPTION OF SERVICE</source>
         <translation>MÔ TẢ DỊCH VỤ</translation>
     </message>
     <message>
-        <source>Fincept Terminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
-        <translation>Fincept Terminal là phần mềm máy tính mã nguồn mở dành cho nghiên cứu tài chính, với công cụ phân tích, giao dịch và nghiên cứu bằng AI. Dữ liệu thị trường được lấy trên thiết bị của bạn từ các nguồn bạn chọn; Fincept không cung cấp dữ liệu giá của sàn giao dịch.</translation>
+        <source>FinTerminal is open-source desktop software for financial research, with analytics, trading tools and AI-powered research. Market data is fetched on your device from the sources you choose; Fincept does not supply exchange price data.</source>
+        <translation>FinTerminal là phần mềm máy tính mã nguồn mở dành cho nghiên cứu tài chính, với công cụ phân tích, giao dịch và nghiên cứu bằng AI. Dữ liệu thị trường được lấy trên thiết bị của bạn từ các nguồn bạn chọn; Fincept không cung cấp dữ liệu giá của sàn giao dịch.</translation>
     </message>
     <message>
         <source>USER ACCOUNTS AND REGISTRATION</source>
@@ -37167,8 +37167,8 @@ P/L mục tiêu: %3</translation>
         <translation>Tiếp theo: khóa %1 để đạt hạng kế tiếp.</translation>
     </message>
     <message>
-        <source>All Fincept Terminal features unlocked.</source>
-        <translation>Đã mở khóa tất cả tính năng Fincept Terminal.</translation>
+        <source>All FinTerminal features unlocked.</source>
+        <translation>Đã mở khóa tất cả tính năng FinTerminal.</translation>
     </message>
     <message>
         <source>TIER</source>

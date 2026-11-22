@@ -1,5 +1,11 @@
 #include "ui/widgets/EnterprisePromo.h"
 
+#include "app/TerminalShell.h"
+#include "app/WindowFrame.h"
+#include "core/actions/ActionRegistry.h"
+#include "core/keys/WindowCycler.h"
+#include "core/logging/Logger.h"
+
 #include <QLabel>
 #include <QPushButton>
 
@@ -76,7 +82,17 @@ void dismiss_placement(const QString&) {}
 
 namespace billing {
 
-void open_plans(QWidget*) {}
+void open_plans(QWidget* origin) {
+    CommandContext ctx;
+    ctx.shell = &TerminalShell::instance();
+    if (origin)
+        ctx.focused_frame = qobject_cast<WindowFrame*>(origin->window());
+    if (!ctx.focused_frame)
+        ctx.focused_frame = WindowCycler::instance().focused_frame();
+    const auto r = ActionRegistry::instance().invoke(QStringLiteral("billing.plans"), ctx);
+    if (r.is_err())
+        LOG_WARN("EnterprisePromo", QString("billing.plans: %1").arg(QString::fromStdString(r.error())));
+}
 
 } // namespace billing
 

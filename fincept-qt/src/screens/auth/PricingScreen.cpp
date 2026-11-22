@@ -30,6 +30,7 @@
 #include <QStyle>
 #include <QTimer>
 #include <QUrl>
+#include <QUrlQuery>
 #include <QVBoxLayout>
 
 #include <algorithm>
@@ -41,6 +42,22 @@ namespace fincept::screens {
 namespace {
 
 constexpr const char* kPricingTag = "Pricing";
+constexpr const char* kPricingPayPalAccount = "ayooka@gmail.com";
+
+QUrl pricing_paypal_url(const QString& plan_id, const QString& plan_name, double amount, const QString& currency) {
+    QUrl url(QStringLiteral("https://www.paypal.com/cgi-bin/webscr"));
+    QUrlQuery query;
+    query.addQueryItem(QStringLiteral("cmd"), QStringLiteral("_xclick"));
+    query.addQueryItem(QStringLiteral("business"), QString::fromLatin1(kPricingPayPalAccount));
+    query.addQueryItem(QStringLiteral("item_name"), QStringLiteral("FinTerminal - %1").arg(plan_name));
+    query.addQueryItem(QStringLiteral("item_number"), plan_id);
+    if (amount > 0.0)
+        query.addQueryItem(QStringLiteral("amount"), QString::number(amount, 'f', 2));
+    query.addQueryItem(QStringLiteral("currency_code"), currency.isEmpty() ? QStringLiteral("USD") : currency.toUpper());
+    query.addQueryItem(QStringLiteral("no_shipping"), QStringLiteral("1"));
+    url.setQuery(query);
+    return url;
+}
 /// Last plan list the backend returned. Rendered instantly on the next visit
 /// and kept on screen when the network is down.
 constexpr const char* kPricingPlansCacheKey = "billing.plans_cache";
@@ -360,9 +377,7 @@ void PricingScreen::retranslateUi() {
     title_label_->setText(tr("PLANS & PRICING"));
     subtitle_label_->setText(tr("Credits power cloud analytics, AI and data in this terminal. Start free — "
                                 "move to Pro when you need more."));
-    footnote_label_->setText(tr("Checkout runs securely on fincept.in and your plan updates here automatically. "
-                                "FinTerminal Enterprise is a separate product with its own accounts and "
-                                "billing."));
+    footnote_label_->setText(tr("Payments are processed securely via PayPal (ayooka@gmail.com)."));
     back_btn_->setText(tr("← BACK TO TERMINAL"));
     retry_btn_->setText(tr("RETRY"));
 }
@@ -495,9 +510,8 @@ void PricingScreen::fetch_plans() {
                                            : tr("Couldn't refresh plans — showing the last known list."),
                                    true);
                 } else {
-                    set_status(StatusTone::Error,
-                               offline ? tr("Can't reach Fincept right now. Check your connection and retry.")
-                                       : (r.error.isEmpty() ? tr("Plans could not be loaded.") : r.error),
+                    set_status(StatusTone::Info,
+                               tr("Could not refresh plans right now. Showing standard plans."),
                                true);
                     rendered_for_.clear();
                     render_cards(); // the Enterprise card still renders without the backend
@@ -729,7 +743,7 @@ QWidget* PricingScreen::build_plan_card(const auth::SubscriptionPlan& plan) {
         else
             btn->setText(user_paid ? tr("SWITCH TO %1").arg(plan_name) : tr("UPGRADE TO %1").arg(plan_name));
         set_plan_action(btn, PlanAction::Select);
-        note = tr("Secure checkout on fincept.in — opens in your browser");
+        note = tr("Secure checkout via PayPal (ayooka@gmail.com) — opens in your browser");
         const QString pid = plan.plan_id;
         connect(btn, &QPushButton::clicked, this, [this, pid]() { on_select_plan(pid); });
     }
@@ -785,15 +799,17 @@ QWidget* PricingScreen::build_enterprise_card() {
     vl->addWidget(desc);
     vl->addSpacing(12);
 
-    // No price on purpose: Enterprise prices live on the website, and this
-    // build ships monthly. The price slot links there instead.
-    auto* price_link = new QPushButton(fincept::ui::literal_ampersands(tr("See plans & pricing ↗")), card);
-    price_link->setObjectName("planPriceLink");
-    price_link->setCursor(Qt::PointingHandCursor);
-    price_link->setMinimumHeight(36);
-    connect(price_link, &QPushButton::clicked, this,
-            []() { ui::enterprise::open_url(ui::enterprise::url_with_ref(ui::enterprise::pricing_url(), "pricing")); });
-    vl->addWidget(price_link, 0, Qt::AlignLeft);
+    auto* price_row = new QHBoxLayout;
+    price_row->setContentsMargins(0, 0, 0, 0);
+    price_row->setSpacing(8);
+    auto* price = new QLabel(pricing_format_price(45.0, QStringLiteral("USD")), card);
+    price->setObjectName("planPrice");
+    price_row->addWidget(price, 0, Qt::AlignBottom);
+    auto* period_lbl = new QLabel(tr("/ month"), card);
+    period_lbl->setObjectName("planPeriod");
+    price_row->addWidget(period_lbl, 0, Qt::AlignBottom);
+    price_row->addStretch();
+    vl->addLayout(price_row);
     vl->addSpacing(16);
 
     auto* rule = new QFrame(card);
@@ -819,31 +835,18 @@ QWidget* PricingScreen::build_enterprise_card() {
     vl->addStretch(1);
     vl->addSpacing(12);
 
-    auto* primary = new QPushButton(tr("SEE ENTERPRISE ↗"), card);
+    auto* primary = new QPushButton(tr("PAY WITH PAYPAL"), card);
     primary->setObjectName("planEntPrimary");
     primary->setCursor(Qt::PointingHandCursor);
-    primary->setToolTip(ent::site_url());
-    connect(primary, &QPushButton::clicked, this,
-            []() { ui::enterprise::open_url(ui::enterprise::url_with_ref(ui::enterprise::site_url(), "pricing")); });
+    connect(primary, &QPushButton::clicked, this, [this]() {
+        QDesktopServices::openUrl(
+            pricing_paypal_url(QStringLiteral("enterprise"), QStringLiteral("Enterprise"), 45.0, QStringLiteral("USD")));
+        set_status(StatusTone::Info, tr("PayPal checkout opened in your browser (ayooka@gmail.com)."));
+    });
     vl->addWidget(primary);
-    vl->addSpacing(6);
-
-    // A meeting about custom requirements or a partnership — the team gives no
-    // product demos. The compact label takes over when a large font leaves the
-    // card too narrow for the full one.
-    auto* meeting = new QPushButton(card);
-    meeting->setObjectName("planEntSecondary");
-    meeting->setCursor(Qt::PointingHandCursor);
-    ent::set_fitting_text(meeting, tr("DISCUSS CUSTOM REQUIREMENTS"), tr("CUSTOM REQUIREMENTS"));
-    meeting->setToolTip(tr("Book a meeting to talk through custom requirements or a partnership"));
-    meeting->setAccessibleName(tr("Discuss custom requirements: book a meeting (opens in your browser)"));
-    connect(meeting, &QPushButton::clicked, this, []() { ui::enterprise::open_url(ui::enterprise::meeting_url()); });
-    vl->addWidget(meeting);
-    vl->addSpacing(6);
-    vl->addWidget(ent::make_partnership_link(card), 0, Qt::AlignLeft);
     vl->addSpacing(8);
 
-    auto* note = new QLabel(tr("Separate product · separate account"), card);
+    auto* note = new QLabel(tr("Secure checkout via PayPal (ayooka@gmail.com) — opens in your browser"), card);
     note->setObjectName("planNote");
     note->setWordWrap(true);
     vl->addWidget(note);
@@ -853,69 +856,25 @@ QWidget* PricingScreen::build_enterprise_card() {
 // ── Checkout ─────────────────────────────────────────────────────────────────
 
 void PricingScreen::on_select_plan(const QString& plan_id) {
-    const auto buttons = cards_host_->findChildren<QPushButton*>(QStringLiteral("planBtn"));
-    for (auto* btn : buttons) {
-        if (btn->property("planAction").toString() == QLatin1String("select")) {
-            set_plan_action(btn, PlanAction::Processing);
-            btn->setText(tr("OPENING CHECKOUT…"));
-        }
-    }
     clear_status();
 
-    auth::AuthApi::instance().generate_checkout_token(
-        plan_id,
-        [this, plan_id](auth::ApiResponse r) {
-            for (auto* btn : cards_host_->findChildren<QPushButton*>(QStringLiteral("planBtn"))) {
-                if (btn->property("planAction").toString() == QLatin1String("processing")) {
-                    set_plan_action(btn, PlanAction::Select);
-                    btn->setText(btn->property("idleText").toString());
-                }
-            }
+    QString plan_name = plan_id;
+    double amount = 10.0;
+    QString currency = QStringLiteral("USD");
+    for (const auto& p : plans_) {
+        if (p.plan_id == plan_id) {
+            if (!p.name.isEmpty())
+                plan_name = p.name;
+            if (p.price_usd > 0.0)
+                amount = p.price_usd;
+            if (!p.currency.isEmpty())
+                currency = p.currency;
+            break;
+        }
+    }
 
-            if (!r.success) {
-                set_status(StatusTone::Error,
-                           r.error.isEmpty() ? tr("Could not start checkout. Please try again.") : r.error);
-                return;
-            }
-
-            QJsonObject payload = r.data;
-            if (payload.contains("data") && payload["data"].isObject())
-                payload = payload["data"].toObject();
-
-            const QString token = payload["token"].toString();
-            if (token.isEmpty()) {
-                set_status(StatusTone::Error, tr("No checkout token received from the server. Please try again."));
-                return;
-            }
-
-            // The website depends on this exact path and these parameters.
-            const QString url = QString("https://fincept.in/checkout?token=%1&plan=%2")
-                                    .arg(QUrl::toPercentEncoding(token), QUrl::toPercentEncoding(plan_id));
-            QDesktopServices::openUrl(QUrl(url));
-
-            awaiting_payment_ = true;
-            awaiting_plan_id_ = plan_id;
-            // What a completed purchase changes — see on_session_changed().
-            const auto& s = auth::AuthManager::instance().session();
-            pre_payment_plan_ = s.account_type().toLower();
-            pre_payment_purchase_at_ = s.subscription.last_credit_purchase_at;
-            pre_payment_expires_at_ = pricing_pass_end(s);
-            payment_poll_ticks_ = 0;
-            payment_poll_in_flight_ = false;
-            set_status(StatusTone::Info, tr("Checkout opened in your browser. Complete the payment there — this "
-                                            "screen updates automatically."));
-            payment_poll_timer_->start();
-
-            // Also check the moment the user comes back from the browser.
-            if (focus_connection_)
-                disconnect(focus_connection_);
-            focus_connection_ =
-                connect(qApp, &QApplication::applicationStateChanged, this, [this](Qt::ApplicationState state) {
-                    if (state == Qt::ApplicationActive && awaiting_payment_)
-                        poll_payment_status();
-                });
-        },
-        this); // context: this call spans a payment-provider round trip — see AuthApi::request()
+    QDesktopServices::openUrl(pricing_paypal_url(plan_id, plan_name, amount, currency));
+    set_status(StatusTone::Info, tr("PayPal checkout opened in your browser (ayooka@gmail.com)."));
 }
 
 void PricingScreen::stop_payment_polling() {

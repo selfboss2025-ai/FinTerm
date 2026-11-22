@@ -13,6 +13,7 @@
 #include "auth/InactivityGuard.h"
 #include "core/components/PopularityTracker.h"
 #include "core/config/ProfileManager.h"
+#include "core/i18n/LanguageManager.h"
 #include "core/keys/WindowCycler.h"
 #include "core/logging/Logger.h"
 #include "core/panel/PanelHandle.h"
@@ -123,6 +124,29 @@ DockScreenRouter::DockScreenRouter(ads::CDockManager* manager, QObject* parent) 
     // for source-suppression (skip re-delivery to the publisher).
     connect(&SymbolContext::instance(), &SymbolContext::group_symbol_changed, this,
             &DockScreenRouter::on_group_symbol_changed_external);
+
+    // Retranslate all open dock tab titles immediately when the user switches language.
+    connect(&i18n::LanguageManager::instance(), &i18n::LanguageManager::language_changed, this, [this](const QString&) {
+        if (!manager_)
+            return;
+        const auto docks = manager_->dockWidgetsMap();
+        for (auto it = docks.cbegin(); it != docks.cend(); ++it) {
+            ads::CDockWidget* dock = it.value();
+            if (!dock)
+                continue;
+            const QString id = it.key();
+            if (!load_tab_title(id).isEmpty())
+                continue; // preserve custom user-renamed tab titles
+            QString base_id = id;
+            QString suffix;
+            const int dup = id.indexOf(QLatin1String("#dup"));
+            if (dup > 0) {
+                base_id = id.left(dup);
+                suffix = QStringLiteral(" (") + id.mid(dup + 4) + QLatin1Char(')');
+            }
+            dock->setWindowTitle(title_for_id(base_id) + suffix);
+        }
+    });
 }
 
 void DockScreenRouter::on_group_symbol_changed_external(SymbolGroup g, const SymbolRef& ref, QObject* source) {
