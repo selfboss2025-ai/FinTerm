@@ -130,10 +130,32 @@ if [ "$PLATFORM" = "linux" ]; then
     echo "  g++ ${GCC_VER}"
     version_ge "$GCC_VER" "$GCC_MIN" || fail "GCC ${GCC_MIN}+ required. Found ${GCC_VER}. Install g++-12 or newer."
 elif [ "$PLATFORM" = "macos" ]; then
-    command -v clang++ &>/dev/null || fail "clang++ not found. Run: xcode-select --install"
-    CLANG_VER="$(clang++ --version | head -1 | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -1)"
-    echo "  Apple Clang ${CLANG_VER}"
-    version_ge "$CLANG_VER" "$CLANG_MIN" || fail "Apple Clang ${CLANG_MIN}+ required (Xcode 15.2+). Found ${CLANG_VER}."
+    CC_BIN="${CC:-}"
+    CXX_BIN="${CXX:-}"
+    if [ -z "$CXX_BIN" ]; then
+        command -v clang++ &>/dev/null || fail "clang++ not found. Run: xcode-select --install"
+        CXX_BIN="$(command -v clang++)"
+        CC_BIN="$(command -v clang)"
+    fi
+    CLANG_VER="$("$CXX_BIN" --version | head -1 | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -1)"
+    echo "  Default Clang ${CLANG_VER} ($CXX_BIN)"
+    if ! version_ge "$CLANG_VER" "$CLANG_MIN"; then
+        # macOS 12 Monterey caps Apple Clang at 14.0 (Xcode 14.2).
+        # Fall back to Homebrew LLVM (>= 15.0) which supports C++20 on Monterey.
+        LLVM_PREFIX="$(brew --prefix llvm 2>/dev/null || true)"
+        if [ -z "$LLVM_PREFIX" ] || [ ! -x "$LLVM_PREFIX/bin/clang++" ]; then
+            info "Apple Clang ${CLANG_VER} < ${CLANG_MIN} (expected on macOS 12 Monterey). Installing Homebrew llvm..."
+            brew install llvm
+            LLVM_PREFIX="$(brew --prefix llvm)"
+        fi
+        CC_BIN="$LLVM_PREFIX/bin/clang"
+        CXX_BIN="$LLVM_PREFIX/bin/clang++"
+        CLANG_VER="$("$CXX_BIN" --version | head -1 | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -1)"
+        echo "  Using Homebrew Clang ${CLANG_VER} ($CXX_BIN)"
+        version_ge "$CLANG_VER" "$CLANG_MIN" || fail "Clang ${CLANG_MIN}+ required. Found ${CLANG_VER}."
+        export CC="$CC_BIN"
+        export CXX="$CXX_BIN"
+    fi
 fi
 ok
 
@@ -194,6 +216,14 @@ else
         --modules $AQT_MODULES \
         || fail "aqtinstall failed. Check internet connection or install Qt ${QT_VERSION} manually from https://www.qt.io/download-qt-installer"
     [ -f "$QT_PREFIX/lib/cmake/Qt6/Qt6Config.cmake" ] || fail "Qt install completed but Qt6Config.cmake not found at $QT_PREFIX"
+    # Strip dangling Qt6Sql driver plugin CMake configs shipped by aqtinstall
+    # (references MySQL/PSQL/ODBC/Mimer plugin binaries that are not included).
+    SQL_CMAKE="$QT_PREFIX/lib/cmake/Qt6Sql"
+    if [ -d "$SQL_CMAKE" ]; then
+        for drv in QMYSQLDriverPlugin QPSQLDriverPlugin QODBCDriverPlugin QMimerSQLDriverPlugin; do
+            rm -f "$SQL_CMAKE/Qt6${drv}"*.cmake || true
+        done
+    fi
 fi
 export CMAKE_PREFIX_PATH="$QT_PREFIX${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}"
 echo "  CMAKE_PREFIX_PATH=$QT_PREFIX"
@@ -214,6 +244,9 @@ if [ "$PLATFORM" = "macos" ]; then
     OPENSSL_PREFIX="$(brew --prefix openssl@3 2>/dev/null || true)"
     if [ -n "$OPENSSL_PREFIX" ] && [ -d "$OPENSSL_PREFIX" ]; then
         EXTRA_ARGS="-DOPENSSL_ROOT_DIR=$OPENSSL_PREFIX"
+    fi
+    if [ -n "${CC:-}" ] && [ -n "${CXX:-}" ]; then
+        EXTRA_ARGS="$EXTRA_ARGS -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX"
     fi
 fi
 

@@ -150,7 +150,7 @@ if(APPLE)
     # supported macOS version so builds on newer runners do not accidentally
     # produce bundles that require that newer host OS at runtime.
     if(NOT DEFINED CMAKE_OSX_DEPLOYMENT_TARGET OR CMAKE_OSX_DEPLOYMENT_TARGET STREQUAL "")
-        set(CMAKE_OSX_DEPLOYMENT_TARGET "13.0" CACHE STRING
+        set(CMAKE_OSX_DEPLOYMENT_TARGET "12.0" CACHE STRING
             "Minimum macOS version supported by Fincept Terminal" FORCE)
     endif()
     set(CMAKE_MACOSX_RPATH ON)
