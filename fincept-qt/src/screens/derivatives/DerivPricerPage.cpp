@@ -5,6 +5,7 @@
 
 #include "core/instrument/Instrument.h"
 #include "core/logging/Logger.h"
+#include "datahub/DataHub.h"
 #include "services/company_snapshot/CompanySnapshotService.h"
 #include "services/markets/MarketDataService.h"
 #include "services/options/CurveDataService.h"
@@ -1014,33 +1015,59 @@ void DerivPricerPage::on_symbol_picked(const core::instrument::Instrument& inst)
     const QString sym = inst.symbol.isEmpty() ? inst.display : inst.symbol;
     if (sym.isEmpty())
         return;
+    auto& hub = datahub::DataHub::instance();
+    if (!market_symbol_.isEmpty()) {
+        const QString old_topic = services::MarketDataService::quote_topic(market_symbol_);
+        hub.unsubscribe(this, old_topic);
+        hub.unsubscribe_errors(this, old_topic);
+    }
     market_symbol_ = sym;
     market_ccy_ = inst.currency.isEmpty() ? QStringLiteral("USD") : inst.currency;
     set_market_status(tr("Fetching price for %1…").arg(inst.display.isEmpty() ? sym : inst.display));
     QPointer<DerivPricerPage> self(this);
-    services::MarketDataService::instance().fetch_quotes(
-        {sym}, [self, sym](bool ok, QVector<services::QuoteData> quotes) {
+    const QString topic = services::MarketDataService::quote_topic(sym);
+    auto apply_quote = [self, sym, topic](const services::QuoteData& quote) {
+        if (!self || self->market_symbol_ != sym || quote.price <= 0)
+            return;
+        auto& quote_hub = datahub::DataHub::instance();
+        quote_hub.unsubscribe(self.data(), topic);
+        quote_hub.unsubscribe_errors(self.data(), topic);
+        self->opt_spot_->setValue(quote.price);
+        if (!quote.currency.isEmpty())
+            self->market_ccy_ = quote.currency;
+        QString when;
+        if (quote.market_time > 0)
+            when = QDateTime::fromSecsSinceEpoch(quote.market_time).toString(QStringLiteral("d MMM HH:mm"));
+        self->set_market_status(tr("%1 spot %2 %3%4 (delayed quote)")
+                                    .arg(sym, num(quote.price, 2), self->market_ccy_,
+                                         when.isEmpty() ? QString() : tr(" as of %1").arg(when)));
+        self->apply_rate_for_tenor();
+    };
+
+    const QVariant snapshot = hub.peek(topic);
+    bool has_snapshot = false;
+    if (snapshot.canConvert<services::QuoteData>()) {
+        const services::QuoteData quote = snapshot.value<services::QuoteData>();
+        if (quote.price > 0) {
+            apply_quote(quote);
+            has_snapshot = true;
+        }
+    }
+    if (!has_snapshot) {
+        hub.subscribe_errors(this, topic, [self, sym, topic](const QString&) {
             if (!self || self->market_symbol_ != sym)
                 return;
-            const services::QuoteData* q = nullptr;
-            for (const auto& x : quotes)
-                if (x.price > 0)
-                    q = &x;
-            if (!ok || !q) {
-                self->set_market_status(tr("No price found for %1 - type the spot yourself.").arg(sym), true);
-                return;
-            }
-            self->opt_spot_->setValue(q->price);
-            if (!q->currency.isEmpty())
-                self->market_ccy_ = q->currency;
-            QString when;
-            if (q->market_time > 0)
-                when = QDateTime::fromSecsSinceEpoch(q->market_time).toString(QStringLiteral("d MMM HH:mm"));
-            self->set_market_status(tr("%1 spot %2 %3%4 (delayed quote)")
-                                        .arg(sym, num(q->price, 2), self->market_ccy_,
-                                             when.isEmpty() ? QString() : tr(" as of %1").arg(when)));
-            self->apply_rate_for_tenor();
+            auto& error_hub = datahub::DataHub::instance();
+            error_hub.unsubscribe(self.data(), topic);
+            error_hub.unsubscribe_errors(self.data(), topic);
+            self->set_market_status(tr("No price found for %1 - type the spot yourself.").arg(sym), true);
         });
+        hub.subscribe(this, topic, [apply_quote](const QVariant& value) {
+            if (value.canConvert<services::QuoteData>())
+                apply_quote(value.value<services::QuoteData>());
+        });
+        hub.request(topic);
+    }
     // Dividend yield, name, currency and the 52-week range from the shared company snapshot
     // (quote side only: one Yahoo call, cached 10 minutes and shared with the other tabs). It
     // also says when a company pays nothing, which the old info call could not tell apart

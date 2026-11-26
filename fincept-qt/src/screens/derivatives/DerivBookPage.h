@@ -208,6 +208,7 @@ class DerivBookPage : public QWidget {
     QStringList queue_;
     QSet<QString> force_keys_;
     QString in_flight_;
+    QString quote_topic_in_flight_;
     quint64 chain_req_ = 0;
     quint64 future_req_ = 0;
     quint64 curve_req_ = 0;
