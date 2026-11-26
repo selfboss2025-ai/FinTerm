@@ -59,7 +59,11 @@ cmake --build --preset macos-release
 ./build/macos-release/FinTerminal.app/Contents/MacOS/FinTerminal
 ```
 
-For Linux use `--preset linux-release`. On Windows, open **Developer PowerShell for Visual Studio 2022**, set the Qt MSVC installation path, then build and run:
+On Linux, use the `linux-release` preset. The following build instructions are for Windows only.
+
+### Windows
+
+Open **Developer PowerShell for Visual Studio 2022**, set the Qt MSVC installation path, then build and run:
 
 ```powershell
 cd fincept-qt
