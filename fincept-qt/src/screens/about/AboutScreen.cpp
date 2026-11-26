@@ -44,11 +44,6 @@ static QString MUTED() {
         .arg(ui::colors::TEXT_TERTIARY());
 }
 
-static QString LINK_STYLE() {
-    return QString("color: %1; font-size: " + fincept::ui::fonts::px(-1) + "px; background: transparent; ")
-        .arg(ui::colors::CYAN());
-}
-
 static QString PANEL() {
     return QString("background: %1; border: 1px solid %2; border-radius: 2px;")
         .arg(ui::colors::BG_SURFACE(), ui::colors::BORDER_DIM());
