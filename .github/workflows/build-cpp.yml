@@ -24,7 +24,7 @@ jobs:
             arch: x64
             platform: Windows
             artifact: FinTerminal-Windows-x64
-            exe: FinTerminal.exe
+            exe: FinceptTerminal.exe
             qt_arch: win64_msvc2022_64
             cmake_extra: ""
 
@@ -33,7 +33,7 @@ jobs:
             arch: arm64
             platform: Windows
             artifact: FinTerminal-Windows-arm64
-            exe: FinTerminal.exe
+            exe: FinceptTerminal.exe
             qt_arch: win64_msvc2022_arm64_cross_compiled
             cmake_extra: "-A ARM64"
 
