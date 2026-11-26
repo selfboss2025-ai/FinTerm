@@ -4,7 +4,8 @@ name: Release — Build All Installers
 # Triggered on:
 #   • git tag push  (v*)  → builds installers, creates GH Release, updates README
 #   • workflow_dispatch   → manual run (skips release + README update);
-#                           "only: flatpak" builds just the Flatpak bundle,
+#                           "only: windows" builds just the Windows installer,
+#                           "only: flatpak" just the Flatpak bundle,
 #                           "only: deb" just the Linux .deb (+ verify-deb)
 # Linux deliverables: the Flatpak (main) and the .deb. No AppImage / .rpm.
 # ─────────────────────────────────────────────────────────────────────────────
@@ -20,6 +21,7 @@ on:
         default: all
         options:
           - all
+          - windows
           - flatpak
           - deb
 
@@ -41,9 +43,8 @@ env:
 jobs:
   build-windows:
     name: Windows x64 Installer
-    # A manual run may ask for one Linux package alone; tag pushes carry no
-    # inputs and always build everything.
-    if: github.event_name != 'workflow_dispatch' || inputs.only == 'all'
+    # Manual runs can build just the Windows installer; tag pushes build all.
+    if: github.event_name != 'workflow_dispatch' || inputs.only == 'all' || inputs.only == 'windows'
     runs-on: windows-2022
 
     steps:
@@ -744,9 +745,8 @@ jobs:
 # ═════════════════════════════════════════════════════════════════════════════
   build-linux:
     name: Linux x64 .deb
-    # Manual runs: "all" and "deb" build it, "flatpak" does not. Tag pushes
-    # carry no inputs and always build everything.
-    if: github.event_name != 'workflow_dispatch' || inputs.only != 'flatpak'
+    # Manual runs: "all" and "deb" build it. Tag pushes build all.
+    if: github.event_name != 'workflow_dispatch' || inputs.only == 'all' || inputs.only == 'deb'
     runs-on: ubuntu-22.04
 
     steps:
@@ -2811,8 +2811,8 @@ jobs:
 # ═════════════════════════════════════════════════════════════════════════════
   build-flatpak:
     name: Linux x86_64 Flatpak
-    # Manual runs: "all" and "flatpak" build it, "deb" does not.
-    if: github.event_name != 'workflow_dispatch' || inputs.only != 'deb'
+    # Manual runs: "all" and "flatpak" build it. Tag pushes build all.
+    if: github.event_name != 'workflow_dispatch' || inputs.only == 'all' || inputs.only == 'flatpak'
     runs-on: ubuntu-24.04
     # Cold build (see "Build Flatpak bundle" on why there is no cache): ~20 min
     # on 48 cores locally, so expect a few hours on a 4-vCPU hosted runner.
