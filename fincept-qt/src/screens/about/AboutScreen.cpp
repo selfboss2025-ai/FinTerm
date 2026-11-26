@@ -34,11 +34,6 @@ static QString SECTION_LABEL() {
         .arg(ui::colors::TEXT_SECONDARY());
 }
 
-static QString BODY() {
-    return QString("color: %1; font-size: " + fincept::ui::fonts::px(-1) + "px; background: transparent; ")
-        .arg(ui::colors::TEXT_PRIMARY());
-}
-
 static QString MUTED() {
     return QString("color: %1; font-size: " + fincept::ui::fonts::px(-2) + "px; background: transparent; ")
         .arg(ui::colors::TEXT_TERTIARY());
