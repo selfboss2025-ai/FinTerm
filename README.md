@@ -19,6 +19,12 @@
 - **Automation & Quant Lab** — visual node editor, MCP tools, ML/factor discovery
 - **Global Intelligence** — maritime tracking, geopolitical analysis, and relationship mapping
 
+## Download for Windows
+
+A Windows 10/11 x64 installer is available from the [Release — Build All Installers workflow](https://github.com/selfboss2025-ai/FinTerm/actions/workflows/release.yml). Open the latest successful run, select the `FinceptTerminal-Windows-x64-installer` artifact, download and extract the ZIP, then run the `FinceptTerminal-*-windows-x64-setup.exe` installer inside.
+
+GitHub Actions artifacts are retained for 30 days. This installer is not Authenticode-signed, so Windows SmartScreen may show an unknown-publisher warning.
+
 ---
 
 ## Build from Source
