@@ -19,6 +19,21 @@
 - **Automation & Quant Lab** — visual node editor, MCP tools, ML/factor discovery
 - **Global Intelligence** — maritime tracking, geopolitical analysis, and relationship mapping
 
+## Download for Windows
+
+A Windows 10/11 x64 installer is available from the [Release — Build All Installers workflow](https://github.com/selfboss2025-ai/FinTerm/actions/workflows/release.yml). Open the latest successful run, select the `FinceptTerminal-Windows-x64-installer` artifact, and download the ZIP. Then run this in PowerShell:
+
+```powershell
+$zip = "$HOME\Downloads\FinceptTerminal-Windows-x64-installer.zip"
+$dest = "$HOME\Downloads\FinceptTerminalInstaller"
+Expand-Archive -LiteralPath $zip -DestinationPath $dest -Force
+$setup = Get-ChildItem -LiteralPath $dest -Filter 'FinceptTerminal-*-windows-x64-setup.exe' | Select-Object -First 1
+if (-not $setup) { throw "Windows installer not found in the downloaded artifact." }
+Start-Process -FilePath $setup.FullName -Wait
+```
+
+GitHub Actions artifacts are retained for 30 days. This installer is not Authenticode-signed, so Windows SmartScreen may show an unknown-publisher warning.
+
 ---
 
 ## Build from Source
@@ -44,7 +59,21 @@ cmake --build --preset macos-release
 ./build/macos-release/FinTerminal.app/Contents/MacOS/FinTerminal
 ```
 
-For Linux use `--preset linux-release`; for Windows use `--preset win-release`.
+On Linux, use the `linux-release` preset. The following build instructions are for Windows only.
+
+### Windows
+
+Open **Developer PowerShell for Visual Studio 2022**, set the Qt MSVC installation path, then build and run:
+
+```powershell
+cd fincept-qt
+$env:CMAKE_PREFIX_PATH = "C:\Qt\6.8.3\msvc2022_64"
+cmake --preset win-release
+cmake --build --preset win-release
+.\build\win-release\FinceptTerminal.exe
+```
+
+This builds and runs the application from source; it does not create an installer. Use the Windows installer artifact above for an installable setup.
 
 ---
 

@@ -3985,7 +3985,11 @@ qt6_add_lupdate(FinceptTerminal
 )
 
 # ── Output & macOS bundle properties ─────────────────────────────────────────
-set_target_properties(FinceptTerminal PROPERTIES OUTPUT_NAME "FinTerminal")
+if(WIN32)
+    set_target_properties(FinceptTerminal PROPERTIES OUTPUT_NAME "FinceptTerminal")
+else()
+    set_target_properties(FinceptTerminal PROPERTIES OUTPUT_NAME "FinTerminal")
+endif()
 if(APPLE)
     set_target_properties(FinceptTerminal PROPERTIES
         MACOSX_BUNDLE_GUI_IDENTIFIER    "${FINCEPT_EDITION_BUNDLE_ID}"

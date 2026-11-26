@@ -1,6 +1,7 @@
 #include "screens/derivatives/DerivBookPage.h"
 
 #include "core/logging/Logger.h"
+#include "datahub/DataHub.h"
 #include "services/markets/MarketDataService.h"
 #include "services/options/CurveDataService.h"
 #include "services/options/DerivBookStore.h"
@@ -1382,44 +1383,66 @@ void DerivBookPage::fetch_option_key(const QString& key, bool force) {
 }
 
 void DerivBookPage::fetch_quote_keys(const QStringList& keys) {
-    QStringList syms;
-    for (const QString& key : keys) {
-        QString sym = key;
-        for (const bk::BookPosition& p : model_->positions())
-            if (bk::underlying_key(p.underlying) == key) {
-                sym = p.underlying;
-                break;
-            }
-        syms << sym;
-    }
+    if (keys.isEmpty())
+        return;
+    const QString key = keys.first();
+    QString sym = key;
+    for (const bk::BookPosition& p : model_->positions())
+        if (bk::underlying_key(p.underlying) == key) {
+            sym = p.underlying;
+            break;
+        }
     const QString item = in_flight_;
     QPointer<DerivBookPage> self(this);
-    services::MarketDataService::instance().fetch_quotes(syms, [self, keys, item](bool ok, QVector<services::QuoteData> quotes) {
+    auto& hub = datahub::DataHub::instance();
+    const QString topic = services::MarketDataService::quote_topic(sym);
+    auto finish = [self, key, item, topic](const services::QuoteData* quote) {
         if (!self || self->in_flight_ != item)
             return;
-        for (int i = 0; i < keys.size(); ++i) {
-            const services::QuoteData* hit = nullptr;
-            for (const auto& q : quotes)
-                if (bk::underlying_key(q.symbol) == keys[i] && q.price > 0)
-                    hit = &q;
-            if (!hit && quotes.size() == keys.size() && quotes[i].price > 0)
-                hit = &quotes[i];
-            if (ok && hit) {
-                bk::UnderlyingQuote& u = self->market_.underlyings[keys[i]];
-                u.spot = hit->price;
-                u.as_of = hit->market_time > 0 ? QDateTime::fromSecsSinceEpoch(hit->market_time, QTimeZone::UTC)
-                                               : QDateTime::currentDateTimeUtc();
-                u.source = DerivBookPage::tr("delayed quote");
-                self->failures_.remove(keys[i]);
-            } else {
-                self->failures_.insert(keys[i], DerivBookPage::tr("no price found"));
-            }
+        auto& quote_hub = datahub::DataHub::instance();
+        quote_hub.unsubscribe(self, topic);
+        quote_hub.unsubscribe_errors(self, topic);
+        if (self->quote_topic_in_flight_ == topic)
+            self->quote_topic_in_flight_.clear();
+        if (quote && quote->price > 0) {
+            bk::UnderlyingQuote& u = self->market_.underlyings[key];
+            u.spot = quote->price;
+            u.as_of = quote->market_time > 0 ? QDateTime::fromSecsSinceEpoch(quote->market_time, QTimeZone::UTC)
+                                             : QDateTime::currentDateTimeUtc();
+            u.source = DerivBookPage::tr("delayed quote");
+            self->failures_.remove(key);
+        } else {
+            self->failures_.insert(key, DerivBookPage::tr("no price found"));
         }
         self->in_flight_.clear();
         self->schedule_revalue();
         self->update_status();
         self->pump();
+    };
+
+    const QVariant snapshot = hub.peek(topic);
+    if (snapshot.canConvert<services::QuoteData>()) {
+        const services::QuoteData quote = snapshot.value<services::QuoteData>();
+        if (quote.price > 0) {
+            finish(&quote);
+            return;
+        }
+    }
+
+    if (!quote_topic_in_flight_.isEmpty()) {
+        hub.unsubscribe(this, quote_topic_in_flight_);
+        hub.unsubscribe_errors(this, quote_topic_in_flight_);
+    }
+    quote_topic_in_flight_ = topic;
+    hub.subscribe_errors(this, topic, [finish](const QString&) { finish(nullptr); });
+    hub.subscribe(this, topic, [finish](const QVariant& value) {
+        if (!value.canConvert<services::QuoteData>())
+            return;
+        const services::QuoteData quote = value.value<services::QuoteData>();
+        if (quote.price > 0)
+            finish(&quote);
     });
+    hub.request(topic);
 }
 
 void DerivBookPage::fetch_future_root(const QString& root, bool force) {
@@ -1519,6 +1542,12 @@ void DerivBookPage::cancel_marking() {
     if (future_req_)
         CurveDataService::instance().cancel(future_req_);
     chain_req_ = future_req_ = 0;
+    if (!quote_topic_in_flight_.isEmpty()) {
+        auto& hub = datahub::DataHub::instance();
+        hub.unsubscribe(this, quote_topic_in_flight_);
+        hub.unsubscribe_errors(this, quote_topic_in_flight_);
+        quote_topic_in_flight_.clear();
+    }
     if (!in_flight_.isEmpty())
         fetched_at_.remove(in_flight_); // not fetched after all: due again on the next visit
     in_flight_.clear();

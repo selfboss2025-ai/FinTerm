@@ -86,13 +86,17 @@ jobs:
           echo "OPENSSL_ROOT_DIR=$OPENSSL_DIR" >> "$GITHUB_ENV"
           echo "ZLIB_ROOT=$ZLIB_DIR" >> "$GITHUB_ENV"
           ls "$OPENSSL_DIR/lib/libcrypto.lib" && echo "libcrypto.lib confirmed"
-          # vcpkg's static-md zlib ships the archive as "zs.lib", a name stock
-          # CMake FindZLIB does NOT search for (it looks for z/zlib/zlib1/...).
-          # Alias it to "zlib.lib" so find_package(ZLIB) links the static
-          # archive instead of falling through to a stray system zlib (the
-          # v4.1.0 "z.dll" failure mode). It's a copy, so the archive is intact.
+          # vcpkg's static-md zlib may ship the archive as "zs.lib" or
+          # "libzs.lib", names stock CMake FindZLIB does NOT search for (it
+          # looks for z/zlib/zlib1/...). Alias it to "zlib.lib" so
+          # find_package(ZLIB) links the static archive instead of falling
+          # through to a stray system zlib (the v4.1.0 "z.dll" failure mode).
+          # It's a copy, so the archive is intact.
           if [ ! -f "$ZLIB_DIR/lib/zlib.lib" ]; then
-            ALT="$(ls "$ZLIB_DIR"/lib/z*.lib 2>/dev/null | head -1 || true)"
+            ALT=""
+            for candidate in "$ZLIB_DIR/lib/zs.lib" "$ZLIB_DIR/lib/libzs.lib"; do
+              if [ -f "$candidate" ]; then ALT="$candidate"; break; fi
+            done
             if [ -n "$ALT" ]; then cp "$ALT" "$ZLIB_DIR/lib/zlib.lib"; echo "Aliased $(basename "$ALT") -> zlib.lib"; fi
           fi
           if [ ! -f "$ZLIB_DIR/lib/zlib.lib" ]; then
